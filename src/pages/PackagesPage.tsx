@@ -374,7 +374,7 @@ const PackagesPage: React.FC = () => {
                       €65 <span className="text-red-500 line-through text-sm">€59</span>
                     </td>
                     <td className="px-4 py-4 text-center text-charcoal-900 font-semibold bg-primary-25">
-                      €125 <span className="text-red-500 line-through text-sm">Was €170</span>
+                      €125 <span className="text-red-500 line-through text-sm">€170</span>
                     </td>
                     <td className="px-4 py-4 text-center text-charcoal-900 font-semibold">
                       €275
