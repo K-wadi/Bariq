@@ -99,7 +99,7 @@ const BookingPage: React.FC = () => {
               <h3 className="text-xl font-display font-semibold mb-2">Premium Clean</h3>
               <div className="mb-4">
                 <span className="text-3xl font-bold text-primary-600">€125</span>
-                <span className="text-red-500 line-through ml-2">€119</span>
+                <span className="text-red-500 line-through ml-2">Was €170</span>
               </div>
               <p className="text-charcoal-600 mb-4">Complete reiniging voor showroom-ervaring.</p>
               <ul className="text-sm text-charcoal-700 space-y-2 mb-6">
@@ -109,6 +109,7 @@ const BookingPage: React.FC = () => {
                 <li>• Geuren verwijderen</li>
                 <li>• Ventilatiesysteem reinigen</li>
               </ul>
+              <div className="text-xs text-green-600 mb-4">💰 BESPAAR €45 NU!</div>
               <div className="text-xs text-blue-600 mb-4">⭐ 78% van klanten kiest dit pakket</div>
             </motion.div>
 
@@ -121,23 +122,25 @@ const BookingPage: React.FC = () => {
             >
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
                 <Shield className="w-4 h-4 mr-1" />
-                PREMIUM PROTECTION
+                LUXURY EDITION
               </div>
               <h3 className="text-xl font-display font-semibold mb-2">Deluxe Clean</h3>
               <div className="mb-4">
-                <span className="text-3xl font-bold text-purple-600">€185</span>
-                <span className="text-green-600 text-sm ml-2">Nieuw!</span>
+                <span className="text-3xl font-bold text-purple-600">€275</span>
+                <span className="text-green-600 text-sm ml-2">Luxury!</span>
               </div>
-              <p className="text-charcoal-600 mb-4">Ultieme bescherming en perfectie.</p>
+              <p className="text-charcoal-600 mb-4">Ultieme luxe behandeling met exclusieve premium service.</p>
               <ul className="text-sm text-charcoal-700 space-y-2 mb-6">
                 <li>• Alles van Premium Clean</li>
-                <li>• Ceramic coating applicatie</li>
-                <li>• Banden zwarten + velgen sealen</li>
-                <li>• Extra dieptereiniging vlekke</li>
+                <li>• Professionele ceramic coating</li>
+                <li>• Premium lederbehandeling & conditioner</li>
+                <li>• Motorruimte detailing</li>
+                <li>• Exclusieve wax behandeling</li>
                 <li>• Voor- en na foto's professioneel</li>
-                <li>• VIP behandeling</li>
+                <li>• VIP white-glove service</li>
+                <li>• 6 maanden beschermingsgarantie</li>
               </ul>
-              <div className="text-xs text-purple-600 mb-4">🛡️ Langdurige bescherming</div>
+              <div className="text-xs text-purple-600 mb-4">🛡️ Langdurige luxe bescherming</div>
             </motion.div>
           </div>
 

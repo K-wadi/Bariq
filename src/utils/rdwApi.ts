@@ -267,7 +267,7 @@ export const calculatePricing = (vehicleData: RDWVehicleData, packageType: 'basi
   const basePrices = {
     basic: 65,    // Updated from 59
     premium: 125, // Updated from 119
-    deluxe: 185   // New package
+    deluxe: 275   // Updated from 185
   };
   
   const basePrice = basePrices[packageType];

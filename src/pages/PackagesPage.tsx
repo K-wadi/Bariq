@@ -60,10 +60,13 @@ const PackagesPage: React.FC = () => {
     { name: 'Interieur geuren verwijderen', basic: false, premium: true, deluxe: true },
     { name: 'Ventilatiesysteem reinigen', basic: false, premium: true, deluxe: true },
     { name: 'Behandeling van kunststof onderdelen', basic: false, premium: true, deluxe: true },
-    { name: 'Ceramic coating applicatie', basic: false, premium: false, deluxe: true },
-    { name: 'Banden & velgen sealen', basic: false, premium: false, deluxe: true },
-    { name: 'Extra vlekkenbehandeling', basic: false, premium: false, deluxe: true },
+    { name: 'Professionele ceramic coating', basic: false, premium: false, deluxe: true },
+    { name: 'Premium lederbehandeling & conditioner', basic: false, premium: false, deluxe: true },
+    { name: 'Motorruimte detailing', basic: false, premium: false, deluxe: true },
+    { name: 'Exclusieve wax behandeling', basic: false, premium: false, deluxe: true },
     { name: 'Voor/na fotos professioneel', basic: false, premium: false, deluxe: true },
+    { name: 'VIP white-glove service', basic: false, premium: false, deluxe: true },
+    { name: '6 maanden beschermingsgarantie', basic: false, premium: false, deluxe: true },
   ];
 
   const fadeInUpVariants = {
@@ -142,18 +145,21 @@ const PackagesPage: React.FC = () => {
             {/* Deluxe - Anchoring Effect */}
             <PackageCard
               title="Deluxe Clean"
-              price="€185"
-              description="Ultieme bescherming en perfectie voor je auto."
+              price="€275"
+              description="Ultieme luxe behandeling met exclusieve premium service."
               features={[
                 "Alles van Premium Clean",
-                "Ceramic coating applicatie",
-                "Banden zwarten + velgen sealen",
-                "Extra dieptereiniging vlekken",
+                "Professionele ceramic coating",
+                "Premium lederbehandeling & conditioner",
+                "Motorruimte detailing",
+                "Exclusieve wax behandeling",
                 "Voor- en na foto's professioneel",
-                "Exclusieve VIP behandeling"
+                "VIP white-glove service",
+                "6 maanden beschermingsgarantie"
               ]}
               decoy={true}
-              actionLabel="UPGRADE NAAR DELUXE - €185"
+              actionLabel="UPGRADE NAAR DELUXE - €275"
+              badge="LUXURY EDITION"
               delay={0.1}
             />
             
@@ -161,7 +167,7 @@ const PackagesPage: React.FC = () => {
             <PackageCard
               title="Premium Clean"
               price="€125"
-              oldPrice="€119"
+              oldPrice="Was €170"
               description="Complete reiniging voor een showroom-ervaring."
               features={[
                 "Alles van Basic Clean",
@@ -173,6 +179,7 @@ const PackagesPage: React.FC = () => {
               ]}
               popular={true}
               actionLabel="KIES PREMIUM - €125"
+              savings="BESPAAR €45 NU!"
               urgency="Prijsstijging volgende week"
               delay={0.2}
             />
@@ -367,10 +374,10 @@ const PackagesPage: React.FC = () => {
                       €65 <span className="text-red-500 line-through text-sm">€59</span>
                     </td>
                     <td className="px-4 py-4 text-center text-charcoal-900 font-semibold bg-primary-25">
-                      €125 <span className="text-red-500 line-through text-sm">€119</span>
+                      €125 <span className="text-red-500 line-through text-sm">Was €170</span>
                     </td>
                     <td className="px-4 py-4 text-center text-charcoal-900 font-semibold">
-                      €185
+                      €275
                     </td>
                   </tr>
                   <tr>

@@ -175,7 +175,7 @@ const HomePage: React.FC = () => {
             <PackageCard
               title="Premium Clean"
               price="€125"
-              oldPrice="€119"
+              oldPrice="Was €170"
               description="Complete reiniging voor een showroom-ervaring."
               features={[
                 "Alles van Basic Clean",
@@ -187,24 +187,28 @@ const HomePage: React.FC = () => {
               ]}
               popular={true}
               actionLabel="KIES PREMIUM - €125"
+              savings="BESPAAR €45 NU!"
               delay={0.2}
             />
 
             {/* Deluxe Clean */}
             <PackageCard
               title="Deluxe Clean"
-              price="€185"
-              description="Ultieme bescherming en perfectie voor je auto."
+              price="€275"
+              description="Ultieme luxe behandeling met exclusieve premium service."
               features={[
                 "Alles van Premium Clean",
-                "Ceramic coating applicatie",
-                "Banden zwarten + velgen sealen",
-                "Extra dieptereiniging vlekken",
+                "Professionele ceramic coating",
+                "Premium lederbehandeling & conditioner",
+                "Motorruimte detailing",
+                "Exclusieve wax behandeling",
                 "Voor- en na foto's professioneel",
-                "Exclusieve VIP behandeling"
+                "VIP white-glove service",
+                "6 maanden beschermingsgarantie"
               ]}
               decoy={true}
-              actionLabel="UPGRADE NAAR DELUXE - €185"
+              actionLabel="UPGRADE NAAR DELUXE - €275"
+              badge="LUXURY EDITION"
               delay={0.3}
             />
           </div>

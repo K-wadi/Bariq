@@ -164,7 +164,8 @@ const LicensePlateInput: React.FC<LicensePlateInputProps> = ({ onSubmit }) => {
             </div>
             <h4 className="font-display font-semibold text-lg text-charcoal-900 mb-2">Premium Clean</h4>
             <div className="text-3xl font-bold text-primary-600 mb-2">€{premiumPricing.finalPrice}</div>
-            <div className="text-sm text-red-500 line-through mb-2">Was €119</div>
+            <div className="text-sm text-red-500 line-through mb-2">Was €170</div>
+            <div className="text-sm text-green-600 font-semibold mb-2">BESPAAR €45!</div>
             <ul className="text-sm text-charcoal-600 space-y-1">
               <li>• Alles van Basic Clean</li>
               <li>• Dieptereiniging interieur</li>
@@ -176,16 +177,18 @@ const LicensePlateInput: React.FC<LicensePlateInputProps> = ({ onSubmit }) => {
           {/* Deluxe */}
           <div className="border-2 border-purple-500 rounded-lg p-4 relative">
             <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-              🛡️ PREMIUM PROTECTION
+              🛡️ LUXURY EDITION
             </div>
             <h4 className="font-display font-semibold text-lg text-charcoal-900 mb-2">Deluxe Clean</h4>
             <div className="text-3xl font-bold text-purple-600 mb-2">€{deluxePricing.finalPrice}</div>
-            <div className="text-sm text-charcoal-500 mb-2">Nieuw!</div>
+            <div className="text-sm text-charcoal-500 mb-2">Luxury!</div>
             <ul className="text-sm text-charcoal-600 space-y-1">
               <li>• Alles van Premium Clean</li>
-              <li>• Ceramic coating</li>
-              <li>• Motorruimte reiniging</li>
-              <li>• 12-maanden garantie</li>
+              <li>• Professionele ceramic coating</li>
+              <li>• Premium lederbehandeling</li>
+              <li>• Motorruimte detailing</li>
+              <li>• VIP white-glove service</li>
+              <li>• 6-maanden garantie</li>
             </ul>
           </div>
         </div>
