@@ -167,7 +167,7 @@ const PackagesPage: React.FC = () => {
             <PackageCard
               title="Premium Clean"
               price="€125"
-              oldPrice="Was €170"
+              oldPrice="€170"
               description="Complete reiniging voor een showroom-ervaring."
               features={[
                 "Alles van Basic Clean",
