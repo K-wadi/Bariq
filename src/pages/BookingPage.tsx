@@ -99,7 +99,7 @@ const BookingPage: React.FC = () => {
               <h3 className="text-xl font-display font-semibold mb-2">Premium Clean</h3>
               <div className="mb-4">
                 <span className="text-3xl font-bold text-primary-600">€125</span>
-                <span className="text-red-500 line-through ml-2">Was €170</span>
+                <span className="text-red-500 line-through ml-2">€170</span>
               </div>
               <p className="text-charcoal-600 mb-4">Complete reiniging voor showroom-ervaring.</p>
               <ul className="text-sm text-charcoal-700 space-y-2 mb-6">
