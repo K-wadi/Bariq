@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Clock, Users, Car, AlertCircle, MessageCircle, Check, Search, X, ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Button from './Button';
@@ -587,24 +588,36 @@ const BookingForm: React.FC = () => {
               </div>
               
               {/* Desktop Time Slot Grid */}
-              <div className="hidden md:grid grid-cols-2 lg:grid-cols-5 gap-2">
-                {availableTimeSlots.map((slot) => (
-                  <button
-                    key={slot.time}
-                    type="button"
-                    onClick={() => handleTimeSlotSelect(slot.time)}
-                    disabled={!slot.isAvailable}
-                    className={`p-3 rounded-md border text-sm font-medium transition-all ${
-                      formData.time === slot.time
-                        ? 'bg-primary-500 text-white border-primary-500'
-                        : slot.isAvailable
-                        ? 'bg-white text-charcoal-700 border-charcoal-300 hover:border-primary-500 hover:bg-primary-50'
-                        : 'bg-charcoal-100 text-charcoal-400 border-charcoal-200 cursor-not-allowed'
-                    }`}
-                  >
-                    {slot.time}
-                  </button>
-                ))}
+              <div className="hidden md:block">
+                <div className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 max-h-64 overflow-y-auto mobile-scroll">
+                  {availableTimeSlots.map((slot, index) => (
+                    <motion.button
+                      key={slot.time}
+                      type="button"
+                      onClick={() => handleTimeSlotSelect(slot.time)}
+                      disabled={!slot.isAvailable}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: index * 0.03 }}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className={`p-3 rounded-lg border text-sm font-medium transition-all duration-200 ${
+                        formData.time === slot.time
+                          ? 'bg-primary-500 text-white border-primary-500 shadow-lg transform scale-105'
+                          : slot.isAvailable
+                          ? 'bg-white text-charcoal-700 border-charcoal-300 hover:border-primary-500 hover:bg-primary-50 hover:shadow-md'
+                          : 'bg-charcoal-100 text-charcoal-400 border-charcoal-200 cursor-not-allowed opacity-60'
+                      }`}
+                    >
+                      <div className="flex flex-col items-center">
+                        <span>{slot.time}</span>
+                        {!slot.isAvailable && (
+                          <span className="text-xs mt-1 opacity-70">Bezet</span>
+                        )}
+                      </div>
+                    </motion.button>
+                  ))}
+                </div>
               </div>
               
               {errors.time && <p className="text-red-500 text-sm mt-1">{errors.time}</p>}
@@ -663,19 +676,25 @@ const BookingForm: React.FC = () => {
       {/* Mobile Time Slot Modal */}
       {showMobileTimeSlots && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-end md:hidden">
-          <div className="bg-white w-full rounded-t-lg max-h-[80vh] overflow-hidden">
-            <div className="flex justify-between items-center p-4 border-b border-charcoal-200">
+          <motion.div 
+            className="bg-white w-full rounded-t-lg max-h-[80vh] overflow-hidden no-bounce"
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+          >
+            <div className="flex justify-between items-center p-4 border-b border-charcoal-200 sticky top-0 bg-white z-10">
               <h3 className="text-lg font-display font-semibold text-charcoal-900">Selecteer een tijd</h3>
               <button
                 type="button"
                 onClick={() => setShowMobileTimeSlots(false)}
-                className="p-2 hover:bg-charcoal-100 rounded-md"
+                className="p-2 hover:bg-charcoal-100 rounded-md mobile-transition"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
             
-            <div className="p-4 overflow-y-auto">
+            <div className="p-4 mobile-scroll" style={{ maxHeight: 'calc(80vh - 80px)', overflowY: 'auto' }}>
               {selectedDateStats && (
                 <div className="mb-4 text-sm text-charcoal-600 text-center">
                   <span className="inline-flex items-center">
@@ -689,29 +708,36 @@ const BookingForm: React.FC = () => {
               )}
               
               <div className="grid grid-cols-2 gap-3">
-                {availableTimeSlots.map((slot) => (
-                  <button
+                {availableTimeSlots.map((slot, index) => (
+                  <motion.button
                     key={slot.time}
                     type="button"
                     onClick={() => handleTimeSlotSelect(slot.time)}
                     disabled={!slot.isAvailable}
-                    className={`p-4 rounded-md border text-base font-medium transition-all ${
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`p-4 rounded-lg border text-base font-medium mobile-transition ${
                       formData.time === slot.time
-                        ? 'bg-primary-500 text-white border-primary-500'
+                        ? 'bg-primary-500 text-white border-primary-500 shadow-lg'
                         : slot.isAvailable
-                        ? 'bg-white text-charcoal-700 border-charcoal-300 hover:border-primary-500 hover:bg-primary-50'
+                        ? 'bg-white text-charcoal-700 border-charcoal-300 hover:border-primary-500 hover:bg-primary-50 hover:shadow-md'
                         : 'bg-charcoal-100 text-charcoal-400 border-charcoal-200 cursor-not-allowed'
                     }`}
                   >
                     {slot.time}
                     {!slot.isAvailable && (
-                      <div className="text-xs mt-1">Bezet</div>
+                      <div className="text-xs mt-1 opacity-70">Bezet</div>
                     )}
-                  </button>
+                  </motion.button>
                 ))}
               </div>
+              
+              {/* Add some bottom padding for better scrolling */}
+              <div className="h-4"></div>
             </div>
-          </div>
+          </motion.div>
         </div>
       )}
     </div>

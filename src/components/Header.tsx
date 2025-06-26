@@ -10,15 +10,23 @@ const Header: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (window.scrollY > 50) {
+            setIsScrolled(true);
+          } else {
+            setIsScrolled(false);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -94,8 +102,8 @@ const Header: React.FC = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
-          className="absolute top-0 left-0 right-0 bg-primary-dark shadow-lg z-0 pt-20 pb-6 px-4"
+          transition={{ type: "spring", damping: 25, stiffness: 300 }}
+          className="absolute top-0 left-0 right-0 bg-primary-dark shadow-lg z-0 pt-20 pb-6 px-4 mobile-scroll no-bounce"
         >
           <nav className="flex flex-col space-y-4">
             {navLinks.map((link) => (

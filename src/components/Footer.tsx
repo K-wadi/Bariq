@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
               <a href="https://www.instagram.com/bariq_detailing/" className="text-text-muted hover:text-primary-bright transition-colors" aria-label="Instagram">
                 <Instagram />
               </a>
-              <a href="https://tiktok.com" className="text-text-muted hover:text-primary-bright transition-colors" aria-label="TikTok">
+              <a href="https://www.tiktok.com/@bariq_detailing" className="text-text-muted hover:text-primary-bright transition-colors" aria-label="TikTok">
                 <TikTokIcon className="w-6 h-6" />
               </a>
             </div>

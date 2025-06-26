@@ -62,11 +62,11 @@ const PackagesPage: React.FC = () => {
     { name: 'Behandeling van kunststof onderdelen', basic: false, premium: true, deluxe: true },
     { name: 'Professionele ceramic coating', basic: false, premium: false, deluxe: true },
     { name: 'Premium lederbehandeling & conditioner', basic: false, premium: false, deluxe: true },
-    { name: 'Motorruimte detailing', basic: false, premium: false, deluxe: true },
     { name: 'Exclusieve wax behandeling', basic: false, premium: false, deluxe: true },
     { name: 'Voor/na fotos professioneel', basic: false, premium: false, deluxe: true },
-    { name: 'VIP white-glove service', basic: false, premium: false, deluxe: true },
-    { name: '6 maanden beschermingsgarantie', basic: false, premium: false, deluxe: true },
+    { name: 'Velgen dieptereiniging', basic: false, premium: false, deluxe: true },
+    { name: 'Banden glans behandeling', basic: false, premium: false, deluxe: true },
+    { name: 'Uitgebreide kofferbak reiniging', basic: false, premium: false, deluxe: true },
   ];
 
   const fadeInUpVariants = {
@@ -151,11 +151,11 @@ const PackagesPage: React.FC = () => {
                 "Alles van Premium Clean",
                 "Professionele ceramic coating",
                 "Premium lederbehandeling & conditioner",
-                "Motorruimte detailing",
                 "Exclusieve wax behandeling",
                 "Voor- en na foto's professioneel",
-                "VIP white-glove service",
-                "6 maanden beschermingsgarantie"
+                "Velgen dieptereiniging",
+                "Banden glans behandeling",
+                "Uitgebreide kofferbak reiniging"
               ]}
               decoy={true}
               actionLabel="UPGRADE NAAR DELUXE - €275"

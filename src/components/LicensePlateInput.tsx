@@ -186,9 +186,10 @@ const LicensePlateInput: React.FC<LicensePlateInputProps> = ({ onSubmit }) => {
               <li>• Alles van Premium Clean</li>
               <li>• Professionele ceramic coating</li>
               <li>• Premium lederbehandeling</li>
-              <li>• Motorruimte detailing</li>
-              <li>• VIP white-glove service</li>
-              <li>• 6-maanden garantie</li>
+                              <li>• Velgen dieptereiniging</li>
+                <li>• Banden glans behandeling</li>
+                <li>• Uitgebreide kofferbak reiniging</li>
+              
             </ul>
           </div>
         </div>

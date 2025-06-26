@@ -10,13 +10,17 @@ import ReviewCard from '../components/ReviewCard';
 import PackageCard from '../components/PackageCard';
 
 const HomePage: React.FC = () => {
-  // Smooth scroll to license plate section
+  // Enhanced smooth scroll to license plate section
   const scrollToLicenseCheck = () => {
     const element = document.getElementById('license-check');
     if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
+      const headerHeight = 80; // Account for fixed header
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - headerHeight;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
       });
     }
   };
@@ -200,11 +204,11 @@ const HomePage: React.FC = () => {
                 "Alles van Premium Clean",
                 "Professionele ceramic coating",
                 "Premium lederbehandeling & conditioner",
-                "Motorruimte detailing",
                 "Exclusieve wax behandeling",
                 "Voor- en na foto's professioneel",
-                "VIP white-glove service",
-                "6 maanden beschermingsgarantie"
+                "Velgen dieptereiniging",
+                "Banden glans behandeling",
+                "Uitgebreide kofferbak reiniging"
               ]}
               decoy={true}
               actionLabel="UPGRADE NAAR DELUXE - €275"
