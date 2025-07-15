@@ -5,6 +5,7 @@ import { Check, X, AlertCircle, Clock, Users, TrendingUp, Shield, Star } from 'l
 import SectionTitle from '../components/SectionTitle';
 import PackageCard from '../components/PackageCard';
 import Button from '../components/Button';
+import DynamicPricingBanner from '../components/DynamicPricingBanner';
 
 const PackagesPage: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -100,23 +101,14 @@ const PackagesPage: React.FC = () => {
             Kies het perfecte pakket dat past bij jouw auto en wensen
           </motion.p>
           
-          {/* Urgency Banner */}
+          {/* Dynamic Urgency Banner */}
           <motion.div 
-            className="bg-red-500 text-white p-4 rounded-lg max-w-2xl mx-auto mb-4"
+            className="max-w-2xl mx-auto mb-4"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="flex items-center justify-center mb-2">
-              <Clock className="w-5 h-5 mr-2" />
-              <span className="font-bold">🔥 LAATSTE WEEK: Prijzen stijgen 1 juli met €10</span>
-            </div>
-            <div className="flex justify-center space-x-4 text-sm">
-              <span>{timeLeft.days}d</span>
-              <span>{timeLeft.hours}u</span>
-              <span>{timeLeft.minutes}m</span>
-              <span>{timeLeft.seconds}s</span>
-            </div>
+            <DynamicPricingBanner variant="inline" />
           </motion.div>
           
           {/* Live Stats */}

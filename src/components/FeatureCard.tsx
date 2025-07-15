@@ -16,7 +16,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 }) => {
   return (
     <motion.div 
-      className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all"
+      className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all card-hover"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}

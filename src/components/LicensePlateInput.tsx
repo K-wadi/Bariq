@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Search, Car, Calendar, Palette, Zap } from 'lucide-react';
+import { Search, Car, Calendar, Palette, Zap, Check, Star, Shield } from 'lucide-react';
+import { motion } from 'framer-motion';
 import Button from './Button';
+import DynamicPricingBanner from './DynamicPricingBanner';
 import { 
   fetchVehicleData, 
   calculatePricing, 
@@ -142,56 +144,169 @@ const LicensePlateInput: React.FC<LicensePlateInputProps> = ({ onSubmit }) => {
           </div>
         </div>
         
-        {/* Pricing */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          {/* Basic */}
-          <div className="border border-charcoal-200 rounded-lg p-4">
-            <h4 className="font-display font-semibold text-lg text-charcoal-900 mb-2">Basic Clean</h4>
-            <div className="text-3xl font-bold text-charcoal-900 mb-2">€{basicPricing.finalPrice}</div>
-            <div className="text-sm text-red-500 line-through mb-2">Was €59</div>
-            <ul className="text-sm text-charcoal-600 space-y-1">
-              <li>• Exterieur handwas</li>
-              <li>• Wielen en velgen reiniging</li>
-              <li>• Interieur stofzuigen</li>
-              <li>• Ramen binnen en buiten</li>
-            </ul>
-          </div>
-          
-          {/* Premium */}
-          <div className="border-2 border-primary-500 rounded-lg p-4 relative">
-            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-              ⭐ MOST POPULAR
-            </div>
-            <h4 className="font-display font-semibold text-lg text-charcoal-900 mb-2">Premium Clean</h4>
-            <div className="text-3xl font-bold text-primary-600 mb-2">€{premiumPricing.finalPrice}</div>
-            <div className="text-sm text-red-500 line-through mb-2">Was €170</div>
-            <div className="text-sm text-green-600 font-semibold mb-2">BESPAAR €45!</div>
-            <ul className="text-sm text-charcoal-600 space-y-1">
-              <li>• Alles van Basic Clean</li>
-              <li>• Dieptereiniging interieur</li>
-              <li>• Lederbehandeling</li>
-              <li>• Geuren verwijderen</li>
-            </ul>
-          </div>
-          
-          {/* Deluxe */}
-          <div className="border-2 border-purple-500 rounded-lg p-4 relative">
-            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-              🛡️ LUXURY EDITION
-            </div>
-            <h4 className="font-display font-semibold text-lg text-charcoal-900 mb-2">Deluxe Clean</h4>
-            <div className="text-3xl font-bold text-purple-600 mb-2">€{deluxePricing.finalPrice}</div>
-            <div className="text-sm text-charcoal-500 mb-2">Luxury!</div>
-            <ul className="text-sm text-charcoal-600 space-y-1">
-              <li>• Alles van Premium Clean</li>
-              <li>• Professionele ceramic coating</li>
-              <li>• Premium lederbehandeling</li>
-                              <li>• Velgen dieptereiniging</li>
-                <li>• Banden glans behandeling</li>
-                <li>• Uitgebreide kofferbak reiniging</li>
+        {/* Pricing Cards - Redesigned to match PackageCard */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          {/* Basic Clean */}
+          <motion.div 
+            className="border border-charcoal-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            whileHover={{ y: -5 }}
+          >
+            <div className="bg-white p-6">
+              <h4 className="text-xl font-display font-semibold mb-2 text-charcoal-900">Basic Clean</h4>
               
-            </ul>
-          </div>
+              <div className="mb-4">
+                <div className="flex items-baseline">
+                  <span className="text-3xl font-bold text-charcoal-900">€{basicPricing.finalPrice}</span>
+                  <span className="text-lg text-red-500 line-through ml-2">€59</span>
+                </div>
+                <div className="text-red-600 font-medium text-xs mt-1">
+                  🔥 Prijs stijgt naar €75
+                </div>
+              </div>
+              
+              <p className="text-charcoal-600 mb-6">Perfecte optie voor regelmatig onderhoud en een frisse uitstraling.</p>
+              
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
+                  <span className="text-charcoal-700">Exterieur handwas</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
+                  <span className="text-charcoal-700">Wielen en velgen reiniging</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
+                  <span className="text-charcoal-700">Interieur stofzuigen</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
+                  <span className="text-charcoal-700">Ramen binnen en buiten</span>
+                </li>
+              </ul>
+              
+              <Button to="/boeken" variant="outline" fullWidth size="large">
+                BOEK BASIC - €{basicPricing.finalPrice}
+              </Button>
+            </div>
+          </motion.div>
+          
+          {/* Premium Clean */}
+          <motion.div 
+            className="border-2 border-primary-500 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all relative"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            whileHover={{ y: -5 }}
+          >
+            {/* Badge */}
+            <div className="bg-primary-500 text-white text-center py-2 font-medium text-sm flex items-center justify-center">
+              <Star className="w-4 h-4 mr-1" />
+              MOST POPULAR
+            </div>
+            
+            <div className="bg-white p-6">
+              <h4 className="text-xl font-display font-semibold mb-2 text-charcoal-900">Premium Clean</h4>
+              
+              <div className="mb-4">
+                <div className="flex items-baseline">
+                  <span className="text-3xl font-bold text-primary-600">€{premiumPricing.finalPrice}</span>
+                  <span className="text-lg text-red-500 line-through ml-2">€170</span>
+                </div>
+                <div className="text-green-600 font-semibold text-sm mt-1">BESPAAR €45!</div>
+                <div className="text-red-600 font-medium text-xs mt-1">
+                  🔥 Prijsstijging volgende week
+                </div>
+              </div>
+              
+              <p className="text-charcoal-600 mb-6">Complete reiniging voor een showroom-ervaring.</p>
+              
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
+                  <span className="text-charcoal-700">Alles van Basic Clean</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
+                  <span className="text-charcoal-700">Dieptereiniging interieur</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
+                  <span className="text-charcoal-700">Lederbehandeling</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
+                  <span className="text-charcoal-700">Geuren verwijderen</span>
+                </li>
+              </ul>
+              
+              <Button to="/boeken" variant="primary" fullWidth size="large">
+                KIES PREMIUM - €{premiumPricing.finalPrice}
+              </Button>
+              
+              <div className="mt-3 text-center text-sm text-charcoal-600">
+                ⭐ 78% van klanten kiest dit pakket
+              </div>
+            </div>
+          </motion.div>
+          
+          {/* Deluxe Clean */}
+          <motion.div 
+            className="border-2 border-purple-500 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all relative"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            whileHover={{ y: -5 }}
+          >
+            {/* Badge */}
+            <div className="bg-purple-500 text-white text-center py-2 font-medium text-sm flex items-center justify-center">
+              <Shield className="w-4 h-4 mr-1" />
+              LUXURY EDITION
+            </div>
+            
+            <div className="bg-white p-6">
+              <h4 className="text-xl font-display font-semibold mb-2 text-charcoal-900">Deluxe Clean</h4>
+              
+              <div className="mb-4">
+                <div className="flex items-baseline">
+                  <span className="text-3xl font-bold text-purple-600">€{deluxePricing.finalPrice}</span>
+                </div>
+                <div className="text-charcoal-500 text-sm mt-1">Luxury!</div>
+              </div>
+              
+              <p className="text-charcoal-600 mb-6">Ultieme luxe behandeling met exclusieve premium service.</p>
+              
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
+                  <span className="text-charcoal-700">Alles van Premium Clean</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
+                  <span className="text-charcoal-700">Professionele ceramic coating</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
+                  <span className="text-charcoal-700">Premium lederbehandeling</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
+                  <span className="text-charcoal-700">Velgen dieptereiniging</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
+                  <span className="text-charcoal-700">Banden glans behandeling</span>
+                </li>
+              </ul>
+              
+              <Button to="/boeken" variant="secondary" fullWidth size="large">
+                UPGRADE DELUXE - €{deluxePricing.finalPrice}
+              </Button>
+            </div>
+          </motion.div>
         </div>
         
         {/* Pricing Factors */}
@@ -212,12 +327,8 @@ const LicensePlateInput: React.FC<LicensePlateInputProps> = ({ onSubmit }) => {
           </div>
         )}
         
-        {/* Urgency Message */}
-        <div className="bg-red-50 p-4 rounded-lg mb-6 border border-red-200">
-          <p className="text-red-800 font-medium text-center">
-            🔥 Prijzen stijgen volgende week! Boek nu en bespaar €10 per pakket
-          </p>
-        </div>
+        {/* Dynamic Urgency Message */}
+        <DynamicPricingBanner variant="urgency" className="mb-6" />
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button to="/boeken" variant="outline" size="large">

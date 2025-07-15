@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 
 import SectionTitle from '../components/SectionTitle';
 import Button from '../components/Button';
+import DynamicPricingBanner from '../components/DynamicPricingBanner';
 
 const BookingPage: React.FC = () => {
   // Load Calendly script
@@ -42,13 +43,12 @@ const BookingPage: React.FC = () => {
           
           {/* Urgency Banner */}
           <motion.div 
-            className="bg-red-500 text-white p-3 rounded-lg max-w-2xl mx-auto mb-4"
+            className="max-w-2xl mx-auto mb-4"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <p className="font-bold">🔥 LAATSTE WEEK: Prijzen stijgen 1 juli met €10</p>
-            <p className="text-sm">⏰ Nog 4 plekken beschikbaar deze week</p>
+            <DynamicPricingBanner variant="hero" />
           </motion.div>
         </div>
       </section>

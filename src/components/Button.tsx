@@ -51,7 +51,7 @@ const Button: React.FC<ButtonProps> = ({
   
   const widthClass = fullWidth ? 'w-full' : '';
   
-  const allClasses = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${disabledClasses} ${widthClass} ${className}`;
+  const allClasses = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${disabledClasses} ${widthClass} smooth-transition hover-lift ${className}`;
   
   const content = (
     <>

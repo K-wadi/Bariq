@@ -328,7 +328,9 @@ export const calculatePricing = (vehicleData: RDWVehicleData, packageType: 'basi
     }
   }
   
-  const finalPrice = Math.round(basePrice * sizeMultiplier * ageMultiplier * luxuryMultiplier);
+  // Calculate adjusted price but ensure it never goes below base price
+  const adjustedPrice = Math.round(basePrice * sizeMultiplier * ageMultiplier * luxuryMultiplier);
+  const finalPrice = Math.max(adjustedPrice, basePrice); // Ensure price never goes below base package price
   
   return {
     basePrice,

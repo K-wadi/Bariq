@@ -8,6 +8,7 @@ import LicensePlateInput from '../components/LicensePlateInput';
 import BeforeAfterSlider from '../components/BeforeAfterSlider';
 import ReviewCard from '../components/ReviewCard';
 import PackageCard from '../components/PackageCard';
+import DynamicPricingBanner from '../components/DynamicPricingBanner';
 
 const HomePage: React.FC = () => {
   // Enhanced smooth scroll to license plate section
@@ -44,11 +45,8 @@ const HomePage: React.FC = () => {
                 Geen wachttijden, geen gedoe – Bariq komt naar jou toe.
               </p>
               
-              {/* Urgency Banner */}
-              <div className="bg-red-500 text-white p-3 rounded-lg mb-6 text-center">
-                <p className="font-bold">🔥 LAATSTE WEEK: Prijzen stijgen 1 juli met €10</p>
-                <p className="text-sm">📈 Boekingen stijgen 300% - reserveer nu</p>
-              </div>
+              {/* Dynamic Urgency Banner */}
+              <DynamicPricingBanner variant="hero" />
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
