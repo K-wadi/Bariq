@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Logo from './Logo';
+import { navAnimations } from '../utils/animationUtils';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

@@ -528,10 +528,10 @@ const BookingForm: React.FC = () => {
                 className="w-full p-3 border border-charcoal-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 text-base"
               >
                 <option value="basic">
-                  Basic Clean {pricing ? `(€${pricing.basic.finalPrice})` : '(€59+)'}
+                  Basic Clean {pricing ? `(€${pricing.basic.finalPrice} incl. BTW)` : '(€79+ incl. BTW)'}
                 </option>
                 <option value="premium">
-                  Premium Clean {pricing ? `(€${pricing.premium.finalPrice})` : '(€119+)'}
+                  Premium Clean {pricing ? `(€${pricing.premium.finalPrice} incl. BTW)` : '(€149+ incl. BTW)'}
                 </option>
               </select>
               <p className="text-charcoal-500 text-sm mt-1">

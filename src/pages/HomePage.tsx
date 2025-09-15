@@ -9,6 +9,8 @@ import BeforeAfterSlider from '../components/BeforeAfterSlider';
 import ReviewCard from '../components/ReviewCard';
 import PackageCard from '../components/PackageCard';
 import DynamicPricingBanner from '../components/DynamicPricingBanner';
+import BackgroundAnimation from '../components/BackgroundAnimation';
+import { heroAnimations, scrollAnimations, cardAnimations, floatingAnimations } from '../utils/animationUtils';
 
 const HomePage: React.FC = () => {
   // Enhanced smooth scroll to license plate section
@@ -29,33 +31,78 @@ const HomePage: React.FC = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-b from-charcoal-50 to-primary-50">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+      <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-b from-charcoal-50 to-primary-50 overflow-hidden">
+        {/* Animated Background */}
+        <BackgroundAnimation variant="hero" particleCount={80} />
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <motion.div 
+            className="flex flex-col md:flex-row items-center gap-8 md:gap-12"
+            variants={heroAnimations.container}
+            initial="initial"
+            animate="animate"
+          >
             <motion.div 
               className="flex-1"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              variants={heroAnimations.container}
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-charcoal-900 mb-4">
-                De premium carwash aan huis, wanneer het jou uitkomt.
-              </h1>
-              <p className="text-xl md:text-2xl text-charcoal-700 mb-6">
+              <motion.h1 
+                className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-charcoal-900 mb-4"
+                variants={heroAnimations.title}
+              >
+                <motion.span
+                  className="inline-block"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  De premium carwash
+                </motion.span>{' '}
+                <motion.span
+                  className="inline-block bg-gradient-to-r from-primary-bright to-primary-clean bg-clip-text text-transparent"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                  aan huis
+                </motion.span>
+                <motion.span
+                  className="inline-block"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                >
+                  , wanneer het jou uitkomt.
+                </motion.span>
+              </motion.h1>
+              
+              <motion.p 
+                className="text-xl md:text-2xl text-charcoal-700 mb-6"
+                variants={heroAnimations.subtitle}
+              >
                 Geen wachttijden, geen gedoe – Bariq komt naar jou toe.
-              </p>
+              </motion.p>
               
               {/* Dynamic Urgency Banner */}
-              <DynamicPricingBanner variant="hero" />
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+              >
+                <DynamicPricingBanner variant="hero" />
+              </motion.div>
               
-              <div className="flex flex-col sm:flex-row gap-4">
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-4"
+                variants={heroAnimations.cta}
+              >
                 <Button 
                   to="/boeken" 
                   variant="primary" 
                   size="large"
                   icon={<Calendar size={20} />}
                 >
-                  Boek Nu - €65
+                  Boek Nu - €79 incl. BTW
                 </Button>
                 <Button 
                   onClick={scrollToLicenseCheck}
@@ -65,7 +112,7 @@ const HomePage: React.FC = () => {
                 >
                   Prijs via kenteken
                 </Button>
-              </div>
+              </motion.div>
               
               {/* Live Stats */}
               <div className="flex items-center space-x-4 mt-4 text-sm text-charcoal-600">
@@ -92,7 +139,7 @@ const HomePage: React.FC = () => {
                 className="rounded-lg shadow-xl w-full h-auto object-cover aspect-video"
               />
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -104,7 +151,13 @@ const HomePage: React.FC = () => {
             subtitle="Professionele service op jouw locatie, op jouw tijdstip"
           />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+            variants={cardAnimations.container}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, margin: "-50px" }}
+          >
             <FeatureCard
               icon={<Clock className="w-6 h-6" />}
               title="Flexibele Planning"
@@ -129,7 +182,7 @@ const HomePage: React.FC = () => {
               description="We gebruiken efficiënte technieken en ecologisch verantwoorde reinigingsmiddelen."
               delay={0.4}
             />
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -149,12 +202,18 @@ const HomePage: React.FC = () => {
             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto"
+            variants={cardAnimations.container}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, margin: "-50px" }}
+          >
             {/* Basic Clean */}
             <PackageCard
               title="Basic Clean"
-              price="€65"
-              oldPrice="€59"
+              price="€79"
+              oldPrice="€89"
               description="Perfecte optie voor regelmatig onderhoud en een frisse uitstraling."
               features={[
                 "Exterieur handwas",
@@ -168,16 +227,16 @@ const HomePage: React.FC = () => {
                 "Lederbehandeling",
                 "Geuren verwijderen"
               ]}
-              actionLabel="BOEK BASIC - €65"
-              urgency="Prijs stijgt naar €75"
+              actionLabel="BOEK BASIC - €79"
+              urgency="Prijs stijgt naar €89"
               delay={0.1}
             />
             
             {/* Premium Clean */}
             <PackageCard
               title="Premium Clean"
-              price="€125"
-              oldPrice="€170"
+              price="€149"
+              oldPrice="€199"
               description="Complete reiniging voor een showroom-ervaring."
               features={[
                 "Alles van Basic Clean",
@@ -188,15 +247,16 @@ const HomePage: React.FC = () => {
                 "Behandeling van kunststof onderdelen"
               ]}
               popular={true}
-              actionLabel="KIES PREMIUM - €125"
-              savings="BESPAAR €45 NU!"
+              actionLabel="KIES PREMIUM - €149"
+              savings="BESPAAR €50 NU!"
               delay={0.2}
             />
 
             {/* Deluxe Clean */}
             <PackageCard
               title="Deluxe Clean"
-              price="€275"
+              price="€329"
+              oldPrice="€379"
               description="Ultieme luxe behandeling met exclusieve premium service."
               features={[
                 "Alles van Premium Clean",
@@ -209,11 +269,11 @@ const HomePage: React.FC = () => {
                 "Uitgebreide kofferbak reiniging"
               ]}
               decoy={true}
-              actionLabel="UPGRADE NAAR DELUXE - €275"
+              actionLabel="UPGRADE NAAR DELUXE - €329"
               badge="LUXURY EDITION"
               delay={0.3}
             />
-          </div>
+          </motion.div>
           
           {/* Customer Journey Message */}
           <div className="mt-12 text-center">
@@ -357,7 +417,7 @@ const HomePage: React.FC = () => {
   icon={<Calendar size={20} />}
   className="bg-[#119EF3] text-primary-600 hover:bg-gray-100"
 >
-  KIES PREMIUM - €125
+  KIES PREMIUM - €149 incl. BTW
 </Button>
             <Button 
               href="https://wa.me/31685523584?text=Hallo,%20ik%20wil%20graag%20een%20afspraak%20maken%20voor%20een%20autopoetsbeurt."

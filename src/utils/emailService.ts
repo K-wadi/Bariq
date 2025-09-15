@@ -103,7 +103,7 @@ const isDevelopmentMode = (): boolean => {
 // 1. CONFIRMATION EMAIL TEMPLATE
 export const getCustomerConfirmationEmailTemplate = (data: BookingEmailData): string => {
   const packageName = data.packageType === 'basic' ? 'Basic Clean' : 'Premium Clean';
-  const packagePrice = data.packageType === 'basic' ? '€59' : '€119';
+  const packagePrice = data.packageType === 'basic' ? '€79 incl. BTW' : '€149 incl. BTW';
   
   return `
 <!DOCTYPE html>

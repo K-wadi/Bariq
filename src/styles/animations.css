@@ -265,6 +265,222 @@
   }
 }
 
+/* Magnetic button effect */
+.magnetic-button {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.magnetic-button:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.magnetic-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(43, 213, 236, 0.1), rgba(17, 158, 243, 0.1));
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.magnetic-button:hover::before {
+  opacity: 1;
+}
+
+/* Glowing border animation */
+@keyframes glow-border {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(43, 213, 236, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(43, 213, 236, 0.6), 0 0 30px rgba(17, 158, 243, 0.3);
+  }
+}
+
+.glow-border {
+  animation: glow-border 2s ease-in-out infinite;
+}
+
+/* Morphing background */
+@keyframes morphing-bg {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.morphing-background {
+  background: linear-gradient(-45deg, #2BD5EC, #26BBEE, #119EF3, #1E87C5);
+  background-size: 400% 400%;
+  animation: morphing-bg 15s ease infinite;
+}
+
+/* Text reveal animation */
+.text-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.text-reveal::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  transform: translateX(-100%);
+  animation: reveal 1.5s ease-out forwards;
+}
+
+@keyframes reveal {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Floating particles effect */
+.floating-particles {
+  position: relative;
+  overflow: hidden;
+}
+
+.floating-particles::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(43, 213, 236, 0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(17, 158, 243, 0.3), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(30, 135, 197, 0.3), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(43, 213, 236, 0.3), transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: floating-particles 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes floating-particles {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-200px, -100px, 0);
+  }
+}
+
+/* Liquid morphing shape */
+@keyframes liquid-morph {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  25% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  50% {
+    border-radius: 50% 40% 60% 30% / 30% 40% 60% 70%;
+  }
+  75% {
+    border-radius: 40% 70% 50% 60% / 70% 50% 40% 30%;
+  }
+}
+
+.liquid-shape {
+  animation: liquid-morph 8s ease-in-out infinite;
+  background: linear-gradient(45deg, rgba(43, 213, 236, 0.1), rgba(17, 158, 243, 0.1));
+}
+
+/* Typewriter effect */
+.typewriter {
+  overflow: hidden;
+  border-right: 2px solid rgba(43, 213, 236, 0.7);
+  white-space: nowrap;
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { 
+    width: 0; 
+  }
+  to { 
+    width: 100%; 
+  }
+}
+
+@keyframes blink-caret {
+  from, to { 
+    border-color: transparent; 
+  }
+  50% { 
+    border-color: rgba(43, 213, 236, 0.7); 
+  }
+}
+
+/* Parallax scroll effect */
+.parallax-element {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Glass morphism effect */
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+/* Neo-morphism effect */
+.neo-morphism {
+  background: #f0f0f0;
+  box-shadow: 
+    20px 20px 60px #d0d0d0,
+    -20px -20px 60px #ffffff;
+  border-radius: 20px;
+}
+
+.neo-morphism-inset {
+  background: #f0f0f0;
+  box-shadow: 
+    inset 20px 20px 60px #d0d0d0,
+    inset -20px -20px 60px #ffffff;
+  border-radius: 20px;
+}
+
+/* Performance optimization classes */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.optimize-animations {
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+}
+
 /* Intersection Observer animations */
 .scroll-animate {
   opacity: 0;

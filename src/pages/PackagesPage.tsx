@@ -137,7 +137,8 @@ const PackagesPage: React.FC = () => {
             {/* Deluxe - Anchoring Effect */}
             <PackageCard
               title="Deluxe Clean"
-              price="€275"
+              price="€329"
+              oldPrice="€275"
               description="Ultieme luxe behandeling met exclusieve premium service."
               features={[
                 "Alles van Premium Clean",
@@ -150,7 +151,7 @@ const PackagesPage: React.FC = () => {
                 "Uitgebreide kofferbak reiniging"
               ]}
               decoy={true}
-              actionLabel="UPGRADE NAAR DELUXE - €275"
+              actionLabel="UPGRADE NAAR DELUXE - €329"
               badge="LUXURY EDITION"
               delay={0.1}
             />
@@ -158,8 +159,8 @@ const PackagesPage: React.FC = () => {
             {/* Premium - Most Popular */}
             <PackageCard
               title="Premium Clean"
-              price="€125"
-              oldPrice="€170"
+              price="€149"
+              oldPrice="€199"
               description="Complete reiniging voor een showroom-ervaring."
               features={[
                 "Alles van Basic Clean",
@@ -170,8 +171,8 @@ const PackagesPage: React.FC = () => {
                 "Behandeling van kunststof onderdelen"
               ]}
               popular={true}
-              actionLabel="KIES PREMIUM - €125"
-              savings="BESPAAR €45 NU!"
+              actionLabel="KIES PREMIUM - €149"
+              savings="BESPAAR €50 NU!"
               urgency="Prijsstijging volgende week"
               delay={0.2}
             />
@@ -179,8 +180,8 @@ const PackagesPage: React.FC = () => {
             {/* Basic */}
             <PackageCard
               title="Basic Clean"
-              price="€65"
-              oldPrice="€59"
+              price="€79"
+              oldPrice="€89"
               description="Perfecte optie voor regelmatig onderhoud."
               features={[
                 "Exterieur handwas",
@@ -195,7 +196,7 @@ const PackagesPage: React.FC = () => {
                 "Geuren verwijderen",
                 "Ventilatiesysteem reinigen"
               ]}
-              actionLabel="BOEK BASIC - €65"
+              actionLabel="BOEK BASIC - €79"
               delay={0.3}
             />
           </div>
@@ -228,8 +229,8 @@ const PackagesPage: React.FC = () => {
             {/* Care Subscription */}
             <PackageCard
               title="Care Subscription"
-              price="€99/maand"
-              oldPrice="€105"
+              price="€119/maand"
+              oldPrice="€139"
               description="Maandelijkse Premium Clean met exclusieve voordelen."
               features={[
                 "1x Premium Clean maandelijks",
@@ -238,15 +239,16 @@ const PackagesPage: React.FC = () => {
                 "Prioriteit bij planning",
                 "Geen bindingsperiode"
               ]}
-              savings="BESPAAR €300/jaar vs individuele boekingen"
-              actionLabel="START CARE ABONNEMENT - €99"
+              savings="BESPAAR €360/jaar vs individuele boekingen"
+              actionLabel="START CARE ABONNEMENT - €119"
               delay={0.1}
             />
             
             {/* VIP Subscription */}
             <PackageCard
               title="VIP Subscription"
-              price="€189/maand"
+              price="€229/maand"
+              oldPrice="€279"
               description="Ultieme service met VIP behandeling."
               features={[
                 "2x Premium Clean maandelijks",
@@ -256,9 +258,9 @@ const PackagesPage: React.FC = () => {
                 "Exclusieve VIP support lijn",
                 "Geen bindingsperiode"
               ]}
-              savings="BESPAAR €610/jaar vs individuele boekingen"
+              savings="BESPAAR €780/jaar vs individuele boekingen"
               bestValue={true}
-              actionLabel="WORD VIP MEMBER - €189"
+              actionLabel="WORD VIP MEMBER - €229"
               delay={0.2}
             />
           </div>
@@ -363,13 +365,16 @@ const PackagesPage: React.FC = () => {
                       Prijs
                     </td>
                     <td className="px-4 py-4 text-center text-charcoal-900 font-semibold">
-                      €65 <span className="text-red-500 line-through text-sm">€59</span>
+                      €79 <span className="text-red-500 line-through text-sm">€89</span>
+                      <div className="text-xs text-charcoal-500 font-normal">incl. BTW</div>
                     </td>
                     <td className="px-4 py-4 text-center text-charcoal-900 font-semibold bg-primary-25">
-                      €125 <span className="text-red-500 line-through text-sm">€170</span>
+                      €149 <span className="text-red-500 line-through text-sm">€199</span>
+                      <div className="text-xs text-charcoal-500 font-normal">incl. BTW</div>
                     </td>
                     <td className="px-4 py-4 text-center text-charcoal-900 font-semibold">
-                      €275
+                      €329 <span className="text-red-500 line-through text-sm">€379</span>
+                      <div className="text-xs text-charcoal-500 font-normal">incl. BTW</div>
                     </td>
                   </tr>
                   <tr>
@@ -552,7 +557,7 @@ const PackagesPage: React.FC = () => {
               size="large"
               className="bg-[#119EF3] text-primary-600 hover:bg-gray-100"
             >
-              KIES PREMIUM - €125
+              KIES PREMIUM - €149 incl. BTW
             </Button>
             <Button 
               to="/boeken" 

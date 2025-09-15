@@ -160,10 +160,11 @@ const LicensePlateInput: React.FC<LicensePlateInputProps> = ({ onSubmit }) => {
               <div className="mb-4">
                 <div className="flex items-baseline">
                   <span className="text-3xl font-bold text-charcoal-900">€{basicPricing.finalPrice}</span>
-                  <span className="text-lg text-red-500 line-through ml-2">€59</span>
+                  <span className="text-lg text-red-500 line-through ml-2">€89</span>
                 </div>
+                <div className="text-xs text-charcoal-500 mt-1">incl. BTW</div>
                 <div className="text-red-600 font-medium text-xs mt-1">
-                  🔥 Prijs stijgt naar €75
+                  🔥 Prijs stijgt naar €89
                 </div>
               </div>
               
@@ -214,9 +215,10 @@ const LicensePlateInput: React.FC<LicensePlateInputProps> = ({ onSubmit }) => {
               <div className="mb-4">
                 <div className="flex items-baseline">
                   <span className="text-3xl font-bold text-primary-600">€{premiumPricing.finalPrice}</span>
-                  <span className="text-lg text-red-500 line-through ml-2">€170</span>
+                  <span className="text-lg text-red-500 line-through ml-2">€199</span>
                 </div>
-                <div className="text-green-600 font-semibold text-sm mt-1">BESPAAR €45!</div>
+                <div className="text-xs text-charcoal-500 mt-1">incl. BTW</div>
+                <div className="text-green-600 font-semibold text-sm mt-1">BESPAAR €50!</div>
                 <div className="text-red-600 font-medium text-xs mt-1">
                   🔥 Prijsstijging volgende week
                 </div>
@@ -274,6 +276,7 @@ const LicensePlateInput: React.FC<LicensePlateInputProps> = ({ onSubmit }) => {
                 <div className="flex items-baseline">
                   <span className="text-3xl font-bold text-purple-600">€{deluxePricing.finalPrice}</span>
                 </div>
+                <div className="text-xs text-charcoal-500 mt-1">incl. BTW</div>
                 <div className="text-charcoal-500 text-sm mt-1">Luxury!</div>
               </div>
               
@@ -332,13 +335,13 @@ const LicensePlateInput: React.FC<LicensePlateInputProps> = ({ onSubmit }) => {
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button to="/boeken" variant="outline" size="large">
-            Boek Basic (€{basicPricing.finalPrice})
+            Boek Basic (€{basicPricing.finalPrice} incl. BTW)
           </Button>
           <Button to="/boeken" variant="primary" size="large">
-            Kies Premium (€{premiumPricing.finalPrice})
+            Kies Premium (€{premiumPricing.finalPrice} incl. BTW)
           </Button>
           <Button to="/boeken" variant="secondary" size="large">
-            Upgrade Deluxe (€{deluxePricing.finalPrice})
+            Upgrade Deluxe (€{deluxePricing.finalPrice} incl. BTW)
           </Button>
         </div>
         

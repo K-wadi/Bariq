@@ -98,6 +98,10 @@ export interface RDWVehicleData {
 export interface VehiclePricing {
   basePrice: number;
   finalPrice: number;
+  priceExclBtw: number;
+  priceInclBtw: number;
+  btwAmount: number;
+  btwPercentage: number;
   vehicleType: 'small' | 'medium' | 'large' | 'luxury';
   packageType: 'basic' | 'premium' | 'deluxe';
   factors: {
@@ -265,9 +269,9 @@ export const fetchVehicleData = async (licensePlate: string): Promise<RDWVehicle
 // Calculate pricing based on vehicle data - Updated with new prices
 export const calculatePricing = (vehicleData: RDWVehicleData, packageType: 'basic' | 'premium' | 'deluxe' = 'basic'): VehiclePricing => {
   const basePrices = {
-    basic: 65,    // Updated from 59
-    premium: 125, // Updated from 119
-    deluxe: 275   // Updated from 185
+    basic: 79,    // €65 + 21% BTW = €79 (psychological pricing)
+    premium: 149, // €125 + 21% BTW = €149 (psychological pricing)
+    deluxe: 329   // €275 + 21% BTW = €329 (psychological pricing)
   };
   
   const basePrice = basePrices[packageType];
@@ -332,9 +336,19 @@ export const calculatePricing = (vehicleData: RDWVehicleData, packageType: 'basi
   const adjustedPrice = Math.round(basePrice * sizeMultiplier * ageMultiplier * luxuryMultiplier);
   const finalPrice = Math.max(adjustedPrice, basePrice); // Ensure price never goes below base package price
   
+  // BTW calculations (Dutch VAT: 21%)
+  const btwPercentage = 21;
+  const priceExclBtw = Math.round(finalPrice / 1.21); // Current prices include BTW
+  const btwAmount = finalPrice - priceExclBtw;
+  const priceInclBtw = finalPrice;
+  
   return {
     basePrice,
     finalPrice,
+    priceExclBtw,
+    priceInclBtw,
+    btwAmount,
+    btwPercentage,
     vehicleType,
     packageType,
     factors: {

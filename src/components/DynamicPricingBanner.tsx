@@ -35,7 +35,7 @@ const DynamicPricingBanner: React.FC<DynamicPricingBannerProps> = ({
     if (daysUntilNextMonth <= 7) {
       return {
         level: 'critical',
-        message: `🔥 LAATSTE WEEK: Prijzen stijgen ${nextMonth} ${monthNames[nextMonth - 1]} met €10`,
+        message: `🔥 LAATSTE WEEK: Prijzen stijgen ${nextMonth} ${monthNames[nextMonth - 1]} met €10-15`,
         subMessage: `📈 Nog ${daysUntilNextMonth} dagen om te besparen`,
         bgColor: 'bg-red-500',
         textColor: 'text-white'
@@ -43,7 +43,7 @@ const DynamicPricingBanner: React.FC<DynamicPricingBannerProps> = ({
     } else if (daysUntilNextMonth <= 14) {
       return {
         level: 'warning',
-        message: `⚠️ PRIJSSTIJGING: ${nextMonth} ${monthNames[nextMonth - 1]} stijgen prijzen met €10`,
+        message: `⚠️ PRIJSSTIJGING: ${nextMonth} ${monthNames[nextMonth - 1]} stijgen prijzen met €10-15`,
         subMessage: `⏰ Nog ${daysUntilNextMonth} dagen om van huidige prijzen te profiteren`,
         bgColor: 'bg-orange-500',
         textColor: 'text-white'
@@ -51,7 +51,7 @@ const DynamicPricingBanner: React.FC<DynamicPricingBannerProps> = ({
     } else {
       return {
         level: 'info',
-        message: `💡 BINNENKORT: Prijzen stijgen ${nextMonth} ${monthNames[nextMonth - 1]} met €10`,
+        message: `💡 BINNENKORT: Prijzen stijgen ${nextMonth} ${monthNames[nextMonth - 1]} met €10-15`,
         subMessage: `📅 Boek nu en bespaar op alle pakketten`,
         bgColor: 'bg-blue-500',
         textColor: 'text-white'

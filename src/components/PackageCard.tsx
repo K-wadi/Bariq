@@ -81,6 +81,9 @@ const PackageCard: React.FC<PackageCardProps> = ({
               <span className="text-lg text-red-500 line-through ml-2">{oldPrice}</span>
             )}
           </div>
+          <div className="text-xs text-charcoal-500 mt-1">
+            incl. BTW
+          </div>
           {savings && (
             <div className="text-green-600 font-semibold text-sm mt-1">{savings}</div>
           )}

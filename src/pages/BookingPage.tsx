@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import SectionTitle from '../components/SectionTitle';
 import Button from '../components/Button';
 import DynamicPricingBanner from '../components/DynamicPricingBanner';
+import PackageCard from '../components/PackageCard';
+import AnimatedCounter from '../components/AnimatedCounter';
 
 const BookingPage: React.FC = () => {
   // Load Calendly script
@@ -63,85 +65,69 @@ const BookingPage: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
             {/* Basic Clean */}
-            <motion.div 
-              className="border border-charcoal-200 rounded-lg p-6 hover:shadow-lg transition-all"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <h3 className="text-xl font-display font-semibold mb-2">Basic Clean</h3>
-              <div className="mb-4">
-                <span className="text-3xl font-bold text-charcoal-900">€65</span>
-                <span className="text-red-500 line-through ml-2">€59</span>
-              </div>
-              <p className="text-charcoal-600 mb-4">Perfecte optie voor regelmatig onderhoud.</p>
-              <ul className="text-sm text-charcoal-700 space-y-2 mb-6">
-                <li>• Exterieur handwas</li>
-                <li>• Wielen en velgen reiniging</li>
-                <li>• Interieur stofzuigen</li>
-                <li>• Dashboard reiniging</li>
-                <li>• Ramen binnen en buiten</li>
-              </ul>
-              <div className="text-xs text-red-600 mb-4">🔥 Prijs stijgt naar €75</div>
-            </motion.div>
-
+            <PackageCard
+              title="Basic Clean"
+              price="€79"
+              oldPrice="€89"
+              description="Perfecte optie voor regelmatig onderhoud."
+              features={[
+                "Exterieur handwas",
+                "Wielen en velgen reiniging",
+                "Interieur stofzuigen",
+                "Dashboard en console reiniging",
+                "Ramen binnen en buiten"
+              ]}
+              missingFeatures={[
+                "Dieptereiniging interieur",
+                "Lederbehandeling",
+                "Geuren verwijderen"
+              ]}
+              actionLabel="BOEK BASIC - €79"
+              urgency="Prijs stijgt naar €89"
+              delay={0.1}
+            />
+            
             {/* Premium Clean */}
-            <motion.div 
-              className="border-2 border-primary-500 rounded-lg p-6 hover:shadow-lg transition-all relative pt-10"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
-                <Star className="w-4 h-4 mr-1" />
-                MOST POPULAR
-              </div>
-              <h3 className="text-xl font-display font-semibold mb-2">Premium Clean</h3>
-              <div className="mb-4">
-                <span className="text-3xl font-bold text-primary-600">€125</span>
-                <span className="text-red-500 line-through ml-2">€170</span>
-              </div>
-              <p className="text-charcoal-600 mb-4">Complete reiniging voor showroom-ervaring.</p>
-              <ul className="text-sm text-charcoal-700 space-y-2 mb-6">
-                <li>• Alles van Basic Clean</li>
-                <li>• Dieptereiniging interieur</li>
-                <li>• Lederbehandeling</li>
-                <li>• Geuren verwijderen</li>
-                <li>• Ventilatiesysteem reinigen</li>
-              </ul>
-              <div className="text-xs text-green-600 mb-4">💰 BESPAAR €45 NU!</div>
-              <div className="text-xs text-blue-600 mb-4">⭐ 78% van klanten kiest dit pakket</div>
-            </motion.div>
+            <PackageCard
+              title="Premium Clean"
+              price="€149"
+              oldPrice="€199"
+              description="Complete reiniging voor een showroom-ervaring."
+              features={[
+                "Alles van Basic Clean",
+                "Dieptereiniging stoelen en vloermatten",
+                "Lederbehandeling (indien van toepassing)",
+                "Interieur geuren verwijderen",
+                "Ventilatiesysteem reinigen",
+                "Behandeling van kunststof onderdelen"
+              ]}
+              popular={true}
+              actionLabel="KIES PREMIUM - €149"
+              savings="BESPAAR €50 NU!"
+              delay={0.2}
+            />
 
-            {/* Deluxe Clean - Fixed padding to prevent overlap */}
-            <motion.div 
-              className="border-2 border-purple-500 rounded-lg p-6 hover:shadow-lg transition-all relative pt-10"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
-                <Shield className="w-4 h-4 mr-1" />
-                LUXURY EDITION
-              </div>
-              <h3 className="text-xl font-display font-semibold mb-2">Deluxe Clean</h3>
-              <div className="mb-4">
-                <span className="text-3xl font-bold text-purple-600">€275</span>
-                <span className="text-green-600 text-sm ml-2">Luxury!</span>
-              </div>
-              <p className="text-charcoal-600 mb-4">Ultieme luxe behandeling met exclusieve premium service.</p>
-              <ul className="text-sm text-charcoal-700 space-y-2 mb-6">
-                <li>• Alles van Premium Clean</li>
-                <li>• Professionele ceramic coating</li>
-                <li>• Premium lederbehandeling & conditioner</li>
-                <li>• Exclusieve wax behandeling</li>
-                <li>• Voor- en na foto's professioneel</li>
-                <li>• Velgen dieptereiniging</li>
-                <li>• Banden glans behandeling</li>
-                <li>• Uitgebreide kofferbak reiniging</li>
-              </ul>
-              <div className="text-xs text-purple-600 mb-4">🛡️ Langdurige luxe bescherming</div>
-            </motion.div>
+            {/* Deluxe Clean */}
+            <PackageCard
+              title="Deluxe Clean"
+              price="€329"
+              oldPrice="€379"
+              description="Ultieme luxe behandeling met exclusieve premium service."
+              features={[
+                "Alles van Premium Clean",
+                "Professionele ceramic coating",
+                "Premium lederbehandeling & conditioner",
+                "Exclusieve wax behandeling",
+                "Voor- en na foto's professioneel",
+                "Velgen dieptereiniging",
+                "Banden glans behandeling",
+                "Uitgebreide kofferbak reiniging"
+              ]}
+              decoy={true}
+              actionLabel="UPGRADE NAAR DELUXE - €329"
+              badge="LUXURY EDITION"
+              delay={0.3}
+            />
           </div>
 
           {/* Subscription Options */}
@@ -150,58 +136,42 @@ const BookingPage: React.FC = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
               {/* Care Subscription */}
-              <motion.div 
-                className="bg-white p-6 rounded-lg shadow-md border border-green-200"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-              >
-                <h4 className="text-xl font-display font-semibold mb-2">Care Subscription</h4>
-                <div className="mb-4">
-                  <span className="text-3xl font-bold text-green-600">€99</span>
-                  <span className="text-charcoal-600">/maand</span>
-                  <div className="text-red-500 line-through text-sm">Was €105</div>
-                </div>
-                <ul className="text-sm text-charcoal-700 space-y-2 mb-4">
-                  <li>• 1x Premium Clean maandelijks</li>
-                  <li>• Gratis ophaal/brengservice (15km)</li>
-                  <li>• 15% korting op extra services</li>
-                  <li>• Prioriteit bij planning</li>
-                  <li>• CANCEL ANYTIME</li>
-                </ul>
-                <div className="bg-green-100 p-3 rounded text-green-800 text-sm font-medium">
-                  BESPAAR €300/jaar vs individuele boekingen
-                </div>
-              </motion.div>
-
+              <PackageCard
+                title="Care Subscription"
+                price="€119/maand"
+                oldPrice="€139"
+                description="Maandelijkse Premium Clean met exclusieve voordelen."
+                features={[
+                  "1x Premium Clean maandelijks",
+                  "Gratis ophaal/brengservice (15km)",
+                  "15% korting op extra services",
+                  "Prioriteit bij planning",
+                  "Geen bindingsperiode"
+                ]}
+                savings="BESPAAR €360/jaar vs individuele boekingen"
+                actionLabel="START CARE ABONNEMENT - €119"
+                delay={0.4}
+              />
+              
               {/* VIP Subscription */}
-              <motion.div 
-                className="bg-white p-6 rounded-lg shadow-md border-2 border-blue-500 relative pt-10"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-              >
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
-                  <Star className="w-4 h-4 mr-1" />
-                  BEST VALUE
-                </div>
-                <h4 className="text-xl font-display font-semibold mb-2">VIP Subscription</h4>
-                <div className="mb-4">
-                  <span className="text-3xl font-bold text-blue-600">€189</span>
-                  <span className="text-charcoal-600">/maand</span>
-                </div>
-                <ul className="text-sm text-charcoal-700 space-y-2 mb-4">
-                  <li>• 2x Premium Clean maandelijks</li>
-                  <li>• Gratis ophaal/brengservice (25km)</li>
-                  <li>• 25% korting op alle services</li>
-                  <li>• Prioriteit + spoedservice</li>
-                  <li>• Exclusieve VIP support lijn</li>
-                  <li>• CANCEL ANYTIME</li>
-                </ul>
-                <div className="bg-blue-100 p-3 rounded text-blue-800 text-sm font-medium">
-                  BESPAAR €610/jaar vs individuele boekingen
-                </div>
-              </motion.div>
+              <PackageCard
+                title="VIP Subscription"
+                price="€229/maand"
+                oldPrice="€279"
+                description="Ultieme service met VIP behandeling."
+                features={[
+                  "2x Premium Clean maandelijks",
+                  "Gratis ophaal/brengservice (25km)",
+                  "25% korting op alle services",
+                  "Prioriteit + spoedservice",
+                  "Exclusieve VIP support lijn",
+                  "Geen bindingsperiode"
+                ]}
+                savings="BESPAAR €780/jaar vs individuele boekingen"
+                bestValue={true}
+                actionLabel="WORD VIP MEMBER - €229"
+                delay={0.5}
+              />
             </div>
           </div>
         </div>
@@ -385,7 +355,12 @@ const BookingPage: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="text-3xl font-bold text-primary-600 mb-2">98%</div>
+              <AnimatedCounter 
+                end={98} 
+                suffix="%" 
+                className="text-3xl font-bold text-primary-600 mb-2"
+                delay={0}
+              />
               <p className="text-charcoal-600">Klanttevredenheid</p>
             </motion.div>
             
@@ -395,7 +370,12 @@ const BookingPage: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <div className="text-3xl font-bold text-primary-600 mb-2">5000+</div>
+              <AnimatedCounter 
+                end={5000} 
+                suffix="+" 
+                className="text-3xl font-bold text-primary-600 mb-2"
+                delay={0.2}
+              />
               <p className="text-charcoal-600">Auto's gereinigd</p>
             </motion.div>
             
@@ -405,7 +385,12 @@ const BookingPage: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <div className="text-3xl font-bold text-primary-600 mb-2">100%</div>
+              <AnimatedCounter 
+                end={100} 
+                suffix="%" 
+                className="text-3xl font-bold text-primary-600 mb-2"
+                delay={0.4}
+              />
               <p className="text-charcoal-600">Geld terug garantie</p>
             </motion.div>
             
