@@ -266,12 +266,38 @@ export const fetchVehicleData = async (licensePlate: string): Promise<RDWVehicle
   }
 };
 
-// Calculate pricing based on vehicle data - Updated with new prices
+// Calculate pricing based on vehicle data - Updated with category-based prices
 export const calculatePricing = (vehicleData: RDWVehicleData, packageType: 'basic' | 'premium' | 'deluxe' = 'basic'): VehiclePricing => {
+  // Determine vehicle category based on type
+  const merk = vehicleData.merk?.toLowerCase() || '';
+  const voertuigsoort = vehicleData.voertuigsoort?.toLowerCase() || '';
+  const handelsbenaming = vehicleData.handelsbenaming?.toLowerCase() || '';
+  
+  // Premium & Large category (€120) - Luxe, SUV, pick-up & bedrijfswagen
+  const isPremiumLarge = 
+    voertuigsoort.includes('bedrijfsauto') ||
+    voertuigsoort.includes('bus') ||
+    handelsbenaming.includes('x5') ||
+    handelsbenaming.includes('x7') ||
+    handelsbenaming.includes('range rover') ||
+    handelsbenaming.includes('model x') ||
+    handelsbenaming.includes('s-klasse') ||
+    handelsbenaming.includes('s klasse') ||
+    handelsbenaming.includes('a8') ||
+    handelsbenaming.includes('ram') ||
+    handelsbenaming.includes('ranger') ||
+    handelsbenaming.includes('amarok') ||
+    handelsbenaming.includes('transporter') ||
+    (merk.includes('mercedes') && handelsbenaming.includes('s ')) ||
+    (merk.includes('audi') && handelsbenaming.includes('a8')) ||
+    (merk.includes('bmw') && (handelsbenaming.includes('x5') || handelsbenaming.includes('x7')));
+  
+  const categoryBasePrice = isPremiumLarge ? 120 : 90; // Premium & Large: €120, Compact & Midsize: €90
+  
   const basePrices = {
-    basic: 79,    // €65 + 21% BTW = €79 (psychological pricing)
-    premium: 149, // €125 + 21% BTW = €149 (psychological pricing)
-    deluxe: 329   // €275 + 21% BTW = €329 (psychological pricing)
+    basic: categoryBasePrice,
+    premium: categoryBasePrice,
+    deluxe: categoryBasePrice
   };
   
   const basePrice = basePrices[packageType];
@@ -283,8 +309,6 @@ export const calculatePricing = (vehicleData: RDWVehicleData, packageType: 'basi
   let luxuryMultiplier = 1.0;
   
   // Size calculation based on vehicle category and dimensions
-  const voertuigsoort = vehicleData.voertuigsoort?.toLowerCase() || '';
-  const merk = vehicleData.merk?.toLowerCase() || '';
   const lengte = parseInt(vehicleData.lengte || '0');
   const massa = parseInt(vehicleData.massa_ledig_voertuig || '0');
   
@@ -394,12 +418,44 @@ export const isElectricVehicle = (vehicleData: RDWVehicleData): boolean => {
 };
 
 // Format vehicle info for display
+// Determine vehicle segment for pricing
+const getVehicleSegment = (vehicleData: RDWVehicleData): 'compact' | 'large' | 'premium' => {
+  const merk = vehicleData.merk?.toLowerCase() || '';
+  const voertuigsoort = vehicleData.voertuigsoort?.toLowerCase() || '';
+  const handelsbenaming = vehicleData.handelsbenaming?.toLowerCase() || '';
+  
+  // Premium & Large category - Luxe, SUV, pick-up & bedrijfswagen
+  const isPremiumLarge = 
+    voertuigsoort.includes('bedrijfsauto') ||
+    voertuigsoort.includes('bus') ||
+    handelsbenaming.includes('x5') ||
+    handelsbenaming.includes('x7') ||
+    handelsbenaming.includes('range rover') ||
+    handelsbenaming.includes('model x') ||
+    handelsbenaming.includes('s-klasse') ||
+    handelsbenaming.includes('s klasse') ||
+    handelsbenaming.includes('a8') ||
+    handelsbenaming.includes('ram') ||
+    handelsbenaming.includes('ranger') ||
+    handelsbenaming.includes('amarok') ||
+    handelsbenaming.includes('transporter') ||
+    (merk.includes('mercedes') && handelsbenaming.includes('s ')) ||
+    (merk.includes('audi') && handelsbenaming.includes('a8')) ||
+    (merk.includes('bmw') && (handelsbenaming.includes('x5') || handelsbenaming.includes('x7')));
+  
+  return isPremiumLarge ? 'premium' : 'compact';
+};
+
 export const formatVehicleInfo = (vehicleData: RDWVehicleData): {
   displayName: string;
   year: number | null;
   color: string;
   isElectric: boolean;
   licensePlate: string;
+  segment: 'compact' | 'large' | 'premium';
+  merk: string;
+  model: string;
+  bouwjaar: string;
 } => {
   return {
     displayName: getVehicleDisplayName(vehicleData),
@@ -407,5 +463,9 @@ export const formatVehicleInfo = (vehicleData: RDWVehicleData): {
     color: vehicleData.eerste_kleur || 'Onbekend',
     isElectric: isElectricVehicle(vehicleData),
     licensePlate: formatLicensePlate(vehicleData.kenteken),
+    segment: getVehicleSegment(vehicleData),
+    merk: vehicleData.merk || 'Onbekend',
+    model: vehicleData.handelsbenaming || 'Onbekend',
+    bouwjaar: vehicleData.datum_eerste_toelating ? vehicleData.datum_eerste_toelating.substring(0, 4) : 'Onbekend',
   };
 };

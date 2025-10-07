@@ -6,9 +6,14 @@ import MainLayout from './layouts/MainLayout';
 
 // Pages
 import HomePage from './pages/HomePage';
-import PackagesPage from './pages/PackagesPage';
+import DienstenPrijzenPage from './pages/DienstenPrijzenPage';
+import PackagesPage from './pages/PackagesPage'; // Legacy
 import BookingPage from './pages/BookingPage';
+import KentekenCheckPage from './pages/KentekenCheckPage';
+import ServicegebiedPage from './pages/ServicegebiedPage';
 import ReviewsPage from './pages/ReviewsPage';
+import ContactPage from './pages/ContactPage';
+import OverPage from './pages/OverPage';
 import AdminPage from './pages/AdminPage';
 import NotFoundPage from './pages/NotFoundPage';
 
@@ -19,9 +24,15 @@ function App() {
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<HomePage />} />
-            <Route path="pakketten" element={<PackagesPage />} />
+            <Route path="diensten" element={<DienstenPrijzenPage />} />
+            <Route path="prijzen" element={<DienstenPrijzenPage />} />
+            <Route path="pakketten" element={<PackagesPage />} /> {/* Legacy route */}
             <Route path="boeken" element={<BookingPage />} />
+            <Route path="kenteken-check" element={<KentekenCheckPage />} />
+            <Route path="servicegebied/amsterdam" element={<ServicegebiedPage />} />
             <Route path="reviews" element={<ReviewsPage />} />
+            <Route path="contact" element={<ContactPage />} />
+            <Route path="over" element={<OverPage />} />
             <Route path="admin" element={<AdminPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>

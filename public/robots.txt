@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Sitemap: https://bariqautocare.nl/sitemap.xml
+
+# Disallow admin and internal pages
+User-agent: *
+Disallow: /admin
+

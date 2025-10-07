@@ -16,7 +16,7 @@ const PrevArrow = (props: any) => {
   return (
     <button
       onClick={onClick}
-      className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-80 p-3 rounded-full shadow-lg hover:bg-opacity-100 hover:scale-110 transition-all duration-300 backdrop-blur-sm"
+      className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-gray-800 bg-opacity-80 p-3 rounded-full shadow-lg hover:bg-opacity-100 hover:scale-110 transition-all duration-300 backdrop-blur-sm border border-gray-700"
       aria-label="Previous slide"
     >
       <ChevronLeft className="w-5 h-5 text-charcoal-800" />
@@ -29,7 +29,7 @@ const NextArrow = (props: any) => {
   return (
     <button
       onClick={onClick}
-      className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-80 p-3 rounded-full shadow-lg hover:bg-opacity-100 hover:scale-110 transition-all duration-300 backdrop-blur-sm"
+      className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-gray-800 bg-opacity-80 p-3 rounded-full shadow-lg hover:bg-opacity-100 hover:scale-110 transition-all duration-300 backdrop-blur-sm border border-gray-700"
       aria-label="Next slide"
     >
       <ChevronRight className="w-5 h-5 text-charcoal-800" />
@@ -41,7 +41,7 @@ const BeforeAfterSlide: React.FC<SlideProps> = ({ beforeImage, afterImage, title
   return (
     <div className="px-2 py-2">
       <motion.div 
-        className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+        className="bg-gray-900 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-700"
         whileHover={{ y: -5 }}
         transition={{ duration: 0.3 }}
       >
@@ -52,7 +52,7 @@ const BeforeAfterSlide: React.FC<SlideProps> = ({ beforeImage, afterImage, title
               alt={`Before - ${title}`} 
               className="w-full h-48 md:h-56 object-cover transition-transform duration-300 hover:scale-105"
             />
-            <div className="absolute top-2 left-2 bg-charcoal-900 bg-opacity-90 text-white px-3 py-1 text-xs font-medium rounded backdrop-blur-sm">Voor</div>
+            <div className="absolute top-2 left-2 bg-black bg-opacity-90 text-gray-200 px-3 py-1 text-xs font-medium rounded backdrop-blur-sm">Voor</div>
           </div>
           <div className="relative overflow-hidden">
             <img 
@@ -60,7 +60,7 @@ const BeforeAfterSlide: React.FC<SlideProps> = ({ beforeImage, afterImage, title
               alt={`After - ${title}`} 
               className="w-full h-48 md:h-56 object-cover transition-transform duration-300 hover:scale-105"
             />
-            <div className="absolute top-2 left-2 bg-primary-clean bg-opacity-90 text-white px-3 py-1 text-xs font-medium rounded backdrop-blur-sm">Na</div>
+            <div className="absolute top-2 left-2 bg-primary-bright bg-opacity-90 text-gray-200 px-3 py-1 text-xs font-medium rounded backdrop-blur-sm">Na</div>
           </div>
         </div>
         <div className="p-4">

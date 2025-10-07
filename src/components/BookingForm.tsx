@@ -291,7 +291,7 @@ const BookingForm: React.FC = () => {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
+    <div className="bg-gray-900 rounded-lg shadow-md overflow-hidden border border-gray-700">
       {/* Mobile Header */}
       <div className="md:hidden bg-gradient-primary text-white p-4">
         <h2 className="text-xl font-display font-semibold text-center">Maak een afspraak</h2>
@@ -299,19 +299,19 @@ const BookingForm: React.FC = () => {
 
       <form onSubmit={handleSubmit} className="p-4 md:p-6 lg:p-8">
         {/* Desktop Header */}
-        <h2 className="hidden md:block text-2xl font-display font-semibold mb-6 text-charcoal-900">Maak een afspraak</h2>
+        <h2 className="hidden md:block text-2xl font-display font-semibold mb-6 text-gray-200">Maak een afspraak</h2>
         
         {/* Email Status */}
         {emailStatus && (
-          <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-md">
-            <p className="text-blue-800 text-sm">{emailStatus}</p>
+          <div className="mb-4 p-3 bg-red-900/20 border border-red-800 rounded-md">
+            <p className="text-red-300 text-sm">{emailStatus}</p>
           </div>
         )}
         
         {/* Personal Information Section */}
         <div className="mb-6">
-          <h3 className="text-lg font-display font-semibold mb-4 flex items-center text-charcoal-900">
-            <Users className="w-5 h-5 mr-2 text-primary-500" />
+          <h3 className="text-lg font-display font-semibold mb-4 flex items-center text-gray-200">
+            <Users className="w-5 h-5 mr-2 text-primary-bright" />
             Persoonlijke gegevens
           </h3>
           

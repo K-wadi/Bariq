@@ -123,7 +123,7 @@ const BackgroundAnimation: React.FC<BackgroundAnimationProps> = ({
       particlesRef.current.forEach(particle => {
         ctx.save();
         ctx.globalAlpha = particle.opacity * 0.3;
-        ctx.fillStyle = '#2BD5EC';
+        ctx.fillStyle = '#E5252A';
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fill();
@@ -143,17 +143,17 @@ const BackgroundAnimation: React.FC<BackgroundAnimationProps> = ({
     switch (variant) {
       case 'hero':
         return {
-          background: 'linear-gradient(135deg, rgba(43, 213, 236, 0.05) 0%, rgba(17, 158, 243, 0.05) 50%, rgba(30, 135, 197, 0.05) 100%)',
+          background: 'linear-gradient(135deg, rgba(229, 37, 42, 0.05) 0%, rgba(229, 37, 42, 0.03) 50%, rgba(229, 37, 42, 0.05) 100%)',
           minHeight: '100vh'
         };
       case 'section':
         return {
-          background: 'linear-gradient(135deg, rgba(43, 213, 236, 0.02) 0%, rgba(17, 158, 243, 0.02) 100%)',
+          background: 'linear-gradient(135deg, rgba(229, 37, 42, 0.02) 0%, rgba(229, 37, 42, 0.02) 100%)',
           minHeight: 'auto'
         };
       case 'minimal':
         return {
-          background: 'rgba(43, 213, 236, 0.01)',
+          background: 'rgba(229, 37, 42, 0.01)',
           minHeight: 'auto'
         };
       default:
