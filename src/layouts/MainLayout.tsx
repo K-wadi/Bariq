@@ -9,7 +9,7 @@ import ScrollToTopOnRouteChange from '../components/ScrollToTopOnRouteChange';
 
 const MainLayout: React.FC = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-charcoal-50 no-bounce">
+    <div className="flex flex-col min-h-screen bg-black no-bounce">
       <ScrollToTopOnRouteChange />
       <ScrollIndicator />
       <Header />

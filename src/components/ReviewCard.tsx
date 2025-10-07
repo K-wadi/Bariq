@@ -21,7 +21,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
 }) => {
   return (
     <motion.div 
-      className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all"
+      className="bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-lg transition-all border border-gray-700"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}

@@ -24,44 +24,44 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-primary-dark text-primary-silver pt-12 pb-6">
+    <footer className="bg-black text-gray-200 pt-12 pb-6">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <Logo size="medium" />
-            <p className="mt-4 text-text-muted max-w-xs">
+            <p className="mt-4 text-gray-400 max-w-xs">
               De premium carwash aan huis in Nederland. Geen wachttijden, geen gedoe – Bariq komt naar jou toe.
             </p>
             <div className="flex mt-4 space-x-4">
-              <a href="https://www.instagram.com/bariq_detailing/" className="text-text-muted hover:text-primary-bright transition-colors" aria-label="Instagram">
+              <a href="https://www.instagram.com/bariq_detailing/" className="text-gray-400 hover:text-primary-bright transition-colors" aria-label="Instagram">
                 <Instagram />
               </a>
-              <a href="https://www.tiktok.com/@bariq_detailing" className="text-text-muted hover:text-primary-bright transition-colors" aria-label="TikTok">
+              <a href="https://www.tiktok.com/@bariq_detailing" className="text-gray-400 hover:text-primary-bright transition-colors" aria-label="TikTok">
                 <TikTokIcon className="w-6 h-6" />
               </a>
             </div>
           </div>
 
           <div>
-            <h3 className="text-lg font-display font-semibold mb-4 text-primary-silver">Menu</h3>
+            <h3 className="text-lg font-display font-semibold mb-4 text-gray-200">Menu</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-text-muted hover:text-primary-bright transition-colors">
+                <Link to="/" className="text-gray-400 hover:text-primary-bright transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/pakketten" className="text-text-muted hover:text-primary-bright transition-colors">
+                <Link to="/pakketten" className="text-gray-400 hover:text-primary-bright transition-colors">
                   Pakketten
                 </Link>
               </li>
               <li>
-                <Link to="/boeken" className="text-text-muted hover:text-primary-bright transition-colors">
+                <Link to="/boeken" className="text-gray-400 hover:text-primary-bright transition-colors">
                   Boeken
                 </Link>
               </li>
               <li>
-                <Link to="/reviews" className="text-text-muted hover:text-primary-bright transition-colors">
+                <Link to="/reviews" className="text-gray-400 hover:text-primary-bright transition-colors">
                   Reviews
                 </Link>
               </li>
@@ -69,51 +69,51 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h3 className="text-lg font-display font-semibold mb-4 text-primary-silver">Contact</h3>
+            <h3 className="text-lg font-display font-semibold mb-4 text-gray-200">Contact</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <Phone className="w-5 h-5 mr-3 text-primary-bright flex-shrink-0 mt-0.5" />
-                <span className="text-text-muted">06 8552 3584</span>
+                <span className="text-gray-400">06 8552 3584</span>
               </li>
               <li className="flex items-start">
                 <Mail className="w-5 h-5 mr-3 text-primary-bright flex-shrink-0 mt-0.5" />
-                <span className="text-text-muted">info@bariqautocare.nl</span>
+                <span className="text-gray-400">info@bariqautocare.nl</span>
               </li>
               <li className="flex items-start">
                 <MapPin className="w-5 h-5 mr-3 text-primary-bright flex-shrink-0 mt-0.5" />
-                <span className="text-text-muted">Amsterdam, Nederland</span>
+                <span className="text-gray-400">Amsterdam, Nederland</span>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-lg font-display font-semibold mb-4 text-primary-silver">Openingstijden</h3>
+            <h3 className="text-lg font-display font-semibold mb-4 text-gray-200">Openingstijden</h3>
             <ul className="space-y-2">
               <li className="flex items-center">
                 <Clock className="w-4 h-4 mr-2 text-primary-bright" />
-                <span className="text-text-muted">Ma-Vr: 8:00 - 18:00</span>
+                <span className="text-gray-400">Ma-Vr: 8:00 - 18:00</span>
               </li>
               <li className="flex items-center">
                 <Clock className="w-4 h-4 mr-2 text-primary-bright" />
-                <span className="text-text-muted">Za: 9:00 - 17:00</span>
+                <span className="text-gray-400">Za: 9:00 - 17:00</span>
               </li>
               <li className="flex items-center">
                 <Clock className="w-4 h-4 mr-2 text-primary-bright" />
-                <span className="text-text-muted">Zo: Gesloten</span>
+                <span className="text-gray-400">Zo: Gesloten</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-primary-ocean/20 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-text-muted text-sm">
+        <div className="border-t border-gray-700 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-400 text-sm">
             © {new Date().getFullYear()} Bariq Autocare. Alle rechten voorbehouden.
           </p>
           <div className="mt-4 md:mt-0 flex space-x-6">
-            <Link to="/privacy" className="text-text-muted hover:text-primary-bright text-sm transition-colors">
+            <Link to="/privacy" className="text-gray-400 hover:text-primary-bright text-sm transition-colors">
               Privacybeleid
             </Link>
-            <Link to="/voorwaarden" className="text-text-muted hover:text-primary-bright text-sm transition-colors">
+            <Link to="/voorwaarden" className="text-gray-400 hover:text-primary-bright text-sm transition-colors">
               Algemene Voorwaarden
             </Link>
           </div>

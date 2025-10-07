@@ -45,7 +45,7 @@ const Header: React.FC = () => {
   return (
     <header 
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-primary-dark shadow-md py-2' : 'bg-transparent py-4'
+        isScrolled ? 'bg-black shadow-md py-2' : 'bg-transparent py-4'
       }`}
     >
       <div className="container mx-auto px-4 md:px-6">
@@ -60,9 +60,9 @@ const Header: React.FC = () => {
             aria-label="Toggle menu"
           >
             {isOpen ? (
-              <X className="w-6 h-6 text-primary-silver" />
+              <X className="w-6 h-6 text-gray-200" />
             ) : (
-              <Menu className="w-6 h-6 text-primary-silver" />
+              <Menu className="w-6 h-6 text-gray-200" />
             )}
           </button>
 
@@ -74,7 +74,7 @@ const Header: React.FC = () => {
                 className={`text-base font-medium transition-colors hover:text-primary-bright relative group ${
                   location.pathname === link.path
                     ? 'text-primary-bright'
-                    : 'text-primary-silver'
+                    : 'text-gray-200'
                 }`}
               >
                 {link.name}
@@ -83,7 +83,7 @@ const Header: React.FC = () => {
             ))}
             <a 
               href="tel:0685523584" 
-              className="hidden lg:flex items-center text-primary-silver hover:text-primary-bright font-medium"
+              className="hidden lg:flex items-center text-gray-200 hover:text-primary-bright font-medium"
             >
               <Phone className="w-4 h-4 mr-2" />
               <span>06 8552 3584</span>
@@ -104,17 +104,17 @@ const Header: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="absolute top-0 left-0 right-0 bg-primary-dark shadow-lg z-0 pt-20 pb-6 px-4 mobile-scroll no-bounce"
+          className="absolute top-0 left-0 right-0 bg-black shadow-lg z-0 pt-20 pb-6 px-4 mobile-scroll no-bounce"
         >
           <nav className="flex flex-col space-y-4">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-lg py-2 border-b border-primary-ocean/20 ${
+                className={`text-lg py-2 border-b border-gray-700 ${
                   location.pathname === link.path
                     ? 'text-primary-bright font-medium'
-                    : 'text-primary-silver'
+                    : 'text-gray-200'
                 }`}
               >
                 {link.name}
@@ -122,7 +122,7 @@ const Header: React.FC = () => {
             ))}
             <a
               href="tel:0685523584"
-              className="text-lg py-2 border-b border-primary-ocean/20 flex items-center text-primary-silver"
+              className="text-lg py-2 border-b border-gray-700 flex items-center text-gray-200"
             >
               <Phone className="w-5 h-5 mr-2" />
               <span>06 8552 3584</span>

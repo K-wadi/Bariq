@@ -4,32 +4,46 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Bariq Red: #E5252A (accent/CTA, headings, highlights)
         primary: {
-          bright: '#2BD5EC',
-          sky: '#26BBEE',
-          clean: '#119EF3',
-          ocean: '#1E87C5',
-          silver: '#E1E3E4',
-          dark: '#0F172A',
-          25: '#F0F9FF',
-          50: '#E0F2FE',
+          bright: '#E5252A',
+          sky: '#E5252A',
+          clean: '#E5252A',
+          ocean: '#E5252A',
+          silver: '#FFFFFF',
+          dark: '#0A0A0A',
+          25: '#F3F4F6',
+          50: '#F3F4F6',
         },
+        // Jet Black: #0A0A0A (hero-achtergrond, footer, knoppen)
         charcoal: {
-          25: '#FAFAFA',
-          50: '#F9FAFB',
+          25: '#F3F4F6',
+          50: '#F3F4F6',
           100: '#F3F4F6',
-          200: '#E5E7EB',
-          300: '#D1D5DB',
-          400: '#9CA3AF',
-          500: '#6B7280',
-          600: '#4B5563',
-          700: '#374151',
-          800: '#1F2937',
-          900: '#111827',
+          200: '#1F2937',
+          300: '#1F2937',
+          400: '#1F2937',
+          500: '#1F2937',
+          600: '#1F2937',
+          700: '#1F2937',
+          800: '#0A0A0A',
+          900: '#0A0A0A',
         },
+        // Pure White: #FFFFFF (tekst op donkere vlakken, cards)
+        // Steel Grey: #1F2937 (body-tekst op licht, iconen)
+        // Light Grey: #F3F4F6 (sectie-achtergrond, borders)
         text: {
-          body: '#475569',
-          muted: '#64748B',
+          body: '#1F2937',
+          muted: '#1F2937',
+        },
+        // Custom dark theme colors
+        dark: {
+          bg: '#0A0A0A',
+          card: '#FFFFFF',
+          text: '#FFFFFF',
+          textSecondary: '#1F2937',
+          border: '#F3F4F6',
+          accent: '#E5252A',
         },
       },
       fontFamily: {
@@ -37,8 +51,8 @@ export default {
         display: ['Poppins', 'system-ui', 'sans-serif'],
       },
       backgroundImage: {
-        'gradient-primary': 'linear-gradient(to right, #2BD5EC, #26BBEE, #119EF3, #1E87C5)',
-        'gradient-diagonal': 'linear-gradient(135deg, #2BD5EC, #26BBEE, #119EF3, #1E87C5)',
+        'gradient-primary': 'linear-gradient(to right, #E5252A, #E5252A)',
+        'gradient-diagonal': 'linear-gradient(135deg, #E5252A, #E5252A)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

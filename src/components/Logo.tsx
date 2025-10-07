@@ -20,14 +20,14 @@ const Logo: React.FC<LogoProps> = ({ size = 'medium' }) => {
   return (
     <div className="flex items-center group transition-transform hover:scale-102">
       <img
-        src="/BARIQ-AUTOCARE.svg"
+        src="/B_logo_bg.png"
         alt="Bariq Autocare logo icon"
         className={`${sizeClasses[size]} mr-3 w-auto`}
       />
       <div 
         className={`font-display font-bold ${textSizes[size]}`}
         style={{
-          background: 'linear-gradient(to right, #2bd5ec, #26bbee, #119ef3, #1e87c5, #e1e3e4)',
+          background: 'linear-gradient(to right, #E5252A, #E5252A)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text'

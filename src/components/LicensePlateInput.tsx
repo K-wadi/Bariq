@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Search, Car, Calendar, Palette, Zap, Check, Star, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Button from './Button';
-import DynamicPricingBanner from './DynamicPricingBanner';
 import { 
   fetchVehicleData, 
   calculatePricing, 
@@ -93,51 +92,51 @@ const LicensePlateInput: React.FC<LicensePlateInputProps> = ({ onSubmit }) => {
     const { vehicleInfo, basicPricing, premiumPricing, deluxePricing } = result;
     
     return (
-      <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-4xl mx-auto">
+      <div className="bg-gray-900 p-6 rounded-lg shadow-md w-full max-w-4xl mx-auto border border-gray-700">
         <div className="text-center mb-6">
-          <h3 className="text-2xl font-display font-semibold text-charcoal-900 mb-2">
+          <h3 className="text-2xl font-display font-semibold text-gray-200 mb-2">
             Voertuiggegevens & Prijzen
           </h3>
-          <p className="text-charcoal-600">
+          <p className="text-gray-400">
             Kenteken: <span className="font-semibold">{vehicleInfo.licensePlate}</span>
           </p>
         </div>
         
         {/* Vehicle Info */}
-        <div className="bg-charcoal-50 p-4 rounded-lg mb-6">
+        <div className="bg-gray-800 p-4 rounded-lg mb-6 border border-gray-700">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="flex items-center">
-              <Car className="w-5 h-5 text-primary-600 mr-2" />
+              <Car className="w-5 h-5 text-primary-bright mr-2" />
               <div>
-                <p className="text-sm text-charcoal-500">Voertuig</p>
-                <p className="font-semibold text-charcoal-900">{vehicleInfo.displayName}</p>
+                <p className="text-sm text-gray-400">Voertuig</p>
+                <p className="font-semibold text-gray-200">{vehicleInfo.displayName}</p>
               </div>
             </div>
             
             {vehicleInfo.year && (
               <div className="flex items-center">
-                <Calendar className="w-5 h-5 text-primary-600 mr-2" />
+                <Calendar className="w-5 h-5 text-primary-bright mr-2" />
                 <div>
-                  <p className="text-sm text-charcoal-500">Bouwjaar</p>
-                  <p className="font-semibold text-charcoal-900">{vehicleInfo.year}</p>
+                  <p className="text-sm text-gray-400">Bouwjaar</p>
+                  <p className="font-semibold text-gray-200">{vehicleInfo.year}</p>
                 </div>
               </div>
             )}
             
             <div className="flex items-center">
-              <Palette className="w-5 h-5 text-primary-600 mr-2" />
+              <Palette className="w-5 h-5 text-primary-bright mr-2" />
               <div>
-                <p className="text-sm text-charcoal-500">Kleur</p>
-                <p className="font-semibold text-charcoal-900 capitalize">{vehicleInfo.color.toLowerCase()}</p>
+                <p className="text-sm text-gray-400">Kleur</p>
+                <p className="font-semibold text-gray-200 capitalize">{vehicleInfo.color.toLowerCase()}</p>
               </div>
             </div>
             
             {vehicleInfo.isElectric && (
               <div className="flex items-center">
-                <Zap className="w-5 h-5 text-green-600 mr-2" />
+                <Zap className="w-5 h-5 text-primary-bright mr-2" />
                 <div>
-                  <p className="text-sm text-charcoal-500">Type</p>
-                  <p className="font-semibold text-green-700">Elektrisch</p>
+                  <p className="text-sm text-gray-400">Type</p>
+                  <p className="font-semibold text-gray-200">Elektrisch</p>
                 </div>
               </div>
             )}
@@ -148,44 +147,44 @@ const LicensePlateInput: React.FC<LicensePlateInputProps> = ({ onSubmit }) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           {/* Basic Clean */}
           <motion.div 
-            className="border border-charcoal-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all"
+            className="border border-gray-700 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             whileHover={{ y: -5 }}
           >
-            <div className="bg-white p-6">
-              <h4 className="text-xl font-display font-semibold mb-2 text-charcoal-900">Basic Clean</h4>
+            <div className="bg-gray-800 p-6">
+              <h4 className="text-xl font-display font-semibold mb-2 text-gray-200">Basic Clean</h4>
               
               <div className="mb-4">
                 <div className="flex items-baseline">
-                  <span className="text-3xl font-bold text-charcoal-900">€{basicPricing.finalPrice}</span>
+                  <span className="text-3xl font-bold text-gray-200">€{basicPricing.finalPrice}</span>
                   <span className="text-lg text-red-500 line-through ml-2">€89</span>
                 </div>
-                <div className="text-xs text-charcoal-500 mt-1">incl. BTW</div>
+                <div className="text-xs text-gray-400 mt-1">incl. BTW</div>
                 <div className="text-red-600 font-medium text-xs mt-1">
                   🔥 Prijs stijgt naar €89
                 </div>
               </div>
               
-              <p className="text-charcoal-600 mb-6">Perfecte optie voor regelmatig onderhoud en een frisse uitstraling.</p>
+              <p className="text-gray-400 mb-6">Perfecte optie voor regelmatig onderhoud en een frisse uitstraling.</p>
               
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start">
                   <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
-                  <span className="text-charcoal-700">Exterieur handwas</span>
+                  <span className="text-gray-400">Exterieur handwas</span>
                 </li>
                 <li className="flex items-start">
                   <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
-                  <span className="text-charcoal-700">Wielen en velgen reiniging</span>
+                  <span className="text-gray-400">Wielen en velgen reiniging</span>
                 </li>
                 <li className="flex items-start">
                   <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
-                  <span className="text-charcoal-700">Interieur stofzuigen</span>
+                  <span className="text-gray-400">Interieur stofzuigen</span>
                 </li>
                 <li className="flex items-start">
                   <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
-                  <span className="text-charcoal-700">Ramen binnen en buiten</span>
+                  <span className="text-gray-400">Ramen binnen en buiten</span>
                 </li>
               </ul>
               
@@ -197,61 +196,52 @@ const LicensePlateInput: React.FC<LicensePlateInputProps> = ({ onSubmit }) => {
           
           {/* Premium Clean */}
           <motion.div 
-            className="border-2 border-primary-500 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all relative"
+            className="border-2 border-primary-bright rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all relative"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             whileHover={{ y: -5 }}
           >
             {/* Badge */}
-            <div className="bg-primary-500 text-white text-center py-2 font-medium text-sm flex items-center justify-center">
+            <div className="bg-primary-bright text-white text-center py-2 font-medium text-sm flex items-center justify-center">
               <Star className="w-4 h-4 mr-1" />
               MOST POPULAR
             </div>
             
-            <div className="bg-white p-6">
-              <h4 className="text-xl font-display font-semibold mb-2 text-charcoal-900">Premium Clean</h4>
+            <div className="bg-gray-800 p-6">
+              <h4 className="text-xl font-display font-semibold mb-2 text-gray-200">Premium Clean</h4>
               
               <div className="mb-4">
                 <div className="flex items-baseline">
-                  <span className="text-3xl font-bold text-primary-600">€{premiumPricing.finalPrice}</span>
-                  <span className="text-lg text-red-500 line-through ml-2">€199</span>
+                  <span className="text-3xl font-bold text-gray-200">€{premiumPricing.finalPrice}</span>
                 </div>
-                <div className="text-xs text-charcoal-500 mt-1">incl. BTW</div>
-                <div className="text-green-600 font-semibold text-sm mt-1">BESPAAR €50!</div>
-                <div className="text-red-600 font-medium text-xs mt-1">
-                  🔥 Prijsstijging volgende week
-                </div>
+                <div className="text-xs text-gray-400 mt-1">incl. BTW</div>
               </div>
               
-              <p className="text-charcoal-600 mb-6">Complete reiniging voor een showroom-ervaring.</p>
+              <p className="text-gray-400 mb-6">Complete reiniging voor een showroom-ervaring.</p>
               
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start">
                   <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
-                  <span className="text-charcoal-700">Alles van Basic Clean</span>
+                  <span className="text-gray-400">Alles van Basic Clean</span>
                 </li>
                 <li className="flex items-start">
                   <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
-                  <span className="text-charcoal-700">Dieptereiniging interieur</span>
+                  <span className="text-gray-400">Dieptereiniging interieur</span>
                 </li>
                 <li className="flex items-start">
                   <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
-                  <span className="text-charcoal-700">Lederbehandeling</span>
+                  <span className="text-gray-400">Lederbehandeling</span>
                 </li>
                 <li className="flex items-start">
                   <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
-                  <span className="text-charcoal-700">Geuren verwijderen</span>
+                  <span className="text-gray-400">Geuren verwijderen</span>
                 </li>
               </ul>
               
               <Button to="/boeken" variant="primary" fullWidth size="large">
-                KIES PREMIUM - €{premiumPricing.finalPrice}
+                Boek Premium - €{premiumPricing.finalPrice}
               </Button>
-              
-              <div className="mt-3 text-center text-sm text-charcoal-600">
-                ⭐ 78% van klanten kiest dit pakket
-              </div>
             </div>
           </motion.div>
           
@@ -269,44 +259,44 @@ const LicensePlateInput: React.FC<LicensePlateInputProps> = ({ onSubmit }) => {
               LUXURY EDITION
             </div>
             
-            <div className="bg-white p-6">
-              <h4 className="text-xl font-display font-semibold mb-2 text-charcoal-900">Deluxe Clean</h4>
+            <div className="bg-gray-800 p-6">
+              <h4 className="text-xl font-display font-semibold mb-2 text-gray-200">Deluxe Clean</h4>
               
               <div className="mb-4">
                 <div className="flex items-baseline">
                   <span className="text-3xl font-bold text-purple-600">€{deluxePricing.finalPrice}</span>
                 </div>
-                <div className="text-xs text-charcoal-500 mt-1">incl. BTW</div>
-                <div className="text-charcoal-500 text-sm mt-1">Luxury!</div>
+                <div className="text-xs text-gray-400 mt-1">incl. BTW</div>
+                <div className="text-gray-400 text-sm mt-1">Luxury!</div>
               </div>
               
-              <p className="text-charcoal-600 mb-6">Ultieme luxe behandeling met exclusieve premium service.</p>
+              <p className="text-gray-400 mb-6">Ultieme luxe behandeling met exclusieve premium service.</p>
               
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start">
                   <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
-                  <span className="text-charcoal-700">Alles van Premium Clean</span>
+                  <span className="text-gray-400">Alles van Premium Clean</span>
                 </li>
                 <li className="flex items-start">
                   <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
-                  <span className="text-charcoal-700">Professionele ceramic coating</span>
+                  <span className="text-gray-400">Professionele ceramic coating</span>
                 </li>
                 <li className="flex items-start">
                   <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
-                  <span className="text-charcoal-700">Premium lederbehandeling</span>
+                  <span className="text-gray-400">Premium lederbehandeling</span>
                 </li>
                 <li className="flex items-start">
                   <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
-                  <span className="text-charcoal-700">Velgen dieptereiniging</span>
+                  <span className="text-gray-400">Velgen dieptereiniging</span>
                 </li>
                 <li className="flex items-start">
                   <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 mr-3" />
-                  <span className="text-charcoal-700">Banden glans behandeling</span>
+                  <span className="text-gray-400">Banden glans behandeling</span>
                 </li>
               </ul>
               
               <Button to="/boeken" variant="secondary" fullWidth size="large">
-                UPGRADE DELUXE - €{deluxePricing.finalPrice}
+                Boek Deluxe - €{deluxePricing.finalPrice}
               </Button>
             </div>
           </motion.div>
@@ -314,9 +304,9 @@ const LicensePlateInput: React.FC<LicensePlateInputProps> = ({ onSubmit }) => {
         
         {/* Pricing Factors */}
         {(basicPricing.factors.size !== 1 || basicPricing.factors.age !== 1 || basicPricing.factors.luxury !== 1) && (
-          <div className="bg-blue-50 p-4 rounded-lg mb-6">
-            <h5 className="font-semibold text-blue-900 mb-2">Prijsaanpassingen</h5>
-            <div className="text-sm text-blue-800 space-y-1">
+          <div className="bg-red-900/20 p-4 rounded-lg mb-6">
+            <h5 className="font-semibold text-red-300 mb-2">Prijsaanpassingen</h5>
+            <div className="text-sm text-red-200 space-y-1">
               {basicPricing.factors.size !== 1 && (
                 <p>• Voertuiggrootte: {basicPricing.factors.size > 1 ? '+' : ''}{Math.round((basicPricing.factors.size - 1) * 100)}%</p>
               )}
@@ -331,8 +321,6 @@ const LicensePlateInput: React.FC<LicensePlateInputProps> = ({ onSubmit }) => {
         )}
         
         {/* Dynamic Urgency Message */}
-        <DynamicPricingBanner variant="urgency" className="mb-6" />
-        
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button to="/boeken" variant="outline" size="large">
             Boek Basic (€{basicPricing.finalPrice} incl. BTW)
@@ -341,7 +329,7 @@ const LicensePlateInput: React.FC<LicensePlateInputProps> = ({ onSubmit }) => {
             Kies Premium (€{premiumPricing.finalPrice} incl. BTW)
           </Button>
           <Button to="/boeken" variant="secondary" size="large">
-            Upgrade Deluxe (€{deluxePricing.finalPrice} incl. BTW)
+            Boek Deluxe (€{deluxePricing.finalPrice} incl. BTW)
           </Button>
         </div>
         
@@ -359,11 +347,11 @@ const LicensePlateInput: React.FC<LicensePlateInputProps> = ({ onSubmit }) => {
   }
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md mx-auto">
-      <h3 className="text-xl font-display font-semibold mb-4 text-charcoal-900">
+    <div className="bg-gray-800 p-6 rounded-lg shadow-md w-full max-w-md mx-auto">
+      <h3 className="text-xl font-display font-semibold mb-4 text-gray-200">
         Voer je kenteken in
       </h3>
-      <p className="text-charcoal-600 mb-4">
+      <p className="text-gray-400 mb-4">
         Bekijk direct je voertuiggegevens en prijsindicatie door je kenteken in te voeren.
       </p>
       
@@ -379,7 +367,7 @@ const LicensePlateInput: React.FC<LicensePlateInputProps> = ({ onSubmit }) => {
                 setLicensePlate(formatted);
                 if (error) setError('');
               }}
-              className="w-full py-3 px-4 border border-charcoal-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent placeholder-charcoal-400 text-lg uppercase"
+              className="w-full py-3 px-4 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent placeholder-gray-500 text-lg uppercase"
               disabled={isLoading}
             />
           </div>
@@ -398,7 +386,7 @@ const LicensePlateInput: React.FC<LicensePlateInputProps> = ({ onSubmit }) => {
         </Button>
       </form>
       
-      <div className="mt-4 text-xs text-charcoal-500">
+      <div className="mt-4 text-xs text-gray-400">
         <p>Gegevens worden opgehaald van de RDW (Rijksdienst voor het Wegverkeer)</p>
       </div>
     </div>

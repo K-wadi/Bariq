@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
-import { Calendar, MapPin, Phone, MessageCircle, CheckCircle, Star, Shield, Clock, Users } from 'lucide-react';
+import { Calendar, MapPin, Phone, MessageCircle, CheckCircle, Star, Shield, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 import SectionTitle from '../components/SectionTitle';
 import Button from '../components/Button';
-import DynamicPricingBanner from '../components/DynamicPricingBanner';
 import PackageCard from '../components/PackageCard';
 import AnimatedCounter from '../components/AnimatedCounter';
 
@@ -35,28 +34,18 @@ const BookingPage: React.FC = () => {
             Boek Je Afspraak
           </motion.h1>
           <motion.p 
-            className="text-lg md:text-xl text-charcoal-700 max-w-3xl mx-auto mb-6"
+            className="text-lg md:text-xl text-charcoal-700 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             Kies een tijd en datum die jou uitkomt en wij komen naar je toe
           </motion.p>
-          
-          {/* Urgency Banner */}
-          <motion.div 
-            className="max-w-2xl mx-auto mb-4"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <DynamicPricingBanner variant="hero" />
-          </motion.div>
         </div>
       </section>
 
       {/* Package Selection */}
-      <section className="py-8 md:py-16 bg-white">
+      <section className="py-8 md:py-16 bg-gray-900">
         <div className="container mx-auto px-4 md:px-6">
           <SectionTitle 
             title="Kies Je Pakket"
@@ -64,11 +53,9 @@ const BookingPage: React.FC = () => {
           />
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
-            {/* Basic Clean */}
             <PackageCard
               title="Basic Clean"
               price="€79"
-              oldPrice="€89"
               description="Perfecte optie voor regelmatig onderhoud."
               features={[
                 "Exterieur handwas",
@@ -77,21 +64,13 @@ const BookingPage: React.FC = () => {
                 "Dashboard en console reiniging",
                 "Ramen binnen en buiten"
               ]}
-              missingFeatures={[
-                "Dieptereiniging interieur",
-                "Lederbehandeling",
-                "Geuren verwijderen"
-              ]}
-              actionLabel="BOEK BASIC - €79"
-              urgency="Prijs stijgt naar €89"
+              actionLabel="Boek Basic Clean"
               delay={0.1}
             />
             
-            {/* Premium Clean */}
             <PackageCard
               title="Premium Clean"
               price="€149"
-              oldPrice="€199"
               description="Complete reiniging voor een showroom-ervaring."
               features={[
                 "Alles van Basic Clean",
@@ -102,17 +81,14 @@ const BookingPage: React.FC = () => {
                 "Behandeling van kunststof onderdelen"
               ]}
               popular={true}
-              actionLabel="KIES PREMIUM - €149"
-              savings="BESPAAR €50 NU!"
+              actionLabel="Boek Premium Clean"
               delay={0.2}
             />
 
-            {/* Deluxe Clean */}
             <PackageCard
               title="Deluxe Clean"
               price="€329"
-              oldPrice="€379"
-              description="Ultieme luxe behandeling met exclusieve premium service."
+              description="Ultieme luxe behandeling met exclusieve service."
               features={[
                 "Alles van Premium Clean",
                 "Professionele ceramic coating",
@@ -123,23 +99,19 @@ const BookingPage: React.FC = () => {
                 "Banden glans behandeling",
                 "Uitgebreide kofferbak reiniging"
               ]}
-              decoy={true}
-              actionLabel="UPGRADE NAAR DELUXE - €329"
-              badge="LUXURY EDITION"
+              actionLabel="Boek Deluxe Clean"
               delay={0.3}
             />
           </div>
 
           {/* Subscription Options */}
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-lg mb-12">
-            <h3 className="text-2xl font-display font-bold text-center mb-6">Abonnementen - Bespaar Honderden Euro's</h3>
+          <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-8 rounded-lg mb-12 border border-gray-700">
+            <h3 className="text-2xl font-display font-bold text-center mb-6 text-gray-200">Abonnementen</h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              {/* Care Subscription */}
               <PackageCard
                 title="Care Subscription"
                 price="€119/maand"
-                oldPrice="€139"
                 description="Maandelijkse Premium Clean met exclusieve voordelen."
                 features={[
                   "1x Premium Clean maandelijks",
@@ -148,16 +120,13 @@ const BookingPage: React.FC = () => {
                   "Prioriteit bij planning",
                   "Geen bindingsperiode"
                 ]}
-                savings="BESPAAR €360/jaar vs individuele boekingen"
-                actionLabel="START CARE ABONNEMENT - €119"
+                actionLabel="Start Care Abonnement"
                 delay={0.4}
               />
               
-              {/* VIP Subscription */}
               <PackageCard
                 title="VIP Subscription"
                 price="€229/maand"
-                oldPrice="€279"
                 description="Ultieme service met VIP behandeling."
                 features={[
                   "2x Premium Clean maandelijks",
@@ -167,9 +136,8 @@ const BookingPage: React.FC = () => {
                   "Exclusieve VIP support lijn",
                   "Geen bindingsperiode"
                 ]}
-                savings="BESPAAR €780/jaar vs individuele boekingen"
                 bestValue={true}
-                actionLabel="WORD VIP MEMBER - €229"
+                actionLabel="Word VIP Member"
                 delay={0.5}
               />
             </div>
@@ -252,27 +220,27 @@ const BookingPage: React.FC = () => {
 
               {/* Live Stats */}
               <motion.div 
-                className="bg-red-50 p-4 md:p-6 rounded-lg shadow-sm border border-red-200"
+                className="bg-gray-50 p-4 md:p-6 rounded-lg shadow-sm border border-gray-200"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                <h3 className="text-lg md:text-xl font-display font-semibold mb-4 flex items-center text-red-800">
-                  <Clock className="w-5 h-5 mr-2 text-red-600" />
-                  Live Updates
+                <h3 className="text-lg md:text-xl font-display font-semibold mb-4 flex items-center text-charcoal-800">
+                  <Clock className="w-5 h-5 mr-2 text-charcoal-600" />
+                  Service Details
                 </h3>
                 <div className="space-y-3 text-sm md:text-base">
                   <div className="flex items-center justify-between">
-                    <span className="text-red-700">Vandaag geboekt:</span>
-                    <span className="font-bold text-red-800">12 auto's</span>
+                    <span className="text-charcoal-700">Gemiddelde duur:</span>
+                    <span className="font-bold text-charcoal-800">2-3 uur</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-red-700">Deze week nog:</span>
-                    <span className="font-bold text-red-800">4 plekken</span>
+                    <span className="text-charcoal-700">Service locatie:</span>
+                    <span className="font-bold text-charcoal-800">Aan huis</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-red-700">Prijsstijging over:</span>
-                    <span className="font-bold text-red-800">6 dagen</span>
+                    <span className="text-charcoal-700">Betaling:</span>
+                    <span className="font-bold text-charcoal-800">Na service</span>
                   </div>
                 </div>
               </motion.div>

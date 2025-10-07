@@ -28,16 +28,16 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #374151;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #E5252A;
 }
 
 /* Mobile-optimized scrolling containers */

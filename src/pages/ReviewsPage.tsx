@@ -178,7 +178,7 @@ const ReviewsPage: React.FC = () => {
       </section>
 
       {/* Reviews Grid */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-gray-900">
         <div className="container mx-auto px-4 md:px-6">
           {approvedReviews.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -218,7 +218,7 @@ const ReviewsPage: React.FC = () => {
           
           <div className="max-w-2xl mx-auto">
             {!showForm ? (
-              <div className="bg-white p-8 rounded-lg shadow-md text-center">
+              <div className="bg-gray-800 p-8 rounded-lg shadow-md text-center border border-gray-700">
                 <Shield className="w-16 h-16 text-primary-600 mx-auto mb-4" />
                 <h3 className="text-xl font-display font-semibold mb-4 text-charcoal-900">
                   Verifiëerde Reviews Alleen
@@ -227,12 +227,12 @@ const ReviewsPage: React.FC = () => {
                   Om de kwaliteit van onze reviews te waarborgen, kunnen alleen klanten die daadwerkelijk 
                   service van ons hebben ontvangen een review plaatsen. Dit zorgt voor eerlijke en betrouwbare feedback.
                 </p>
-                <div className="bg-blue-50 p-4 rounded-lg mb-6">
+                <div className="bg-red-900/20 p-4 rounded-lg mb-6 border border-red-800">
                   <div className="flex items-center justify-center mb-2">
-                    <Lock className="w-5 h-5 text-blue-600 mr-2" />
-                    <span className="font-medium text-blue-800">Vereisten voor Review</span>
+                    <Lock className="w-5 h-5 text-red-400 mr-2" />
+                    <span className="font-medium text-red-300">Vereisten voor Review</span>
                   </div>
-                  <ul className="text-blue-700 text-sm space-y-1">
+                  <ul className="text-red-200 text-sm space-y-1">
                     <li>• Je moet een voltooide service hebben gehad</li>
                     <li>• Verificatie via email adres gebruikt bij boeking</li>
                     <li>• Selectie van specifieke service voor review</li>
@@ -248,7 +248,7 @@ const ReviewsPage: React.FC = () => {
                 </Button>
               </div>
             ) : !isSubmitted ? (
-              <div className="bg-white p-6 md:p-8 rounded-lg shadow-md">
+              <div className="bg-gray-800 p-6 md:p-8 rounded-lg shadow-md border border-gray-700">
                 {/* Step 1: Email Verification */}
                 {verificationStep === 'email' && (
                   <div>
@@ -493,42 +493,6 @@ const ReviewsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Stats Section - Changed background to #119EF3 */}
-      <section className="py-16 md:py-24 text-white" style={{ backgroundColor: '#119EF3' }}>
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="text-4xl md:text-5xl font-bold mb-2">98%</div>
-              <p className="text-lg text-white/80">Klanttevredenheid</p>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <div className="text-4xl md:text-5xl font-bold mb-2">{stats.carsWashed}+</div>
-              <p className="text-lg text-white/80">Auto's gereinigd</p>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <div className="text-4xl md:text-5xl font-bold mb-2">{stats.averageRating || 4.9}</div>
-              <p className="text-lg text-white/80">Gemiddelde beoordeling</p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
     </>
   );
 };
