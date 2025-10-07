@@ -23,15 +23,15 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
   };
 
   const titleSizeClasses = {
-    small: 'text-2xl md:text-3xl',
-    medium: 'text-3xl md:text-4xl',
-    large: 'text-4xl md:text-5xl',
+    small: 'text-xl md:text-2xl lg:text-3xl',
+    medium: 'text-2xl md:text-3xl lg:text-4xl',
+    large: 'text-3xl md:text-4xl lg:text-5xl',
   };
 
   return (
-    <div className={`mb-10 ${alignmentClasses[alignment]} ${className}`}>
+    <div className={`mb-8 md:mb-10 ${alignmentClasses[alignment]} ${className}`}>
       <motion.h2
-        className={`font-display font-bold ${titleSizeClasses[titleSize]} text-gray-200 mb-3`}
+        className={`font-display font-bold ${titleSizeClasses[titleSize]} text-bariq-white mb-3 md:mb-4`}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -41,7 +41,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
       </motion.h2>
       {subtitle && (
         <motion.p
-          className="text-gray-400 text-lg max-w-3xl mx-auto"
+          className="text-bariq-grey text-base md:text-lg lg:text-xl max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}

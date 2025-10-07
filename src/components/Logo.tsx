@@ -24,16 +24,11 @@ const Logo: React.FC<LogoProps> = ({ size = 'medium' }) => {
         alt="Bariq Autocare logo icon"
         className={`${sizeClasses[size]} mr-3 w-auto`}
       />
-      <div 
-        className={`font-display font-bold ${textSizes[size]}`}
-        style={{
-          background: 'linear-gradient(to right, #E5252A, #E5252A)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text'
-        }}
-      >
-        BARIQ AUTOCARE
+      <div className={`font-display font-bold ${textSizes[size]}`}>
+        <span className="text-bariq-red">B</span>
+        <span className="text-bariq-white">ARIQ </span>
+        <span className="text-bariq-red">A</span>
+        <span className="text-bariq-white">UTOCARE</span>
       </div>
     </div>
   );

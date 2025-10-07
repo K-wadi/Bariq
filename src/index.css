@@ -28,16 +28,22 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: #0B0B0B;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #374151;
+  background: #9CA3AF;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #E5252A;
+  background: #E62323;
+}
+
+/* Base body styles */
+body {
+  background-color: #0B0B0B;
+  color: #FFFFFF;
 }
 
 /* Mobile-optimized scrolling containers */

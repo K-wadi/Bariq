@@ -418,12 +418,44 @@ export const isElectricVehicle = (vehicleData: RDWVehicleData): boolean => {
 };
 
 // Format vehicle info for display
+// Determine vehicle segment for pricing
+const getVehicleSegment = (vehicleData: RDWVehicleData): 'compact' | 'large' | 'premium' => {
+  const merk = vehicleData.merk?.toLowerCase() || '';
+  const voertuigsoort = vehicleData.voertuigsoort?.toLowerCase() || '';
+  const handelsbenaming = vehicleData.handelsbenaming?.toLowerCase() || '';
+  
+  // Premium & Large category - Luxe, SUV, pick-up & bedrijfswagen
+  const isPremiumLarge = 
+    voertuigsoort.includes('bedrijfsauto') ||
+    voertuigsoort.includes('bus') ||
+    handelsbenaming.includes('x5') ||
+    handelsbenaming.includes('x7') ||
+    handelsbenaming.includes('range rover') ||
+    handelsbenaming.includes('model x') ||
+    handelsbenaming.includes('s-klasse') ||
+    handelsbenaming.includes('s klasse') ||
+    handelsbenaming.includes('a8') ||
+    handelsbenaming.includes('ram') ||
+    handelsbenaming.includes('ranger') ||
+    handelsbenaming.includes('amarok') ||
+    handelsbenaming.includes('transporter') ||
+    (merk.includes('mercedes') && handelsbenaming.includes('s ')) ||
+    (merk.includes('audi') && handelsbenaming.includes('a8')) ||
+    (merk.includes('bmw') && (handelsbenaming.includes('x5') || handelsbenaming.includes('x7')));
+  
+  return isPremiumLarge ? 'premium' : 'compact';
+};
+
 export const formatVehicleInfo = (vehicleData: RDWVehicleData): {
   displayName: string;
   year: number | null;
   color: string;
   isElectric: boolean;
   licensePlate: string;
+  segment: 'compact' | 'large' | 'premium';
+  merk: string;
+  model: string;
+  bouwjaar: string;
 } => {
   return {
     displayName: getVehicleDisplayName(vehicleData),
@@ -431,5 +463,9 @@ export const formatVehicleInfo = (vehicleData: RDWVehicleData): {
     color: vehicleData.eerste_kleur || 'Onbekend',
     isElectric: isElectricVehicle(vehicleData),
     licensePlate: formatLicensePlate(vehicleData.kenteken),
+    segment: getVehicleSegment(vehicleData),
+    merk: vehicleData.merk || 'Onbekend',
+    model: vehicleData.handelsbenaming || 'Onbekend',
+    bouwjaar: vehicleData.datum_eerste_toelating ? vehicleData.datum_eerste_toelating.substring(0, 4) : 'Onbekend',
   };
 };
