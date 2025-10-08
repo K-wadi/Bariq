@@ -279,17 +279,17 @@ const PackagesPage: React.FC = () => {
                   <tr>
                     <td className="px-4 py-4"></td>
                     <td className="px-4 py-4 text-center">
-                      <Button to="/boeken" variant="outline" size="small">
+                      <Button to="/booking-system" variant="outline" size="small">
                         Boek Basic
                       </Button>
                     </td>
                     <td className="px-4 py-4 text-center bg-primary-25">
-                      <Button to="/boeken" variant="primary" size="small">
+                      <Button to="/booking-system" variant="primary" size="small">
                         Kies Premium
                       </Button>
                     </td>
                     <td className="px-4 py-4 text-center">
-                      <Button to="/boeken" variant="secondary" size="small">
+                      <Button to="/booking-system" variant="secondary" size="small">
                         Upgrade Deluxe
                       </Button>
                     </td>
@@ -405,7 +405,7 @@ const PackagesPage: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <Button 
-              to="/boeken" 
+              to="/booking-system" 
               variant="secondary" 
               size="large"
               className="bg-[#119EF3] text-primary-600 hover:bg-gray-100"
@@ -413,7 +413,7 @@ const PackagesPage: React.FC = () => {
               Boek Nu
             </Button>
             <Button 
-              to="/boeken" 
+              to="/booking-system" 
               variant="outline" 
               size="large"
               className="text-white border-white hover:bg-white/10"

@@ -194,7 +194,7 @@ const DienstenPage: React.FC = () => {
             <Button to="/prijzen" variant="primary" size="large">
               Bekijk Prijzen
             </Button>
-            <Button to="/boeken" variant="outline" size="large">
+            <Button to="/booking-system" variant="outline" size="large">
               Boek Nu
             </Button>
           </div>

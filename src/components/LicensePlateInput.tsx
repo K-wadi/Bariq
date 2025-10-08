@@ -196,7 +196,7 @@ const LicensePlateInput: React.FC<LicensePlateInputProps> = ({ onSubmit }) => {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-          <Button to="/boeken" variant="primary" size="large" className="flex-1">
+          <Button to="/booking-system" variant="primary" size="large" className="flex-1">
             Boek Nu - €{prijs}
           </Button>
           <Button to="/diensten" variant="outline" size="large" className="flex-1">

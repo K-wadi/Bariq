@@ -9,6 +9,8 @@ import HomePage from './pages/HomePage';
 import DienstenPrijzenPage from './pages/DienstenPrijzenPage';
 import PackagesPage from './pages/PackagesPage'; // Legacy
 import BookingPage from './pages/BookingPage';
+import BookingSystemPage from './pages/BookingSystemPage';
+import AdminDashboardPage from './pages/AdminDashboardPage';
 import KentekenCheckPage from './pages/KentekenCheckPage';
 import ServicegebiedPage from './pages/ServicegebiedPage';
 import ReviewsPage from './pages/ReviewsPage';
@@ -28,6 +30,8 @@ function App() {
             <Route path="prijzen" element={<DienstenPrijzenPage />} />
             <Route path="pakketten" element={<PackagesPage />} /> {/* Legacy route */}
             <Route path="boeken" element={<BookingPage />} />
+            <Route path="booking-system" element={<BookingSystemPage />} />
+            <Route path="admin-dashboard" element={<AdminDashboardPage />} />
             <Route path="kenteken-check" element={<KentekenCheckPage />} />
             <Route path="servicegebied/amsterdam" element={<ServicegebiedPage />} />
             <Route path="reviews" element={<ReviewsPage />} />

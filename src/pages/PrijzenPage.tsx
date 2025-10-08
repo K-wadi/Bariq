@@ -252,7 +252,7 @@ const PrijzenPage: React.FC = () => {
             <p className="text-bariq-grey mb-6">
               Extra's kunnen tijdens het boeken worden toegevoegd
             </p>
-            <Button to="/boeken" variant="primary" size="large" icon={<ArrowRight className="w-5 h-5" />} iconPosition="right">
+            <Button to="/booking-system" variant="primary" size="large" icon={<ArrowRight className="w-5 h-5" />} iconPosition="right">
               Boek Nu
             </Button>
           </div>
@@ -283,7 +283,7 @@ const PrijzenPage: React.FC = () => {
             <Button to="/kenteken-check" variant="primary" size="large">
               Check Kenteken
             </Button>
-            <Button to="/boeken" variant="outline" size="large">
+            <Button to="/booking-system" variant="outline" size="large">
               Direct Boeken
             </Button>
           </div>

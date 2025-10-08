@@ -1,0 +1,30 @@
+🔧 NETLIFY ENVIRONMENT VARIABLES SETUP
+
+Voeg deze toe in je Netlify Dashboard:
+Settings → Environment variables → Add a variable
+
+---
+
+Variable 1:
+Key: RESEND_API_KEY
+Value: re_6BsqxdDf_PcXoFHhmps1cwi4zKqmbCodZ
+
+Variable 2:
+Key: ADMIN_EMAIL
+Value: info@bariqautocare.nl (of je eigen admin email)
+
+---
+
+⚠️ BELANGRIJK na het toevoegen:
+1. Ga naar: Deploys tab
+2. Klik op: Trigger deploy → Deploy site
+3. Wacht tot deployment klaar is (±2 minuten)
+
+✅ Dan werkt het email systeem live!
+
+---
+
+Test het lokaal (optioneel):
+npm run dev
+
+En maak een test booking om te zien of emails werken.

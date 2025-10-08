@@ -122,7 +122,7 @@ const ServicegebiedPage: React.FC = () => {
             We komen naar jouw locatie. Thuis, op kantoor, of waar het jou uitkomt.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button to="/boeken" variant="primary" size="large">
+            <Button to="/booking-system" variant="primary" size="large">
               Boek Nu
             </Button>
             <Button 

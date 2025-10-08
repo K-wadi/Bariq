@@ -188,7 +188,7 @@ const OverPage: React.FC = () => {
             <Button to="/diensten" variant="outline" size="large" className="w-full sm:w-auto">
               Bekijk Diensten & Prijzen
             </Button>
-            <Button to="/boeken" variant="primary" size="large" className="w-full sm:w-auto">
+            <Button to="/booking-system" variant="primary" size="large" className="w-full sm:w-auto">
               Boek Nu
             </Button>
           </div>

@@ -65,7 +65,7 @@ const HomePage: React.FC = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
-                to="/boeken" 
+                to="/booking-system" 
                 variant="primary" 
                 size="large"
                 icon={<Calendar size={20} />}
@@ -261,7 +261,7 @@ const HomePage: React.FC = () => {
                 Regio: Amsterdam en omgeving
               </p>
               <div className="mt-6">
-                <Button to="/boeken" variant="primary" size="large" className="w-full sm:w-auto">
+                <Button to="/booking-system" variant="primary" size="large" className="w-full sm:w-auto">
                   Boek Nu via Calendly
                 </Button>
               </div>
@@ -364,7 +364,7 @@ const HomePage: React.FC = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
-              to="/boeken" 
+              to="/booking-system" 
               variant="primary" 
               size="large"
               icon={<Calendar size={20} />}

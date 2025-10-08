@@ -25,7 +25,7 @@ const PackageCard: React.FC<PackageCardProps> = ({
   popular = false,
   bestValue = false,
   actionLabel = 'Boek Nu',
-  actionLink = '/boeken',
+  actionLink = '/booking-system',
   delay = 0,
 }) => {
   const getCardStyle = () => {

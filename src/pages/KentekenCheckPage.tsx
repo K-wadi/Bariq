@@ -200,7 +200,7 @@ const KentekenCheckPage: React.FC = () => {
                   Bekijk Alle Extra's
                 </a>
                 <a 
-                  href="/boeken"
+                  href="/booking-system"
                   className="inline-flex items-center justify-center px-6 py-3 bg-bariq-red text-bariq-white rounded-xl hover:bg-bariq-red-hover transition-all font-semibold"
                 >
                   Boek Nu

@@ -91,7 +91,7 @@ const Header: React.FC = () => {
               <span>06 8552 3584</span>
             </a>
             <Link
-              to="/boeken"
+              to="/booking-system"
               className="bg-bariq-red text-bariq-white px-6 py-2.5 rounded-xl font-semibold hover:bg-bariq-red-hover transition-all shadow-sm"
             >
               Boek Nu
@@ -130,7 +130,7 @@ const Header: React.FC = () => {
               <span>06 8552 3584</span>
             </a>
             <Link
-              to="/boeken"
+              to="/booking-system"
               className="mt-2 bg-bariq-red text-bariq-white py-3 rounded-xl font-semibold text-center shadow-sm hover:bg-bariq-red-hover"
             >
               Boek Nu

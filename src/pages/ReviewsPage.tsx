@@ -151,7 +151,7 @@ const ReviewsPage: React.FC = () => {
             Word onderdeel van onze tevreden klanten
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button to="/boeken" variant="primary" size="large">
+            <Button to="/booking-system" variant="primary" size="large">
               Boek Nu
             </Button>
             <Button to="/diensten" variant="outline" size="large">

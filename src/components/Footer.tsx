@@ -130,7 +130,7 @@ const Footer: React.FC = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/boeken" className="text-bariq-grey hover:text-bariq-red transition-colors">
+                  <Link to="/booking-system" className="text-bariq-grey hover:text-bariq-red transition-colors">
                     Boeken
                   </Link>
                 </li>

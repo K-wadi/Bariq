@@ -25,7 +25,7 @@ const BookingPage: React.FC = () => {
       <SEO
         title="Online boeken – Beschikbaarheid & afspraak"
         description="Plan direct je handwas of dieptereiniging. Beschikbaar di–zo 8:00–20:00, Amsterdam e.o."
-        canonical="https://bariqautocare.nl/boeken"
+        canonical="https://bariqautocare.nl/booking-system"
       />
 
       {/* Hero Section */}
