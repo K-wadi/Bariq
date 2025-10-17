@@ -10,6 +10,8 @@ export interface BookingEmailData {
   carModel: string;
   licensePlate: string;
   packageType: 'basic' | 'premium';
+  serviceName?: string;
+  servicePrice?: number;
   date: string;
   time: string;
   notes?: string;
@@ -102,8 +104,8 @@ const isDevelopmentMode = (): boolean => {
 
 // 1. CONFIRMATION EMAIL TEMPLATE
 export const getCustomerConfirmationEmailTemplate = (data: BookingEmailData): string => {
-  const packageName = data.packageType === 'basic' ? 'Basic Clean' : 'Premium Clean';
-  const packagePrice = data.packageType === 'basic' ? '€79 incl. BTW' : '€149 incl. BTW';
+  const packageName = data.serviceName || (data.packageType === 'basic' ? 'Basic Clean' : 'Premium Clean');
+  const packagePrice = data.servicePrice ? `€${data.servicePrice} incl. BTW` : (data.packageType === 'basic' ? '€79 incl. BTW' : '€149 incl. BTW');
   
   return `
 <!DOCTYPE html>
@@ -383,7 +385,7 @@ export const getCustomerConfirmationEmailTemplate = (data: BookingEmailData): st
 
 // 2. ADMIN NOTIFICATION EMAIL TEMPLATE
 export const getAdminNotificationEmailTemplate = (data: BookingEmailData): string => {
-  const packageName = data.packageType === 'basic' ? 'Basic Clean' : 'Premium Clean';
+  const packageName = data.serviceName || (data.packageType === 'basic' ? 'Basic Clean' : 'Premium Clean');
   
   return `
 <!DOCTYPE html>

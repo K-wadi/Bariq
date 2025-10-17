@@ -13,6 +13,7 @@ import {
   Check,
 } from "lucide-react";
 import { supabase, type Service } from "../lib/supabase";
+import LocationInput, { type LocationData } from "./LocationInput";
 
 interface BookingCalendarProps {
   onBookingComplete?: (booking: any) => void;
@@ -33,6 +34,9 @@ export const BookingCalendar: React.FC<BookingCalendarProps> = ({
     email: "",
     phone: "",
     licensePlate: "",
+    address: "",
+    city: "",
+    postalCode: "",
   });
   const [mainServices, setMainServices] = useState<Service[]>([]);
   const [addonServices, setAddonServices] = useState<Service[]>([]);
@@ -157,13 +161,25 @@ export const BookingCalendar: React.FC<BookingCalendarProps> = ({
     setAvailableSlots(slots);
   };
 
+  const handleLocationSelect = (location: LocationData) => {
+    setCustomerInfo({
+      ...customerInfo,
+      address: location.address,
+      city: location.city,
+      postalCode: location.postalCode,
+    });
+  };
+
   const handleBooking = async () => {
     if (
       !selectedVehicleClass ||
       !selectedDate ||
       !selectedTime ||
       !customerInfo.name ||
-      !customerInfo.email
+      !customerInfo.email ||
+      !customerInfo.address ||
+      !customerInfo.city ||
+      !customerInfo.postalCode
     ) {
       setError("Vul alle verplichte velden in");
       return;
@@ -320,7 +336,7 @@ export const BookingCalendar: React.FC<BookingCalendarProps> = ({
     setAddonsCompleted(false);
     setSelectedDate(null);
     setSelectedTime("");
-    setCustomerInfo({ name: "", email: "", phone: "", licensePlate: "" });
+    setCustomerInfo({ name: "", email: "", phone: "", licensePlate: "", address: "", city: "", postalCode: "" });
     setSuccess(false);
     setError("");
   };
@@ -1035,6 +1051,36 @@ export const BookingCalendar: React.FC<BookingCalendarProps> = ({
                   required
                 />
               </div>
+
+              {/* Location Input - Full Width */}
+              <div className="md:col-span-2">
+                <LocationInput
+                  onLocationSelect={handleLocationSelect}
+                  initialValue={
+                    customerInfo.address
+                      ? `${customerInfo.address}, ${customerInfo.postalCode} ${customerInfo.city}`
+                      : ''
+                  }
+                />
+              </div>
+
+              {/* Show selected address components */}
+              {customerInfo.address && (
+                <div className="md:col-span-2 grid grid-cols-3 gap-4">
+                  <div className="p-3 bg-bariq-black-lighter rounded-md border border-gray-800">
+                    <label className="text-xs text-bariq-grey block mb-1">Straat</label>
+                    <div className="font-medium text-bariq-white">{customerInfo.address}</div>
+                  </div>
+                  <div className="p-3 bg-bariq-black-lighter rounded-md border border-gray-800">
+                    <label className="text-xs text-bariq-grey block mb-1">Stad</label>
+                    <div className="font-medium text-bariq-white">{customerInfo.city}</div>
+                  </div>
+                  <div className="p-3 bg-bariq-black-lighter rounded-md border border-gray-800">
+                    <label className="text-xs text-bariq-grey block mb-1">Postcode</label>
+                    <div className="font-medium text-bariq-white">{customerInfo.postalCode}</div>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Booking samenvatting */}

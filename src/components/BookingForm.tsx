@@ -9,13 +9,21 @@ import {
   Search,
   X,
   ChevronRight,
+  Plus,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "./Button";
+import LocationInput, { type LocationData } from "./LocationInput";
 import { nl } from "date-fns/locale";
 import { addBooking } from "../utils/adminData";
+import {
+  addBookingToSupabase,
+  getServicesByCategory,
+  getActiveServices,
+  type SupabaseService,
+} from "../utils/supabaseService";
 import {
   sendBookingConfirmationEmail,
   type BookingEmailData,
@@ -65,24 +73,96 @@ const BookingForm: React.FC = () => {
   const [selectedDateStats, setSelectedDateStats] = useState<any>(null);
   const [showMobileTimeSlots, setShowMobileTimeSlots] = useState(false);
   const [emailStatus, setEmailStatus] = useState<string>("");
+  
+  // Supabase service selection
+  const [services, setServices] = useState<SupabaseService[]>([]);
+  const [selectedService, setSelectedService] = useState<SupabaseService | null>(null);
+  const [loadingServices, setLoadingServices] = useState(false);
+  
+  // Add-on services
+  const [addonServices, setAddonServices] = useState<SupabaseService[]>([]);
+  const [selectedAddons, setSelectedAddons] = useState<SupabaseService[]>([]);
+  const [loadingAddons, setLoadingAddons] = useState(false);
+
+  // Load services when vehicle data changes
+  useEffect(() => {
+    async function loadServices() {
+      setLoadingServices(true);
+      try {
+        let fetchedServices: SupabaseService[] = [];
+        
+        if (vehicleData) {
+          // Determine category based on vehicle data
+          const vehicleInfo = formatVehicleInfo(vehicleData);
+          const category = vehicleInfo.segment === 'premium' || vehicleInfo.segment === 'large' 
+            ? 'groot' 
+            : 'klein';
+          
+          fetchedServices = await getServicesByCategory(category);
+        } else {
+          // Load all services if no vehicle data
+          fetchedServices = await getActiveServices();
+        }
+        
+        const mainServices = fetchedServices.filter(s => !s.isAddon);
+        setServices(mainServices);
+        
+        // Auto-select first service
+        if (mainServices.length > 0 && !selectedService) {
+          setSelectedService(mainServices[0]);
+        }
+      } catch (error) {
+        console.error('Error loading services:', error);
+      } finally {
+        setLoadingServices(false);
+      }
+    }
+    
+    loadServices();
+  }, [vehicleData]);
+
+  // Load add-on services
+  useEffect(() => {
+    async function loadAddons() {
+      setLoadingAddons(true);
+      try {
+        const allServices = await getActiveServices();
+        const addons = allServices.filter(s => s.isAddon);
+        setAddonServices(addons);
+      } catch (error) {
+        console.error('Error loading add-ons:', error);
+      } finally {
+        setLoadingAddons(false);
+      }
+    }
+    
+    loadAddons();
+  }, []);
 
   // Update available time slots when date changes
   useEffect(() => {
     if (formData.date) {
-      const dateString = formData.date.toISOString().split("T")[0];
-      const slots = getAvailableTimeSlots(dateString);
-      setAvailableTimeSlots(slots);
-      setSelectedDateStats(getDateStatistics(dateString));
+      const fetchSlots = async () => {
+        const dateString = formData.date.toISOString().split("T")[0];
+        const duration = selectedService?.duration || 90;
+        const slots = await getAvailableTimeSlots(dateString, duration);
+        setAvailableTimeSlots(slots);
+        
+        const stats = await getDateStatistics(dateString, duration);
+        setSelectedDateStats(stats);
 
-      // Clear selected time if it's no longer available
-      if (
-        formData.time &&
-        !slots.find((slot) => slot.time === formData.time && slot.isAvailable)
-      ) {
-        setFormData((prev) => ({ ...prev, time: "" }));
-      }
+        // Clear selected time if it's no longer available
+        if (
+          formData.time &&
+          !slots.find((slot) => slot.time === formData.time && slot.isAvailable)
+        ) {
+          setFormData((prev) => ({ ...prev, time: "" }));
+        }
+      };
+      
+      fetchSlots();
     }
-  }, [formData.date]);
+  }, [formData.date, selectedService]);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -96,6 +176,41 @@ const BookingForm: React.FC = () => {
     if (errors[name]) {
       setErrors({ ...errors, [name]: "" });
     }
+  };
+
+  const handleLocationSelect = (location: LocationData) => {
+    setFormData({
+      ...formData,
+      address: location.address,
+      city: location.city,
+      postalCode: location.postalCode,
+    });
+
+    // Clear address-related errors
+    const newErrors = { ...errors };
+    delete newErrors.address;
+    delete newErrors.city;
+    delete newErrors.postalCode;
+    setErrors(newErrors);
+  };
+
+  const toggleAddon = (addon: SupabaseService) => {
+    setSelectedAddons(prev => {
+      const isSelected = prev.find(a => a.id === addon.id);
+      if (isSelected) {
+        return prev.filter(a => a.id !== addon.id);
+      } else {
+        return [...prev, addon];
+      }
+    });
+  };
+
+  const calculateTotalPrice = () => {
+    let total = selectedService?.price || 0;
+    selectedAddons.forEach(addon => {
+      total += addon.price;
+    });
+    return total;
   };
 
   const handleLicensePlateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -152,10 +267,11 @@ const BookingForm: React.FC = () => {
     }
   };
 
-  const handleTimeSlotSelect = (time: string) => {
+  const handleTimeSlotSelect = async (time: string) => {
     const dateString = formData.date.toISOString().split("T")[0];
 
-    if (isTimeSlotAvailable(dateString, time)) {
+    const available = await isTimeSlotAvailable(dateString, time, 90);
+    if (available) {
       setFormData({ ...formData, time });
       setShowMobileTimeSlots(false);
 
@@ -165,7 +281,7 @@ const BookingForm: React.FC = () => {
     }
   };
 
-  const validateForm = () => {
+  const validateForm = async () => {
     const newErrors: Record<string, string> = {};
 
     if (!formData.name.trim()) newErrors.name = "Naam is verplicht";
@@ -194,7 +310,8 @@ const BookingForm: React.FC = () => {
     } else {
       // Check if selected time is still available
       const dateString = formData.date.toISOString().split("T")[0];
-      if (!isTimeSlotAvailable(dateString, formData.time)) {
+      const available = await isTimeSlotAvailable(dateString, formData.time, 90);
+      if (!available) {
         newErrors.time =
           "Deze tijd is niet meer beschikbaar. Kies een andere tijd.";
       }
@@ -207,84 +324,126 @@ const BookingForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (validateForm()) {
-      setIsSubmitting(true);
-      setEmailStatus("Boeking wordt verwerkt...");
+    // Validate service selection
+    if (!selectedService) {
+      setErrors({ ...errors, packageType: 'Selecteer eerst een pakket' });
+      return;
+    }
 
-      try {
-        // Save booking to local storage
+    if (!(await validateForm())) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    setEmailStatus("Boeking wordt verwerkt...");
+
+    try {
+      // Save booking to Supabase (primary) with fallback to localStorage
+      const result = await addBookingToSupabase(
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          address: formData.address,
+          city: formData.city,
+          postalCode: formData.postalCode,
+          carBrand: formData.carBrand,
+          carModel: formData.carModel,
+          licensePlate: formData.licensePlate,
+          date: formData.date.toISOString().split("T")[0],
+          time: formData.time,
+          notes: formData.notes || undefined,
+        },
+        selectedService.id,
+        selectedService.duration,
+        selectedAddons.map(addon => addon.id)
+      );
+
+      let bookingId: string;
+
+      if (result.success && result.booking) {
+        console.log("✅ Booking saved to Supabase:", result.booking);
+        bookingId = result.booking.id;
+      } else {
+        // Fallback to localStorage if Supabase fails
+        console.warn("⚠️ Supabase save failed, falling back to localStorage:", result.error);
         const bookingData = {
           ...formData,
           date: formData.date.toISOString().split("T")[0],
           parkingType: formData.parkingType as "outdoor" | "indoor",
           packageType: formData.packageType as "basic" | "premium",
         };
-
         const newBooking = addBooking(bookingData);
-
-        setEmailStatus("Bevestigingsmails worden verzonden...");
-
-        // Prepare email data
-        const emailData: BookingEmailData = {
-          customerName: formData.name,
-          customerEmail: formData.email,
-          customerPhone: formData.phone,
-          customerAddress: formData.address,
-          customerCity: formData.city,
-          customerPostalCode: formData.postalCode,
-          carBrand: formData.carBrand,
-          carModel: formData.carModel,
-          licensePlate: formData.licensePlate,
-          packageType: formData.packageType as "basic" | "premium",
-          date: formData.date.toISOString().split("T")[0],
-          time: formData.time,
-          notes: formData.notes || undefined,
-          bookingId: newBooking.id,
-        };
-
-        // Send confirmation emails
-        const emailsSent = await sendBookingConfirmationEmail(emailData);
-
-        if (emailsSent) {
-          setEmailStatus("✅ Bevestigingsmails succesvol verzonden!");
-        } else {
-          setEmailStatus(
-            "⚠️ Boeking opgeslagen, maar er was een probleem met het verzenden van emails."
-          );
-        }
-
-        setTimeout(() => {
-          setIsSubmitting(false);
-          setIsSubmitted(true);
-
-          // Reset form after 5 seconds
-          setTimeout(() => {
-            setIsSubmitted(false);
-            setEmailStatus("");
-            setFormData({
-              name: "",
-              email: "",
-              phone: "",
-              address: "",
-              city: "",
-              postalCode: "",
-              carBrand: "",
-              carModel: "",
-              licensePlate: "",
-              parkingType: "outdoor",
-              packageType: "basic",
-              date: getNextAvailableDate(),
-              time: "",
-              notes: "",
-            });
-            setVehicleData(null);
-          }, 5000);
-        }, 2000);
-      } catch (error) {
-        console.error("Error saving booking:", error);
-        setIsSubmitting(false);
-        setEmailStatus("❌ Er is een fout opgetreden. Probeer het opnieuw.");
+        bookingId = newBooking.id;
       }
+
+      // Prepare email data
+      setEmailStatus("Bevestigingsmails worden verzonden...");
+      
+      const emailData: BookingEmailData = {
+        customerName: formData.name,
+        customerEmail: formData.email,
+        customerPhone: formData.phone,
+        customerAddress: formData.address,
+        customerCity: formData.city,
+        customerPostalCode: formData.postalCode,
+        carBrand: formData.carBrand,
+        carModel: formData.carModel,
+        licensePlate: formData.licensePlate,
+        packageType: (selectedService.category === 'groot' ? 'premium' : 'basic') as "basic" | "premium",
+        serviceName: selectedService.name,
+        servicePrice: calculateTotalPrice(),
+        date: formData.date.toISOString().split("T")[0],
+        time: formData.time,
+        notes: formData.notes || undefined,
+        bookingId: bookingId,
+      };
+
+      // Send confirmation emails
+      const emailsSent = await sendBookingConfirmationEmail(emailData);
+
+      if (emailsSent) {
+        setEmailStatus("✅ Bevestigingsmails succesvol verzonden!");
+      } else {
+        setEmailStatus(
+          "⚠️ Boeking opgeslagen, maar er was een probleem met het verzenden van emails."
+        );
+      }
+
+      // Show success state
+      setTimeout(() => {
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+
+        // Reset form after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setEmailStatus("");
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            address: "",
+            city: "",
+            postalCode: "",
+            carBrand: "",
+            carModel: "",
+            licensePlate: "",
+            parkingType: "outdoor",
+            packageType: "basic",
+            date: getNextAvailableDate(),
+            time: "",
+            notes: "",
+          });
+          setVehicleData(null);
+          setSelectedService(null);
+          setSelectedAddons([]);
+        }, 5000);
+      }, 2000);
+    } catch (error) {
+      console.error("Error saving booking:", error);
+      setIsSubmitting(false);
+      setEmailStatus("❌ Er is een fout opgetreden. Probeer het opnieuw.");
     }
   };
 
@@ -421,74 +580,35 @@ const BookingForm: React.FC = () => {
               )}
             </div>
 
-            <div>
-              <label
-                htmlFor="address"
-                className="block text-charcoal-700 mb-1 font-medium"
-              >
-                Adres
-              </label>
-              <input
-                type="text"
-                id="address"
-                name="address"
-                value={formData.address}
-                onChange={handleChange}
-                className={`w-full p-3 border ${
-                  errors.address ? "border-red-500" : "border-charcoal-300"
-                } rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 text-base`}
-                placeholder="Straatnaam 123"
+            <div className="md:col-span-2">
+              <LocationInput
+                onLocationSelect={handleLocationSelect}
+                initialValue={
+                  formData.address
+                    ? `${formData.address}, ${formData.postalCode} ${formData.city}`
+                    : ''
+                }
+                error={errors.address || errors.city || errors.postalCode}
               />
-              {errors.address && (
-                <p className="text-red-500 text-sm mt-1">{errors.address}</p>
-              )}
             </div>
 
-            <div>
-              <label
-                htmlFor="city"
-                className="block text-charcoal-700 mb-1 font-medium"
-              >
-                Stad
-              </label>
-              <input
-                type="text"
-                id="city"
-                name="city"
-                value={formData.city}
-                onChange={handleChange}
-                className={`w-full p-3 border ${
-                  errors.city ? "border-red-500" : "border-charcoal-300"
-                } rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 text-base`}
-                placeholder="Amsterdam"
-              />
-              {errors.city && (
-                <p className="text-red-500 text-sm mt-1">{errors.city}</p>
-              )}
-            </div>
-
-            <div>
-              <label
-                htmlFor="postalCode"
-                className="block text-charcoal-700 mb-1 font-medium"
-              >
-                Postcode
-              </label>
-              <input
-                type="text"
-                id="postalCode"
-                name="postalCode"
-                value={formData.postalCode}
-                onChange={handleChange}
-                className={`w-full p-3 border ${
-                  errors.postalCode ? "border-red-500" : "border-charcoal-300"
-                } rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 text-base`}
-                placeholder="1012 AB"
-              />
-              {errors.postalCode && (
-                <p className="text-red-500 text-sm mt-1">{errors.postalCode}</p>
-              )}
-            </div>
+            {/* Hidden fields to show selected values */}
+            {formData.address && (
+              <div className="md:col-span-2 grid grid-cols-3 gap-4">
+                <div className="p-3 bg-gray-50 rounded-md">
+                  <label className="text-xs text-charcoal-600">Straat</label>
+                  <div className="font-medium text-charcoal-900">{formData.address}</div>
+                </div>
+                <div className="p-3 bg-gray-50 rounded-md">
+                  <label className="text-xs text-charcoal-600">Stad</label>
+                  <div className="font-medium text-charcoal-900">{formData.city}</div>
+                </div>
+                <div className="p-3 bg-gray-50 rounded-md">
+                  <label className="text-xs text-charcoal-600">Postcode</label>
+                  <div className="font-medium text-charcoal-900">{formData.postalCode}</div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -660,39 +780,116 @@ const BookingForm: React.FC = () => {
           </h3>
 
           <div className="grid grid-cols-1 gap-4 md:gap-6">
+            {/* Service Selection */}
             <div>
-              <label
-                htmlFor="packageType"
-                className="block text-charcoal-700 mb-1 font-medium"
-              >
-                Servicepakket
+              <label className="block text-charcoal-700 mb-3 font-medium">
+                <Car className="inline w-4 h-4 mr-2" />
+                Selecteer Pakket
               </label>
-              <select
-                id="packageType"
-                name="packageType"
-                value={formData.packageType}
-                onChange={handleChange}
-                className="w-full p-3 border border-charcoal-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 text-base"
-              >
-                <option value="basic">
-                  Basic Clean{" "}
-                  {pricing
-                    ? `(€${pricing.basic.finalPrice} incl. BTW)`
-                    : "(€79+ incl. BTW)"}
-                </option>
-                <option value="premium">
-                  Premium Clean{" "}
-                  {pricing
-                    ? `(€${pricing.premium.finalPrice} incl. BTW)`
-                    : "(€149+ incl. BTW)"}
-                </option>
-              </select>
-              <p className="text-charcoal-500 text-sm mt-1">
-                {pricing
-                  ? "Prijs gebaseerd op je voertuiggegevens"
-                  : "Prijs kan variëren op basis van de staat van je auto"}
-              </p>
+              {loadingServices ? (
+                <div className="text-charcoal-500 text-sm">Services laden...</div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {services.map((service) => (
+                    <div
+                      key={service.id}
+                      onClick={() => setSelectedService(service)}
+                      className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
+                        selectedService?.id === service.id
+                          ? 'border-primary-500 bg-primary-50'
+                          : 'border-charcoal-300 hover:border-charcoal-400 bg-white'
+                      }`}
+                    >
+                      <div className="flex justify-between items-start mb-2">
+                        <h4 className="font-semibold text-charcoal-900">{service.name}</h4>
+                        <span className="text-primary-600 font-bold">€{service.price}</span>
+                      </div>
+                      <p className="text-sm text-charcoal-600 mb-2">{service.description}</p>
+                      <div className="text-xs text-charcoal-500">
+                        <Clock className="h-3 w-3 inline mr-1" />
+                        {service.duration} minuten
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {errors.packageType && (
+                <p className="text-red-500 text-sm mt-1">{errors.packageType}</p>
+              )}
             </div>
+
+            {/* Add-on Services */}
+            {addonServices.length > 0 && (
+              <div>
+                <label className="block text-charcoal-700 mb-3 font-medium">
+                  <Plus className="inline w-4 h-4 mr-2" />
+                  Extra's (optioneel)
+                </label>
+                {loadingAddons ? (
+                  <div className="text-charcoal-500 text-sm">Extra's laden...</div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {addonServices.map((addon) => {
+                      const isSelected = selectedAddons.find(a => a.id === addon.id);
+                      return (
+                        <div
+                          key={addon.id}
+                          onClick={() => toggleAddon(addon)}
+                          className={`p-3 rounded-lg border-2 cursor-pointer transition-all ${
+                            isSelected
+                              ? 'border-primary-500 bg-primary-50'
+                              : 'border-charcoal-300 hover:border-charcoal-400 bg-white'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                              <input
+                                type="checkbox"
+                                checked={!!isSelected}
+                                onChange={() => {}} // Handled by onClick
+                                className="mr-3 h-4 w-4 text-primary-600 border-charcoal-300 rounded focus:ring-primary-500"
+                              />
+                              <div>
+                                <div className="font-medium text-charcoal-900">{addon.name}</div>
+                                <div className="text-sm text-charcoal-600">{addon.description}</div>
+                              </div>
+                            </div>
+                            <span className="text-primary-600 font-bold">€{addon.price}</span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Price Summary */}
+            {(selectedService || selectedAddons.length > 0) && (
+              <div className="bg-charcoal-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-charcoal-900 mb-2">Prijs overzicht</h4>
+                <div className="space-y-1 text-sm">
+                  {selectedService && (
+                    <div className="flex justify-between">
+                      <span>{selectedService.name}</span>
+                      <span>€{selectedService.price}</span>
+                    </div>
+                  )}
+                  {selectedAddons.map((addon) => (
+                    <div key={addon.id} className="flex justify-between text-charcoal-600">
+                      <span>+ {addon.name}</span>
+                      <span>€{addon.price}</span>
+                    </div>
+                  ))}
+                  <div className="border-t border-charcoal-300 pt-1 mt-2 font-semibold">
+                    <div className="flex justify-between">
+                      <span>Totaal</span>
+                      <span>€{calculateTotalPrice()}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div>
               <label className="block text-charcoal-700 mb-1 font-medium">

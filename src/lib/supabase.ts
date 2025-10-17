@@ -13,6 +13,8 @@ export interface Service {
   duration: number;
   price: number;
   color: string;
+  category?: 'klein' | 'groot';
+  is_addon?: boolean;
   active: boolean;
   created_at: string;
 }
