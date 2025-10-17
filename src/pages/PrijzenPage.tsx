@@ -1,51 +1,82 @@
-import { Check, Info, ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import SEO from '../components/SEO';
-import SectionTitle from '../components/SectionTitle';
-import Button from '../components/Button';
-import FAQ from '../components/FAQ';
+import { Check, Info, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
+import SectionTitle from "../components/SectionTitle";
+import Button from "../components/Button";
+import FAQ from "../components/FAQ";
 
 const PrijzenPage: React.FC = () => {
   const extraServices = [
-    { name: 'Dieptereiniging mattenset', price: '€20', description: 'Grondige reiniging van alle automatten' },
-    { name: 'Dieptereiniging stoelen', price: '€100', description: 'Intensieve reiniging stof of leer + verzorging' },
-    { name: 'Dieptereiniging hemelbekleding', price: '€50', description: 'Reinigen binnenkant dak, verwijderen vlekken' },
-    { name: 'Dieptereiniging vloerbekleding', price: '€50', description: 'Diep reinigen volledige vloerbekleding' },
-    { name: 'Dieptereiniging kofferbak', price: '€25', description: 'Grondige schoonmaak kofferbakbekleding' },
-    { name: 'Plastic matteren', price: '€50', description: 'Originele matte uitstraling (niet vet/glans)' },
-    { name: 'Geurverwijdering Professional', price: '€30', description: 'Behandeling rook, huisdier, vocht' }
+    {
+      name: "Dieptereiniging mattenset",
+      price: "€20",
+      description: "Grondige reiniging van alle automatten",
+    },
+    {
+      name: "Dieptereiniging stoelen",
+      price: "€100",
+      description: "Intensieve reiniging stof of leer + verzorging",
+    },
+    {
+      name: "Dieptereiniging hemelbekleding",
+      price: "€50",
+      description: "Reinigen binnenkant dak, verwijderen vlekken",
+    },
+    {
+      name: "Dieptereiniging vloerbekleding",
+      price: "€50",
+      description: "Diep reinigen volledige vloerbekleding",
+    },
+    {
+      name: "Dieptereiniging kofferbak",
+      price: "€25",
+      description: "Grondige schoonmaak kofferbakbekleding",
+    },
+    {
+      name: "Plastic matteren",
+      price: "€50",
+      description: "Originele matte uitstraling (niet vet/glans)",
+    },
+    {
+      name: "Geurverwijdering Professional",
+      price: "€30",
+      description: "Behandeling rook, huisdier, vocht",
+    },
   ];
 
   const basePakketFeatures = [
-    'Professionele exterieur handwas',
-    'Wielen & velgen dieptereiniging',
-    'Interieur volledig stofzuigen',
-    'Dashboard & middenconsole reinigen',
-    'Ramen binnen & buiten kristalhelder'
+    "Professionele exterieur handwas",
+    "Wielen & velgen dieptereiniging",
+    "Interieur volledig stofzuigen",
+    "Dashboard & middenconsole reinigen",
+    "Ramen binnen & buiten kristalhelder",
   ];
 
   const faqItems = [
     {
-      question: 'Hoelang duurt een complete handwas?',
-      answer: 'Meestal 60–90 minuten, afhankelijk van voertuiggrootte en gekozen extra\'s.'
+      question: "Hoelang duurt een complete handwas?",
+      answer:
+        "Meestal 60–90 minuten, afhankelijk van voertuiggrootte en gekozen extra's.",
     },
     {
-      question: 'Reinigen jullie ook leer?',
-      answer: 'Ja, stoelen worden per materiaal behandeld; leer wordt gereinigd en gevoed.'
+      question: "Reinigen jullie ook leer?",
+      answer:
+        "Ja, stoelen worden per materiaal behandeld; leer wordt gereinigd en gevoed.",
     },
     {
-      question: 'Kan ik op locatie boeken?',
-      answer: 'Ja, in overleg binnen onze servicegebieden.'
+      question: "Kan ik op locatie boeken?",
+      answer: "Ja, in overleg binnen onze servicegebieden.",
     },
     {
-      question: 'Welke betaalmethoden?',
-      answer: 'Pin en contant.'
+      question: "Welke betaalmethoden?",
+      answer: "Pin en contant.",
     },
     {
-      question: 'Zijn de prijzen vast?',
-      answer: 'De basisprijs koppelen we aan RDW-gegevens (type/grootte/leeftijd). Extra\'s zijn optioneel.'
-    }
+      question: "Zijn de prijzen vast?",
+      answer:
+        "De basisprijs koppelen we aan RDW-gegevens (type/grootte/leeftijd). Extra's zijn optioneel.",
+    },
   ];
 
   return (
@@ -69,7 +100,8 @@ const PrijzenPage: React.FC = () => {
               Prijzen & Voertuigklassen
             </h1>
             <p className="text-xl text-bariq-grey mb-8">
-              Prijzen zijn gebaseerd op voertuigtype, grootte en leeftijd volgens RDW-gegevens
+              Prijzen zijn gebaseerd op voertuigtype, grootte en leeftijd
+              volgens RDW-gegevens
             </p>
           </motion.div>
         </div>
@@ -87,13 +119,19 @@ const PrijzenPage: React.FC = () => {
               className="bg-bariq-black p-8 md:p-10 rounded-2xl border-2 border-gray-800 hover:border-bariq-red transition-all"
             >
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-bariq-white mb-4">Klasse A</h3>
-                <div className="text-6xl font-bold text-bariq-red mb-4">€90</div>
+                <h3 className="text-2xl font-bold text-bariq-white mb-4">
+                  Klasse A
+                </h3>
+                <div className="text-6xl font-bold text-bariq-red mb-4">
+                  €90
+                </div>
                 <p className="text-bariq-grey">Compact & Midsize voertuigen</p>
               </div>
-              
+
               <div className="space-y-3 mb-8">
-                <p className="font-semibold text-bariq-white mb-4">Voorbeelden:</p>
+                <p className="font-semibold text-bariq-white mb-4">
+                  Voorbeelden:
+                </p>
                 <ul className="space-y-2 text-bariq-grey">
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-bariq-red rounded-full"></div>
@@ -119,7 +157,9 @@ const PrijzenPage: React.FC = () => {
               </div>
 
               <div className="space-y-3 mb-8">
-                <p className="font-semibold text-bariq-white mb-4">Basispakket inbegrepen:</p>
+                <p className="font-semibold text-bariq-white mb-4">
+                  Basispakket inbegrepen:
+                </p>
                 {basePakketFeatures.map((feature, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-bariq-red flex-shrink-0 mt-0.5" />
@@ -128,7 +168,12 @@ const PrijzenPage: React.FC = () => {
                 ))}
               </div>
 
-              <Button to="/kenteken-check" variant="outline" size="large" className="w-full">
+              <Button
+                to="/kenteken-check"
+                variant="outline"
+                size="large"
+                className="w-full"
+              >
                 Check Kenteken
               </Button>
             </motion.div>
@@ -147,13 +192,19 @@ const PrijzenPage: React.FC = () => {
               </div>
 
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-bariq-white mb-4">Klasse B</h3>
-                <div className="text-6xl font-bold text-bariq-red mb-4">€120</div>
+                <h3 className="text-2xl font-bold text-bariq-white mb-4">
+                  Klasse B
+                </h3>
+                <div className="text-6xl font-bold text-bariq-red mb-4">
+                  €120
+                </div>
                 <p className="text-bariq-grey">Premium & Large voertuigen</p>
               </div>
-              
+
               <div className="space-y-3 mb-8">
-                <p className="font-semibold text-bariq-white mb-4">Voorbeelden:</p>
+                <p className="font-semibold text-bariq-white mb-4">
+                  Voorbeelden:
+                </p>
                 <ul className="space-y-2 text-bariq-grey">
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-bariq-red rounded-full"></div>
@@ -179,7 +230,9 @@ const PrijzenPage: React.FC = () => {
               </div>
 
               <div className="space-y-3 mb-8">
-                <p className="font-semibold text-bariq-white mb-4">Basispakket inbegrepen:</p>
+                <p className="font-semibold text-bariq-white mb-4">
+                  Basispakket inbegrepen:
+                </p>
                 {basePakketFeatures.map((feature, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-bariq-red flex-shrink-0 mt-0.5" />
@@ -188,7 +241,12 @@ const PrijzenPage: React.FC = () => {
                 ))}
               </div>
 
-              <Button to="/kenteken-check" variant="primary" size="large" className="w-full">
+              <Button
+                to="/kenteken-check"
+                variant="primary"
+                size="large"
+                className="w-full"
+              >
                 Check Kenteken
               </Button>
             </motion.div>
@@ -203,11 +261,14 @@ const PrijzenPage: React.FC = () => {
                   Niet zeker welke klasse?
                 </p>
                 <p className="text-bariq-grey">
-                  Gebruik onze{' '}
-                  <Link to="/kenteken-check" className="text-bariq-red hover:text-bariq-red-hover font-semibold">
+                  Gebruik onze{" "}
+                  <Link
+                    to="/kenteken-check"
+                    className="text-bariq-red hover:text-bariq-red-hover font-semibold"
+                  >
                     kenteken-check
-                  </Link>
-                  {' '}voor een directe prijsindicatie op basis van RDW-gegevens.
+                  </Link>{" "}
+                  voor een directe prijsindicatie op basis van RDW-gegevens.
                 </p>
               </div>
             </div>
@@ -241,9 +302,7 @@ const PrijzenPage: React.FC = () => {
                     {service.price}
                   </span>
                 </div>
-                <p className="text-bariq-grey text-sm">
-                  {service.description}
-                </p>
+                <p className="text-bariq-grey text-sm">{service.description}</p>
               </motion.div>
             ))}
           </div>
@@ -252,7 +311,13 @@ const PrijzenPage: React.FC = () => {
             <p className="text-bariq-grey mb-6">
               Extra's kunnen tijdens het boeken worden toegevoegd
             </p>
-            <Button to="/booking-system" variant="primary" size="large" icon={<ArrowRight className="w-5 h-5" />} iconPosition="right">
+            <Button
+              to="/booking-system"
+              variant="primary"
+              size="large"
+              icon={<ArrowRight className="w-5 h-5" />}
+              iconPosition="right"
+            >
               Boek Nu
             </Button>
           </div>

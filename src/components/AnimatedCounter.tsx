@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import React, { useEffect, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 interface AnimatedCounterProps {
   end: number;
@@ -14,10 +14,10 @@ interface AnimatedCounterProps {
 const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   end,
   duration = 2,
-  suffix = '',
-  prefix = '',
-  className = '',
-  delay = 0
+  suffix = "",
+  prefix = "",
+  className = "",
+  delay = 0,
 }) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
@@ -35,11 +35,13 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
         if (!startTime) startTime = currentTime;
         const elapsedTime = (currentTime - startTime) / 1000;
         const progress = Math.min(elapsedTime / duration, 1);
-        
+
         // Easing function for smooth animation
         const easeOutCubic = 1 - Math.pow(1 - progress, 3);
-        const currentCount = Math.floor(startValue + (endValue - startValue) * easeOutCubic);
-        
+        const currentCount = Math.floor(
+          startValue + (endValue - startValue) * easeOutCubic
+        );
+
         setCount(currentCount);
 
         if (progress < 1) {
@@ -59,17 +61,19 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
       className={className}
       initial={{ opacity: 0, scale: 0.5 }}
       animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
-      transition={{ 
-        duration: 0.6, 
+      transition={{
+        duration: 0.6,
         delay: delay,
         type: "spring",
         stiffness: 100,
-        damping: 15
+        damping: 15,
       }}
     >
-      {prefix}{count}{suffix}
+      {prefix}
+      {count}
+      {suffix}
     </motion.div>
   );
 };
 
-export default AnimatedCounter; 
+export default AnimatedCounter;

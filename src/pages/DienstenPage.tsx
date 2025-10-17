@@ -1,75 +1,86 @@
-import { Link } from 'react-router-dom';
-import { Car, Droplet, Sparkles, Wind, Euro, ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
-import SEO from '../components/SEO';
-import SectionTitle from '../components/SectionTitle';
-import Button from '../components/Button';
+import { Link } from "react-router-dom";
+import { Car, Droplet, Sparkles, Wind, Euro, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import SEO from "../components/SEO";
+import SectionTitle from "../components/SectionTitle";
+import Button from "../components/Button";
 
 const DienstenPage: React.FC = () => {
   const baseDiensten = [
     {
       icon: <Car className="w-8 h-8" />,
-      title: 'Exterieur handwas',
-      description: 'Lakvriendelijke handmatige wassing met premium producten. Streeploos, glanzend resultaat.'
+      title: "Exterieur handwas",
+      description:
+        "Lakvriendelijke handmatige wassing met premium producten. Streeploos, glanzend resultaat.",
     },
     {
       icon: <Sparkles className="w-8 h-8" />,
-      title: 'Velgen/wielen diep reinigen',
-      description: 'Grondige reiniging van wielen en velgen, verwijdering van remstof en vuil.'
+      title: "Velgen/wielen diep reinigen",
+      description:
+        "Grondige reiniging van wielen en velgen, verwijdering van remstof en vuil.",
     },
     {
       icon: <Wind className="w-8 h-8" />,
-      title: 'Interieur stofzuigen',
-      description: 'Volledig stofzuigen van stoelen, vloeren, dashboard en alle hoekjes.'
+      title: "Interieur stofzuigen",
+      description:
+        "Volledig stofzuigen van stoelen, vloeren, dashboard en alle hoekjes.",
     },
     {
       icon: <Droplet className="w-8 h-8" />,
-      title: 'Dashboard & console reinigen',
-      description: 'Reiniging en verzorging van dashboard, middenconsole en alle interieurdelen.'
+      title: "Dashboard & console reinigen",
+      description:
+        "Reiniging en verzorging van dashboard, middenconsole en alle interieurdelen.",
     },
     {
       icon: <Sparkles className="w-8 h-8" />,
-      title: 'Glas binnen/buiten',
-      description: 'Kristalheldere ramen, binnen en buiten, voor optimaal zicht.'
-    }
+      title: "Glas binnen/buiten",
+      description:
+        "Kristalheldere ramen, binnen en buiten, voor optimaal zicht.",
+    },
   ];
 
   const extraDiensten = [
     {
-      name: 'Dieptereiniging mattenset',
-      price: '€20',
-      description: 'Grondige reiniging van alle automatten. Vuil, zand en vlekken worden verwijderd.'
+      name: "Dieptereiniging mattenset",
+      price: "€20",
+      description:
+        "Grondige reiniging van alle automatten. Vuil, zand en vlekken worden verwijderd.",
     },
     {
-      name: 'Dieptereiniging stoelen',
-      price: '€100',
-      description: 'Intensieve reiniging van alle stoelen. Stof of leer wordt gereinigd en verzorgd.'
+      name: "Dieptereiniging stoelen",
+      price: "€100",
+      description:
+        "Intensieve reiniging van alle stoelen. Stof of leer wordt gereinigd en verzorgd.",
     },
     {
-      name: 'Dieptereiniging hemelbekleding',
-      price: '€50',
-      description: 'Reinigen van de binnenkant van het dak. Vlekken en vetsporen worden verwijderd.'
+      name: "Dieptereiniging hemelbekleding",
+      price: "€50",
+      description:
+        "Reinigen van de binnenkant van het dak. Vlekken en vetsporen worden verwijderd.",
     },
     {
-      name: 'Dieptereiniging vloerbekleding',
-      price: '€50',
-      description: 'Diep reinigen van de volledige vloerbekleding. Verwijdert ingelopen vuil en vlekken.'
+      name: "Dieptereiniging vloerbekleding",
+      price: "€50",
+      description:
+        "Diep reinigen van de volledige vloerbekleding. Verwijdert ingelopen vuil en vlekken.",
     },
     {
-      name: 'Dieptereiniging kofferbakbekleding',
-      price: '€25',
-      description: 'Grondige schoonmaak van de bekleding in de kofferbak.'
+      name: "Dieptereiniging kofferbakbekleding",
+      price: "€25",
+      description: "Grondige schoonmaak van de bekleding in de kofferbak.",
     },
     {
-      name: 'Plastic matteren',
-      price: '€50',
-      description: 'Binnenpanelen krijgen hun originele, matte uitstraling terug (niet vet of glanzend).'
+      name: "Plastic matteren",
+      price: "€50",
+      description:
+        "Binnenpanelen krijgen hun originele, matte uitstraling terug (niet vet of glanzend).",
     },
     {
-      name: 'Geurverwijdering Professional',
-      price: '€30',
-      description: 'Behandeling tegen rook, huisdieren, vocht en andere geuren. Auto ruikt weer fris.'
-    }
+      name: "Geurverwijdering Professional",
+      price: "€30",
+      description:
+        "Behandeling tegen rook, huisdieren, vocht en andere geuren. Auto ruikt weer fris.",
+    },
   ];
 
   return (
@@ -93,7 +104,8 @@ const DienstenPage: React.FC = () => {
               Diensten & Opties
             </h1>
             <p className="text-xl text-bariq-grey mb-8">
-              Elk detail telt. Kies je basispakket en upgrade met intensive-care services.
+              Elk detail telt. Kies je basispakket en upgrade met intensive-care
+              services.
             </p>
           </motion.div>
         </div>
@@ -117,15 +129,11 @@ const DienstenPage: React.FC = () => {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="bg-bariq-black p-6 rounded-2xl border border-gray-800 hover:border-bariq-red transition-all"
               >
-                <div className="text-bariq-red mb-4">
-                  {dienst.icon}
-                </div>
+                <div className="text-bariq-red mb-4">{dienst.icon}</div>
                 <h3 className="text-xl font-semibold text-bariq-white mb-2">
                   {dienst.title}
                 </h3>
-                <p className="text-bariq-grey">
-                  {dienst.description}
-                </p>
+                <p className="text-bariq-grey">{dienst.description}</p>
               </motion.div>
             ))}
           </div>
@@ -133,12 +141,17 @@ const DienstenPage: React.FC = () => {
           <div className="text-center mt-12 p-6 bg-bariq-black rounded-2xl max-w-4xl mx-auto border border-bariq-red">
             <div className="flex items-center justify-center gap-2 mb-4">
               <Euro className="w-6 h-6 text-bariq-red" />
-              <h3 className="text-2xl font-bold text-bariq-white">Vanaf €90 voor Klasse A · €120 voor Klasse B</h3>
+              <h3 className="text-2xl font-bold text-bariq-white">
+                Vanaf €90 voor Klasse A · €120 voor Klasse B
+              </h3>
             </div>
             <p className="text-bariq-grey mb-4">
               Alle bovenstaande diensten inbegrepen
             </p>
-            <Link to="/prijzen" className="text-bariq-red hover:text-bariq-red-hover font-semibold inline-flex items-center gap-2">
+            <Link
+              to="/prijzen"
+              className="text-bariq-red hover:text-bariq-red-hover font-semibold inline-flex items-center gap-2"
+            >
               Bekijk prijzen per voertuigklasse
               <ArrowRight className="w-4 h-4" />
             </Link>
@@ -172,9 +185,7 @@ const DienstenPage: React.FC = () => {
                     {extra.price}
                   </span>
                 </div>
-                <p className="text-bariq-grey text-sm">
-                  {extra.description}
-                </p>
+                <p className="text-bariq-grey text-sm">{extra.description}</p>
               </motion.div>
             ))}
           </div>

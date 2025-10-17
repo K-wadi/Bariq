@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface FAQItem {
   question: string;
@@ -20,18 +20,20 @@ const FAQ: React.FC<FAQProps> = ({ items, includeSchema = true }) => {
   };
 
   // Generate JSON-LD schema
-  const schemaData = includeSchema ? {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": items.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
+  const schemaData = includeSchema
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: items.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.answer,
+          },
+        })),
       }
-    }))
-  } : null;
+    : null;
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -64,19 +66,17 @@ const FAQ: React.FC<FAQProps> = ({ items, includeSchema = true }) => {
                 <ChevronDown className="w-5 h-5 text-bariq-grey flex-shrink-0" />
               )}
             </button>
-            
+
             <AnimatePresence>
               {openIndex === index && (
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
+                  animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
-                  <div className="px-6 pb-4 text-bariq-grey">
-                    {item.answer}
-                  </div>
+                  <div className="px-6 pb-4 text-bariq-grey">{item.answer}</div>
                 </motion.div>
               )}
             </AnimatePresence>

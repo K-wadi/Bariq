@@ -1,38 +1,47 @@
-import { ArrowRight, Clock, Award, Car, Calendar, MessageCircle, Check } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import {
+  ArrowRight,
+  Clock,
+  Award,
+  Car,
+  Calendar,
+  MessageCircle,
+  Check,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
-import SEO from '../components/SEO';
-import SectionTitle from '../components/SectionTitle';
-import Button from '../components/Button';
-import FeatureCard from '../components/FeatureCard';
-import LicensePlateInput from '../components/LicensePlateInput';
-import BeforeAfterSlider from '../components/BeforeAfterSlider';
-import ReviewCard from '../components/ReviewCard';
+import SEO from "../components/SEO";
+import SectionTitle from "../components/SectionTitle";
+import Button from "../components/Button";
+import FeatureCard from "../components/FeatureCard";
+import LicensePlateInput from "../components/LicensePlateInput";
+import BeforeAfterSlider from "../components/BeforeAfterSlider";
+import ReviewCard from "../components/ReviewCard";
 
 const HomePage: React.FC = () => {
   const scrollToLicenseCheck = () => {
-    const element = document.getElementById('license-check');
+    const element = document.getElementById("license-check");
     if (element) {
       const headerHeight = 80;
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - headerHeight;
-      
+
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   };
 
   const extraServices = [
-    { name: 'Matten', price: '€20' },
-    { name: 'Stoelen', price: '€100' },
-    { name: 'Hemel', price: '€50' },
-    { name: 'Vloer', price: '€50' },
-    { name: 'Kofferbak', price: '€25' },
-    { name: 'Plastic matteren', price: '€50' },
-    { name: 'Geurverwijdering Pro', price: '€30' }
+    { name: "Matten", price: "€20" },
+    { name: "Stoelen", price: "€100" },
+    { name: "Hemel", price: "€50" },
+    { name: "Vloer", price: "€50" },
+    { name: "Kofferbak", price: "€25" },
+    { name: "Plastic matteren", price: "€50" },
+    { name: "Geurverwijdering Pro", price: "€30" },
   ];
 
   return (
@@ -47,9 +56,9 @@ const HomePage: React.FC = () => {
       <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 bg-bariq-black overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-radial opacity-50"></div>
-        
+
         <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <motion.div 
+          <motion.div
             className="max-w-4xl mx-auto text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -58,31 +67,31 @@ const HomePage: React.FC = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-bariq-white mb-6">
               Premium autowas & interieurreiniging in Amsterdam
             </h1>
-            
+
             <p className="text-xl md:text-2xl text-bariq-grey mb-8">
               Handwas door professionals. Transparante prijzen. Snel te boeken.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                to="/booking-system" 
-                variant="primary" 
+              <Button
+                to="/booking-system"
+                variant="primary"
                 size="large"
                 icon={<Calendar size={20} />}
               >
                 Boek Nu
               </Button>
-              <Button 
+              <Button
                 onClick={scrollToLicenseCheck}
-                variant="outline" 
+                variant="outline"
                 size="large"
                 icon={<Car size={20} />}
               >
                 Check Kenteken
               </Button>
-              <Button 
+              <Button
                 href="https://wa.me/31685523584?text=Hallo,%20ik%20wil%20graag%20een%20afspraak%20maken"
-                variant="outline" 
+                variant="outline"
                 size="large"
                 icon={<MessageCircle size={20} />}
               >
@@ -96,11 +105,8 @@ const HomePage: React.FC = () => {
       {/* Waarom Bariq */}
       <section className="py-16 md:py-24 bg-bariq-black-lighter">
         <div className="container mx-auto px-4 md:px-6">
-          <SectionTitle
-            title="Waarom Bariq"
-            subtitle="Wat ons onderscheidt"
-          />
-          
+          <SectionTitle title="Waarom Bariq" subtitle="Wat ons onderscheidt" />
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <FeatureCard
               icon={<Award className="w-8 h-8" />}
@@ -131,7 +137,7 @@ const HomePage: React.FC = () => {
             title="Inbegrepen Basispakket"
             subtitle="Perfect voor regulier onderhoud – jouw auto weer fris"
           />
-          
+
           <div className="max-w-4xl mx-auto">
             <div className="bg-bariq-black-lighter p-6 md:p-8 lg:p-12 rounded-2xl border-2 border-bariq-red">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
@@ -141,7 +147,9 @@ const HomePage: React.FC = () => {
                     <h3 className="text-lg font-semibold text-bariq-white mb-1">
                       Professionele exterieur handwas
                     </h3>
-                    <p className="text-bariq-grey text-sm">Lakvriendelijk en streeploos</p>
+                    <p className="text-bariq-grey text-sm">
+                      Lakvriendelijk en streeploos
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -150,7 +158,9 @@ const HomePage: React.FC = () => {
                     <h3 className="text-lg font-semibold text-bariq-white mb-1">
                       Wielen & velgen dieptereiniging
                     </h3>
-                    <p className="text-bariq-grey text-sm">Verwijdering van remstof en vuil</p>
+                    <p className="text-bariq-grey text-sm">
+                      Verwijdering van remstof en vuil
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -159,7 +169,9 @@ const HomePage: React.FC = () => {
                     <h3 className="text-lg font-semibold text-bariq-white mb-1">
                       Interieur volledig stofzuigen
                     </h3>
-                    <p className="text-bariq-grey text-sm">Stoelen, vloeren en alle hoekjes</p>
+                    <p className="text-bariq-grey text-sm">
+                      Stoelen, vloeren en alle hoekjes
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -168,7 +180,9 @@ const HomePage: React.FC = () => {
                     <h3 className="text-lg font-semibold text-bariq-white mb-1">
                       Dashboard & middenconsole reinigen
                     </h3>
-                    <p className="text-bariq-grey text-sm">Reiniging en verzorging van alle delen</p>
+                    <p className="text-bariq-grey text-sm">
+                      Reiniging en verzorging van alle delen
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 md:col-span-2">
@@ -177,7 +191,9 @@ const HomePage: React.FC = () => {
                     <h3 className="text-lg font-semibold text-bariq-white mb-1">
                       Ramen binnen & buiten kristalhelder
                     </h3>
-                    <p className="text-bariq-grey text-sm">Voor optimaal zicht</p>
+                    <p className="text-bariq-grey text-sm">
+                      Voor optimaal zicht
+                    </p>
                   </div>
                 </div>
               </div>
@@ -186,15 +202,24 @@ const HomePage: React.FC = () => {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-6">
                   <div>
                     <p className="text-bariq-grey text-sm mb-1">Klasse A</p>
-                    <p className="text-2xl sm:text-3xl font-bold text-bariq-red">€90</p>
+                    <p className="text-2xl sm:text-3xl font-bold text-bariq-red">
+                      €90
+                    </p>
                   </div>
                   <div className="text-bariq-grey hidden sm:block">|</div>
                   <div>
                     <p className="text-bariq-grey text-sm mb-1">Klasse B</p>
-                    <p className="text-2xl sm:text-3xl font-bold text-bariq-red">€120</p>
+                    <p className="text-2xl sm:text-3xl font-bold text-bariq-red">
+                      €120
+                    </p>
                   </div>
                 </div>
-                <Button to="/diensten" variant="primary" size="large" className="w-full sm:w-auto">
+                <Button
+                  to="/diensten"
+                  variant="primary"
+                  size="large"
+                  className="w-full sm:w-auto"
+                >
                   Bekijk Alle Prijzen
                 </Button>
               </div>
@@ -211,7 +236,7 @@ const HomePage: React.FC = () => {
             subtitle="Upgrade je pakket met intensive-care services"
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-3 md:gap-4 max-w-6xl mx-auto mb-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-3 md:gap-4 max-w-7xl mx-auto mb-8">
             {extraServices.map((service, index) => (
               <motion.div
                 key={index}
@@ -221,14 +246,18 @@ const HomePage: React.FC = () => {
                 transition={{ duration: 0.3, delay: index * 0.05 }}
                 className="bg-bariq-black p-4 md:p-5 rounded-xl border border-gray-800 hover:border-bariq-red transition-all text-center"
               >
-                <p className="text-bariq-white font-semibold text-sm md:text-base mb-1">{service.name}</p>
-                <p className="text-bariq-red font-bold text-lg">{service.price}</p>
+                <p className="text-bariq-white font-semibold text-sm md:text-base mb-1">
+                  {service.name}
+                </p>
+                <p className="text-bariq-red font-bold text-lg">
+                  {service.price}
+                </p>
               </motion.div>
             ))}
           </div>
 
           <div className="text-center">
-            <Link 
+            <Link
               to="/diensten#extras"
               className="inline-flex items-center gap-2 text-bariq-red hover:text-bariq-red-hover font-semibold"
             >
@@ -249,19 +278,32 @@ const HomePage: React.FC = () => {
             <div className="bg-bariq-black-lighter p-6 md:p-8 rounded-2xl border border-gray-800">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div className="p-4 bg-bariq-black rounded-xl">
-                  <p className="text-bariq-grey mb-2 text-sm md:text-base">Maandag</p>
-                  <p className="text-lg md:text-xl font-semibold text-red-500">Niet beschikbaar</p>
+                  <p className="text-bariq-grey mb-2 text-sm md:text-base">
+                    Maandag
+                  </p>
+                  <p className="text-lg md:text-xl font-semibold text-red-500">
+                    Niet beschikbaar
+                  </p>
                 </div>
                 <div className="p-4 bg-bariq-black rounded-xl">
-                  <p className="text-bariq-grey mb-2 text-sm md:text-base">Dinsdag – Zondag</p>
-                  <p className="text-lg md:text-xl font-semibold text-bariq-white">8:00 – 20:00</p>
+                  <p className="text-bariq-grey mb-2 text-sm md:text-base">
+                    Dinsdag – Zondag
+                  </p>
+                  <p className="text-lg md:text-xl font-semibold text-bariq-white">
+                    8:00 – 20:00
+                  </p>
                 </div>
               </div>
               <p className="text-bariq-grey text-sm mt-6">
                 Regio: Amsterdam en omgeving
               </p>
               <div className="mt-6">
-                <Button to="/booking-system" variant="primary" size="large" className="w-full sm:w-auto">
+                <Button
+                  to="/booking-system"
+                  variant="primary"
+                  size="large"
+                  className="w-full sm:w-auto"
+                >
                   Boek Nu via Calendly
                 </Button>
               </div>
@@ -271,19 +313,23 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* License Plate Check */}
-      <section id="license-check" className="py-16 md:py-24 bg-bariq-black-lighter">
+      <section
+        id="license-check"
+        className="py-16 md:py-24 bg-bariq-black-lighter"
+      >
         <div className="container mx-auto px-4 md:px-6">
           <SectionTitle
             title="Prijs Check via Kenteken"
             subtitle="Voer je kenteken in voor een nauwkeurige prijsindicatie op basis van je voertuiggegevens"
           />
-          
+
           <div className="max-w-4xl mx-auto">
             <LicensePlateInput />
-            
+
             <div className="mt-6 text-center">
               <p className="text-bariq-grey text-sm">
-                Gegevens via RDW · Prijzen gebaseerd op voertuigtype, grootte en leeftijd
+                Gegevens via RDW · Prijzen gebaseerd op voertuigtype, grootte en
+                leeftijd
               </p>
             </div>
           </div>
@@ -297,7 +343,7 @@ const HomePage: React.FC = () => {
             title="Resultaten die Spreken"
             subtitle="Bekijk enkele van onze recente transformaties"
           />
-          
+
           <BeforeAfterSlider />
         </div>
       </section>
@@ -309,7 +355,7 @@ const HomePage: React.FC = () => {
             title="Wat Klanten Zeggen"
             subtitle="Sterke reviews – bekijk onze ervaringen"
           />
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
             <ReviewCard
               name="Sander de Vries"
@@ -336,9 +382,9 @@ const HomePage: React.FC = () => {
               delay={0.3}
             />
           </div>
-          
+
           <div className="text-center mt-8 md:mt-12">
-            <Button 
+            <Button
               href="https://g.page/r/CWIdr67jKTkcEAI"
               variant="outline"
               icon={<ArrowRight className="w-4 h-4" />}
@@ -357,23 +403,24 @@ const HomePage: React.FC = () => {
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-bariq-white mb-4 md:mb-6 max-w-3xl mx-auto">
             Klaar om je auto te laten stralen zonder je huis te verlaten?
           </h2>
-          
+
           <p className="text-base md:text-lg lg:text-xl text-bariq-grey mb-6 md:mb-8 max-w-2xl mx-auto">
-            Boek vandaag nog en ervaar het verschil van een premium autopoetsservice aan huis.
+            Boek vandaag nog en ervaar het verschil van een premium
+            autopoetsservice aan huis.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              to="/booking-system" 
-              variant="primary" 
+            <Button
+              to="/booking-system"
+              variant="primary"
               size="large"
               icon={<Calendar size={20} />}
             >
               Boek Nu - Vanaf €90
             </Button>
-            <Button 
+            <Button
               href="https://wa.me/31685523584?text=Hallo,%20ik%20wil%20graag%20een%20afspraak%20maken"
-              variant="outline" 
+              variant="outline"
               size="large"
               icon={<MessageCircle size={20} />}
             >

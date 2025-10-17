@@ -1,9 +1,9 @@
-import React from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface SlideProps {
   beforeImage: string;
@@ -37,34 +37,44 @@ const NextArrow = (props: any) => {
   );
 };
 
-const BeforeAfterSlide: React.FC<SlideProps> = ({ beforeImage, afterImage, title }) => {
+const BeforeAfterSlide: React.FC<SlideProps> = ({
+  beforeImage,
+  afterImage,
+  title,
+}) => {
   return (
     <div className="px-2 py-2">
-      <motion.div 
+      <motion.div
         className="bg-gray-900 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-700"
         whileHover={{ y: -5 }}
         transition={{ duration: 0.3 }}
       >
         <div className="grid grid-cols-2 gap-1">
           <div className="relative overflow-hidden">
-            <img 
-              src={beforeImage} 
-              alt={`Before - ${title}`} 
+            <img
+              src={beforeImage}
+              alt={`Before - ${title}`}
               className="w-full h-48 md:h-56 object-cover transition-transform duration-300 hover:scale-105"
             />
-            <div className="absolute top-2 left-2 bg-black bg-opacity-90 text-gray-200 px-3 py-1 text-xs font-medium rounded backdrop-blur-sm">Voor</div>
+            <div className="absolute top-2 left-2 bg-black bg-opacity-90 text-gray-200 px-3 py-1 text-xs font-medium rounded backdrop-blur-sm">
+              Voor
+            </div>
           </div>
           <div className="relative overflow-hidden">
-            <img 
-              src={afterImage} 
-              alt={`After - ${title}`} 
+            <img
+              src={afterImage}
+              alt={`After - ${title}`}
               className="w-full h-48 md:h-56 object-cover transition-transform duration-300 hover:scale-105"
             />
-            <div className="absolute top-2 left-2 bg-primary-bright bg-opacity-90 text-gray-200 px-3 py-1 text-xs font-medium rounded backdrop-blur-sm">Na</div>
+            <div className="absolute top-2 left-2 bg-primary-bright bg-opacity-90 text-gray-200 px-3 py-1 text-xs font-medium rounded backdrop-blur-sm">
+              Na
+            </div>
           </div>
         </div>
         <div className="p-4">
-          <h3 className="font-display font-semibold text-lg text-charcoal-900 leading-tight">{title}</h3>
+          <h3 className="font-display font-semibold text-lg text-charcoal-900 leading-tight">
+            {title}
+          </h3>
         </div>
       </motion.div>
     </div>
@@ -96,7 +106,7 @@ const BeforeAfterSlider: React.FC = () => {
           slidesToShow: 2,
           slidesToScroll: 1,
           speed: 500,
-        }
+        },
       },
       {
         breakpoint: 640,
@@ -106,43 +116,43 @@ const BeforeAfterSlider: React.FC = () => {
           speed: 400,
           arrows: false,
           centerMode: true,
-          centerPadding: '20px',
-        }
-      }
-    ]
+          centerPadding: "20px",
+        },
+      },
+    ],
   };
 
   const slideData = [
     {
       beforeImage: "/Mercedes S-Klasse Premium Clean/Before.svg",
       afterImage: "/Mercedes S-Klasse Premium Clean/After.svg",
-      title: "Mercedes S-Klasse Premium Clean"
+      title: "Mercedes S-Klasse Premium Clean",
     },
     {
       beforeImage: "/Volkswagen Golf Basic Clean/Before.svg",
       afterImage: "/Volkswagen Golf Basic Clean/After.svg",
-      title: "Volkswagen Golf Basic Clean"
+      title: "Volkswagen Golf Basic Clean",
     },
     {
       beforeImage: "/BMW 3 Serie Dieptereiniging/Before.svg",
       afterImage: "/BMW 3 Serie Dieptereiniging/After.svg",
-      title: "BMW 3 Serie Dieptereiniging"
+      title: "BMW 3 Serie Dieptereiniging",
     },
     {
       beforeImage: "/Audi Q5 Premium Exterieur/Before.svg",
       afterImage: "/Audi Q5 Premium Exterieur/After.svg",
-      title: "Audi Q5 Premium Exterieur"
+      title: "Audi Q5 Premium Exterieur",
     },
     {
       beforeImage: "/Before_After/Before.svg",
       afterImage: "/Before_After/After.svg",
-      title: "Ford Focus Premium Clean"
+      title: "Ford Focus Premium Clean",
     },
     {
       beforeImage: "/Before_After2/Before.svg",
       afterImage: "/Before_After2/After.svg",
-      title: "Volkswagen GTI Dieptereiniging"
-    }
+      title: "Volkswagen GTI Dieptereiniging",
+    },
   ];
 
   return (

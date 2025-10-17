@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Logo from './Logo';
-import { navAnimations } from '../utils/animationUtils';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, Phone } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import Logo from "./Logo";
+import { navAnimations } from "../utils/animationUtils";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +12,7 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     let ticking = false;
-    
+
     const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
@@ -27,8 +27,8 @@ const Header: React.FC = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -36,18 +36,18 @@ const Header: React.FC = () => {
   }, [location]);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Diensten & Prijzen', path: '/diensten' },
-    { name: 'Kenteken-check', path: '/kenteken-check' },
-    { name: 'Reviews', path: '/reviews' },
-    { name: 'Over', path: '/over' },
-    { name: 'Contact', path: '/contact' },
+    { name: "Home", path: "/" },
+    { name: "Diensten & Prijzen", path: "/diensten" },
+    { name: "Kenteken-check", path: "/kenteken-check" },
+    { name: "Reviews", path: "/reviews" },
+    { name: "Over", path: "/over" },
+    { name: "Contact", path: "/contact" },
   ];
 
   return (
-    <header 
+    <header
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-bariq-black shadow-md py-2' : 'bg-transparent py-4'
+        isScrolled ? "bg-bariq-black shadow-md py-2" : "bg-transparent py-4"
       }`}
     >
       <div className="container mx-auto px-4 md:px-6">
@@ -75,16 +75,16 @@ const Header: React.FC = () => {
                 to={link.path}
                 className={`text-sm font-medium transition-colors hover:text-bariq-red relative group ${
                   location.pathname === link.path
-                    ? 'text-bariq-red'
-                    : 'text-bariq-white'
+                    ? "text-bariq-red"
+                    : "text-bariq-white"
                 }`}
               >
                 {link.name}
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-bariq-red transform scale-x-0 group-hover:scale-x-100 transition-transform" />
               </Link>
             ))}
-            <a 
-              href="tel:0685523584" 
+            <a
+              href="tel:0685523584"
               className="hidden xl:flex items-center text-bariq-white hover:text-bariq-red font-medium text-sm"
             >
               <Phone className="w-4 h-4 mr-2" />
@@ -115,8 +115,8 @@ const Header: React.FC = () => {
                 to={link.path}
                 className={`text-base py-2 border-b border-gray-800 ${
                   location.pathname === link.path
-                    ? 'text-bariq-red font-semibold'
-                    : 'text-bariq-white'
+                    ? "text-bariq-red font-semibold"
+                    : "text-bariq-white"
                 }`}
               >
                 {link.name}

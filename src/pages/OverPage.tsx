@@ -1,35 +1,40 @@
-import { Award, Heart, Target, Users, Shield } from 'lucide-react';
-import { motion } from 'framer-motion';
-import SEO from '../components/SEO';
-import Button from '../components/Button';
+import { Award, Heart, Target, Users, Shield } from "lucide-react";
+import { motion } from "framer-motion";
+import SEO from "../components/SEO";
+import Button from "../components/Button";
 
 const OverPage: React.FC = () => {
   const values = [
     {
       icon: <Award className="w-8 h-8" />,
-      title: 'Vakmanschap',
-      description: 'Handwas met PH-neutrale shampoo. We behandelen elke auto met de zorg en aandacht die het verdient. Geen shortcuts, alleen topkwaliteit.'
+      title: "Vakmanschap",
+      description:
+        "Handwas met PH-neutrale shampoo. We behandelen elke auto met de zorg en aandacht die het verdient. Geen shortcuts, alleen topkwaliteit.",
     },
     {
       icon: <Heart className="w-8 h-8" />,
-      title: 'Passie',
-      description: 'Autodetailing is onze passie. We houden van wat we doen en dat zie je terug in elk detail.'
+      title: "Passie",
+      description:
+        "Autodetailing is onze passie. We houden van wat we doen en dat zie je terug in elk detail.",
     },
     {
       icon: <Target className="w-8 h-8" />,
-      title: 'Transparantie',
-      description: 'Heldere prijzen, duidelijke communicatie en eerlijke adviezen. Wat je ziet is wat je krijgt.'
+      title: "Transparantie",
+      description:
+        "Heldere prijzen, duidelijke communicatie en eerlijke adviezen. Wat je ziet is wat je krijgt.",
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: 'Service',
-      description: 'Jouw tevredenheid staat voorop. We komen naar jou toe, op jouw tijdstip, zonder gedoe.'
+      title: "Service",
+      description:
+        "Jouw tevredenheid staat voorop. We komen naar jou toe, op jouw tijdstip, zonder gedoe.",
     },
     {
       icon: <Shield className="w-8 h-8" />,
-      title: 'Gecertificeerd',
-      description: 'Professionele certificeringen en trainingen. We blijven up-to-date met de nieuwste technieken en producten in de autodetailing branche.'
-    }
+      title: "Gecertificeerd",
+      description:
+        "Professionele certificeringen en trainingen. We blijven up-to-date met de nieuwste technieken en producten in de autodetailing branche.",
+    },
   ];
 
   return (
@@ -75,19 +80,23 @@ const OverPage: React.FC = () => {
               </h2>
               <div className="space-y-3 md:space-y-4 text-bariq-grey text-base md:text-lg leading-relaxed">
                 <p>
-                  Bariq Autocare is opgericht vanuit een passie voor auto's en een drive om 
-                  de beste service te leveren. We geloven dat elke auto het verdient om er op 
-                  z'n best uit te zien, zonder dat het uren van je tijd kost.
+                  Bariq Autocare is opgericht vanuit een passie voor auto's en
+                  een drive om de beste service te leveren. We geloven dat elke
+                  auto het verdient om er op z'n best uit te zien, zonder dat
+                  het uren van je tijd kost.
                 </p>
                 <p>
-                  Daarom komen we naar jou toe. Of je nu thuis bent, op kantoor, of ergens anders 
-                  – wij zorgen ervoor dat jouw auto weer glanst, terwijl jij doorgaat met waar je 
-                  mee bezig was.
+                  Daarom komen we naar jou toe. Of je nu thuis bent, op kantoor,
+                  of ergens anders – wij zorgen ervoor dat jouw auto weer
+                  glanst, terwijl jij doorgaat met waar je mee bezig was.
                 </p>
                 <p>
-                  Wat ons onderscheidt? <span className="text-bariq-white font-semibold">Eerlijke prijzen, 
-                  heldere communicatie en topresultaat</span> – elke keer weer. Geen verborgen kosten, 
-                  geen verrassingen. Gewoon vakwerk waar je op kunt rekenen.
+                  Wat ons onderscheidt?{" "}
+                  <span className="text-bariq-white font-semibold">
+                    Eerlijke prijzen, heldere communicatie en topresultaat
+                  </span>{" "}
+                  – elke keer weer. Geen verborgen kosten, geen verrassingen.
+                  Gewoon vakwerk waar je op kunt rekenen.
                 </p>
               </div>
             </motion.div>
@@ -102,7 +111,7 @@ const OverPage: React.FC = () => {
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-bariq-white mb-8 md:mb-12 text-center">
               Waar wij voor staan
             </h2>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {values.map((value, index) => (
                 <motion.div
@@ -136,42 +145,70 @@ const OverPage: React.FC = () => {
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-bariq-white mb-6 md:mb-8 text-center">
               Waarom Bariq kiezen?
             </h2>
-            
+
             <div className="bg-bariq-black p-6 md:p-8 lg:p-12 rounded-xl md:rounded-2xl border border-gray-800">
               <ul className="space-y-3 md:space-y-4">
                 <li className="flex items-start gap-3 md:gap-4">
                   <div className="w-2 h-2 bg-bariq-red rounded-full mt-2 flex-shrink-0"></div>
                   <div className="text-sm md:text-base">
-                    <span className="text-bariq-white font-semibold">Premium kwaliteit:</span>
-                    <span className="text-bariq-grey"> We gebruiken alleen de beste producten en technieken voor langdurig resultaat</span>
+                    <span className="text-bariq-white font-semibold">
+                      Premium kwaliteit:
+                    </span>
+                    <span className="text-bariq-grey">
+                      {" "}
+                      We gebruiken alleen de beste producten en technieken voor
+                      langdurig resultaat
+                    </span>
                   </div>
                 </li>
                 <li className="flex items-start gap-3 md:gap-4">
                   <div className="w-2 h-2 bg-bariq-red rounded-full mt-2 flex-shrink-0"></div>
                   <div className="text-sm md:text-base">
-                    <span className="text-bariq-white font-semibold">Service op locatie:</span>
-                    <span className="text-bariq-grey"> Bespaar tijd – wij komen naar jou, waar en wanneer het uitkomt</span>
+                    <span className="text-bariq-white font-semibold">
+                      Service op locatie:
+                    </span>
+                    <span className="text-bariq-grey">
+                      {" "}
+                      Bespaar tijd – wij komen naar jou, waar en wanneer het
+                      uitkomt
+                    </span>
                   </div>
                 </li>
                 <li className="flex items-start gap-3 md:gap-4">
                   <div className="w-2 h-2 bg-bariq-red rounded-full mt-2 flex-shrink-0"></div>
                   <div className="text-sm md:text-base">
-                    <span className="text-bariq-white font-semibold">Transparante prijzen:</span>
-                    <span className="text-bariq-grey"> Geen verrassingen, directe prijsindicatie via kenteken-check</span>
+                    <span className="text-bariq-white font-semibold">
+                      Transparante prijzen:
+                    </span>
+                    <span className="text-bariq-grey">
+                      {" "}
+                      Geen verrassingen, directe prijsindicatie via
+                      kenteken-check
+                    </span>
                   </div>
                 </li>
                 <li className="flex items-start gap-3 md:gap-4">
                   <div className="w-2 h-2 bg-bariq-red rounded-full mt-2 flex-shrink-0"></div>
                   <div className="text-sm md:text-base">
-                    <span className="text-bariq-white font-semibold">Flexibele planning:</span>
-                    <span className="text-bariq-grey"> Beschikbaar di-zo van 8:00-20:00, eenvoudig online boeken</span>
+                    <span className="text-bariq-white font-semibold">
+                      Flexibele planning:
+                    </span>
+                    <span className="text-bariq-grey">
+                      {" "}
+                      Beschikbaar di-zo van 8:00-20:00, eenvoudig online boeken
+                    </span>
                   </div>
                 </li>
                 <li className="flex items-start gap-3 md:gap-4">
                   <div className="w-2 h-2 bg-bariq-red rounded-full mt-2 flex-shrink-0"></div>
                   <div className="text-sm md:text-base">
-                    <span className="text-bariq-white font-semibold">Lokaal & betrouwbaar:</span>
-                    <span className="text-bariq-grey"> Gevestigd in Amsterdam, honderden tevreden klanten</span>
+                    <span className="text-bariq-white font-semibold">
+                      Lokaal & betrouwbaar:
+                    </span>
+                    <span className="text-bariq-grey">
+                      {" "}
+                      Gevestigd in Amsterdam, honderden tevreden klanten
+                    </span>
                   </div>
                 </li>
               </ul>
@@ -190,10 +227,20 @@ const OverPage: React.FC = () => {
             Ontdek onze diensten of plan direct een afspraak
           </p>
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center max-w-md sm:max-w-none mx-auto">
-            <Button to="/diensten" variant="outline" size="large" className="w-full sm:w-auto">
+            <Button
+              to="/diensten"
+              variant="outline"
+              size="large"
+              className="w-full sm:w-auto"
+            >
               Bekijk Diensten & Prijzen
             </Button>
-            <Button to="/booking-system" variant="primary" size="large" className="w-full sm:w-auto">
+            <Button
+              to="/booking-system"
+              variant="primary"
+              size="large"
+              className="w-full sm:w-auto"
+            >
               Boek Nu
             </Button>
           </div>

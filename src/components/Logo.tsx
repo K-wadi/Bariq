@@ -1,20 +1,20 @@
-import React from 'react';
+import React from "react";
 
 interface LogoProps {
-  size?: 'small' | 'medium' | 'large';
+  size?: "small" | "medium" | "large";
 }
 
-const Logo: React.FC<LogoProps> = ({ size = 'medium' }) => {
+const Logo: React.FC<LogoProps> = ({ size = "medium" }) => {
   const sizeClasses = {
-    small: 'h-8',
-    medium: 'h-10 md:h-12',
-    large: 'h-12 md:h-14',
+    small: "h-8",
+    medium: "h-10 md:h-12",
+    large: "h-12 md:h-14",
   };
 
   const textSizes = {
-    small: 'text-lg',
-    medium: 'text-xl md:text-2xl',
-    large: 'text-2xl md:text-3xl',
+    small: "text-lg",
+    medium: "text-xl md:text-2xl",
+    large: "text-2xl md:text-3xl",
   };
 
   return (

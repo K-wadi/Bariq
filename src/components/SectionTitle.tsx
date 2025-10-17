@@ -1,35 +1,37 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
 interface SectionTitleProps {
   title: string;
   subtitle?: string;
-  alignment?: 'left' | 'center' | 'right';
+  alignment?: "left" | "center" | "right";
   className?: string;
-  titleSize?: 'small' | 'medium' | 'large';
+  titleSize?: "small" | "medium" | "large";
 }
 
 const SectionTitle: React.FC<SectionTitleProps> = ({
   title,
   subtitle,
-  alignment = 'center',
-  className = '',
-  titleSize = 'medium',
+  alignment = "center",
+  className = "",
+  titleSize = "medium",
 }) => {
   const alignmentClasses = {
-    left: 'text-left',
-    center: 'text-center',
-    right: 'text-right',
+    left: "text-left",
+    center: "text-center",
+    right: "text-right",
   };
 
   const titleSizeClasses = {
-    small: 'text-xl md:text-2xl lg:text-3xl',
-    medium: 'text-2xl md:text-3xl lg:text-4xl',
-    large: 'text-3xl md:text-4xl lg:text-5xl',
+    small: "text-xl md:text-2xl lg:text-3xl",
+    medium: "text-2xl md:text-3xl lg:text-4xl",
+    large: "text-3xl md:text-4xl lg:text-5xl",
   };
 
   return (
-    <div className={`mb-8 md:mb-10 ${alignmentClasses[alignment]} ${className}`}>
+    <div
+      className={`mb-8 md:mb-10 ${alignmentClasses[alignment]} ${className}`}
+    >
       <motion.h2
         className={`font-display font-bold ${titleSizeClasses[titleSize]} text-bariq-white mb-3 md:mb-4`}
         initial={{ opacity: 0, y: 20 }}

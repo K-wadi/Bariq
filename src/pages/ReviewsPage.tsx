@@ -1,54 +1,60 @@
-import { Star, ExternalLink } from 'lucide-react';
-import { motion } from 'framer-motion';
-import SEO from '../components/SEO';
-import Button from '../components/Button';
-import ReviewCard from '../components/ReviewCard';
+import { Star, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
+import SEO from "../components/SEO";
+import Button from "../components/Button";
+import ReviewCard from "../components/ReviewCard";
 
 const ReviewsPage: React.FC = () => {
   // Sample reviews
   const reviews = [
     {
-      name: 'Sander de Vries',
-      date: '15 mei 2024',
+      name: "Sander de Vries",
+      date: "15 mei 2024",
       rating: 5,
-      comment: 'Uitstekende service! Mijn auto ziet eruit als nieuw. Ik was verbaasd over hoeveel vuil ze uit mijn interieur hebben gekregen.',
-      carType: 'BMW X5'
+      comment:
+        "Uitstekende service! Mijn auto ziet eruit als nieuw. Ik was verbaasd over hoeveel vuil ze uit mijn interieur hebben gekregen.",
+      carType: "BMW X5",
     },
     {
-      name: 'Emma Jansen',
-      date: '2 april 2024',
+      name: "Emma Jansen",
+      date: "2 april 2024",
       rating: 5,
-      comment: 'Super tevreden met het resultaat. Zo fijn dat ze aan huis komen, scheelt enorm veel tijd. Zeker een aanrader!',
-      carType: 'Audi A3'
+      comment:
+        "Super tevreden met het resultaat. Zo fijn dat ze aan huis komen, scheelt enorm veel tijd. Zeker een aanrader!",
+      carType: "Audi A3",
     },
     {
-      name: 'Bram Vermeulen',
-      date: '18 maart 2024',
+      name: "Bram Vermeulen",
+      date: "18 maart 2024",
       rating: 5,
-      comment: 'Professionele aanpak en perfect resultaat. De auto glanst weer als nieuw.',
-      carType: 'Mercedes C-Klasse'
+      comment:
+        "Professionele aanpak en perfect resultaat. De auto glanst weer als nieuw.",
+      carType: "Mercedes C-Klasse",
     },
     {
-      name: 'Lisa van Dam',
-      date: '5 maart 2024',
+      name: "Lisa van Dam",
+      date: "5 maart 2024",
       rating: 5,
-      comment: 'Zeer vriendelijk personeel en uitstekend werk. Mijn Tesla ziet er weer prachtig uit!',
-      carType: 'Tesla Model 3'
+      comment:
+        "Zeer vriendelijk personeel en uitstekend werk. Mijn Tesla ziet er weer prachtig uit!",
+      carType: "Tesla Model 3",
     },
     {
-      name: 'Tom Hendriks',
-      date: '22 februari 2024',
+      name: "Tom Hendriks",
+      date: "22 februari 2024",
       rating: 4,
-      comment: 'Goede service en netjes werk. Kleine watervlekken hier en daar, maar overall zeer tevreden.',
-      carType: 'Volkswagen Golf'
+      comment:
+        "Goede service en netjes werk. Kleine watervlekken hier en daar, maar overall zeer tevreden.",
+      carType: "Volkswagen Golf",
     },
     {
-      name: 'Sophie Peters',
-      date: '10 februari 2024',
+      name: "Sophie Peters",
+      date: "10 februari 2024",
       rating: 5,
-      comment: 'Fantastisch! De auto is volledig getransformeerd. Aanrader voor iedereen!',
-      carType: 'Range Rover'
-    }
+      comment:
+        "Fantastisch! De auto is volledig getransformeerd. Aanrader voor iedereen!",
+      carType: "Range Rover",
+    },
   ];
 
   return (

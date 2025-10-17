@@ -1,9 +1,9 @@
-import SEO from '../components/SEO';
-import { BookingCalendar } from '../components/BookingCalendar';
+import SEO from "../components/SEO";
+import { BookingCalendar } from "../components/BookingCalendar";
 
 const BookingSystemPage: React.FC = () => {
   const handleBookingComplete = (booking: any) => {
-    console.log('Booking completed:', booking);
+    console.log("Booking completed:", booking);
     // Optioneel: navigate naar een bevestigingspagina of toon success message
   };
 
@@ -14,7 +14,7 @@ const BookingSystemPage: React.FC = () => {
         description="Boek direct je premium auto detailing service online via ons geavanceerde booking systeem."
         canonical="https://bariqautocare.nl/booking-system"
       />
-      
+
       <BookingCalendar onBookingComplete={handleBookingComplete} />
     </>
   );

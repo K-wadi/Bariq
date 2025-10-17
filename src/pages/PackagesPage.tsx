@@ -1,30 +1,105 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Check, X, Clock, Shield, Star } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Check, X, Clock, Shield, Star } from "lucide-react";
 
-import SectionTitle from '../components/SectionTitle';
-import PackageCard from '../components/PackageCard';
-import Button from '../components/Button';
+import SectionTitle from "../components/SectionTitle";
+import PackageCard from "../components/PackageCard";
+import Button from "../components/Button";
 
 const PackagesPage: React.FC = () => {
   const comparisonFeatures = [
-    { name: 'Exterieur handwas', basic: true, premium: true, deluxe: true },
-    { name: 'Wielen en velgen reiniging', basic: true, premium: true, deluxe: true },
-    { name: 'Interieur stofzuigen', basic: true, premium: true, deluxe: true },
-    { name: 'Dashboard en console reiniging', basic: true, premium: true, deluxe: true },
-    { name: 'Ramen binnen en buiten', basic: true, premium: true, deluxe: true },
-    { name: 'Dieptereiniging stoelen en vloermatten', basic: false, premium: true, deluxe: true },
-    { name: 'Lederbehandeling (indien van toepassing)', basic: false, premium: true, deluxe: true },
-    { name: 'Interieur geuren verwijderen', basic: false, premium: true, deluxe: true },
-    { name: 'Ventilatiesysteem reinigen', basic: false, premium: true, deluxe: true },
-    { name: 'Behandeling van kunststof onderdelen', basic: false, premium: true, deluxe: true },
-    { name: 'Professionele ceramic coating', basic: false, premium: false, deluxe: true },
-    { name: 'Premium lederbehandeling & conditioner', basic: false, premium: false, deluxe: true },
-    { name: 'Exclusieve wax behandeling', basic: false, premium: false, deluxe: true },
-    { name: 'Voor/na fotos professioneel', basic: false, premium: false, deluxe: true },
-    { name: 'Velgen dieptereiniging', basic: false, premium: false, deluxe: true },
-    { name: 'Banden glans behandeling', basic: false, premium: false, deluxe: true },
-    { name: 'Uitgebreide kofferbak reiniging', basic: false, premium: false, deluxe: true },
+    { name: "Exterieur handwas", basic: true, premium: true, deluxe: true },
+    {
+      name: "Wielen en velgen reiniging",
+      basic: true,
+      premium: true,
+      deluxe: true,
+    },
+    { name: "Interieur stofzuigen", basic: true, premium: true, deluxe: true },
+    {
+      name: "Dashboard en console reiniging",
+      basic: true,
+      premium: true,
+      deluxe: true,
+    },
+    {
+      name: "Ramen binnen en buiten",
+      basic: true,
+      premium: true,
+      deluxe: true,
+    },
+    {
+      name: "Dieptereiniging stoelen en vloermatten",
+      basic: false,
+      premium: true,
+      deluxe: true,
+    },
+    {
+      name: "Lederbehandeling (indien van toepassing)",
+      basic: false,
+      premium: true,
+      deluxe: true,
+    },
+    {
+      name: "Interieur geuren verwijderen",
+      basic: false,
+      premium: true,
+      deluxe: true,
+    },
+    {
+      name: "Ventilatiesysteem reinigen",
+      basic: false,
+      premium: true,
+      deluxe: true,
+    },
+    {
+      name: "Behandeling van kunststof onderdelen",
+      basic: false,
+      premium: true,
+      deluxe: true,
+    },
+    {
+      name: "Professionele ceramic coating",
+      basic: false,
+      premium: false,
+      deluxe: true,
+    },
+    {
+      name: "Premium lederbehandeling & conditioner",
+      basic: false,
+      premium: false,
+      deluxe: true,
+    },
+    {
+      name: "Exclusieve wax behandeling",
+      basic: false,
+      premium: false,
+      deluxe: true,
+    },
+    {
+      name: "Voor/na fotos professioneel",
+      basic: false,
+      premium: false,
+      deluxe: true,
+    },
+    {
+      name: "Velgen dieptereiniging",
+      basic: false,
+      premium: false,
+      deluxe: true,
+    },
+    {
+      name: "Banden glans behandeling",
+      basic: false,
+      premium: false,
+      deluxe: true,
+    },
+    {
+      name: "Uitgebreide kofferbak reiniging",
+      basic: false,
+      premium: false,
+      deluxe: true,
+    },
   ];
 
   const fadeInUpVariants = {
@@ -32,8 +107,8 @@ const PackagesPage: React.FC = () => {
     visible: (custom: number) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: custom * 0.1, duration: 0.5 }
-    })
+      transition: { delay: custom * 0.1, duration: 0.5 },
+    }),
   };
 
   return (
@@ -41,7 +116,7 @@ const PackagesPage: React.FC = () => {
       {/* Header */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-24 bg-black">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <motion.h1 
+          <motion.h1
             className="text-4xl md:text-5xl font-display font-bold text-gray-200 mb-4"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -49,7 +124,7 @@ const PackagesPage: React.FC = () => {
           >
             Onze Pakketten
           </motion.h1>
-          <motion.p 
+          <motion.p
             className="text-xl text-gray-400 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -63,11 +138,11 @@ const PackagesPage: React.FC = () => {
       {/* Individual Services */}
       <section className="py-16 md:py-24 bg-gray-900">
         <div className="container mx-auto px-4 md:px-6">
-          <SectionTitle 
+          <SectionTitle
             title="Individuele Services"
             subtitle="Eenmalige reiniging wanneer je het nodig hebt"
           />
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <PackageCard
               title="Basic Clean"
@@ -78,12 +153,12 @@ const PackagesPage: React.FC = () => {
                 "Wielen en velgen reiniging",
                 "Interieur stofzuigen",
                 "Dashboard en console reiniging",
-                "Ramen binnen en buiten"
+                "Ramen binnen en buiten",
               ]}
               actionLabel="Boek Basic Clean"
               delay={0.1}
             />
-            
+
             <PackageCard
               title="Premium Clean"
               price="€149"
@@ -94,7 +169,7 @@ const PackagesPage: React.FC = () => {
                 "Lederbehandeling (indien van toepassing)",
                 "Interieur geuren verwijderen",
                 "Ventilatiesysteem reinigen",
-                "Behandeling van kunststof onderdelen"
+                "Behandeling van kunststof onderdelen",
               ]}
               popular={true}
               actionLabel="Boek Premium Clean"
@@ -113,7 +188,7 @@ const PackagesPage: React.FC = () => {
                 "Voor- en na foto's professioneel",
                 "Velgen dieptereiniging",
                 "Banden glans behandeling",
-                "Uitgebreide kofferbak reiniging"
+                "Uitgebreide kofferbak reiniging",
               ]}
               actionLabel="Boek Deluxe Clean"
               delay={0.3}
@@ -125,11 +200,11 @@ const PackagesPage: React.FC = () => {
       {/* Subscriptions */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-charcoal-50 to-white">
         <div className="container mx-auto px-4 md:px-6">
-          <SectionTitle 
+          <SectionTitle
             title="Abonnementen"
             subtitle="Regelmatige verzorging met exclusieve voordelen"
           />
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <PackageCard
               title="Care Subscription"
@@ -140,12 +215,12 @@ const PackagesPage: React.FC = () => {
                 "Gratis ophaal/brengservice (15km)",
                 "15% korting op extra services",
                 "Prioriteit bij planning",
-                "Geen bindingsperiode"
+                "Geen bindingsperiode",
               ]}
               actionLabel="Start Care Abonnement"
               delay={0.1}
             />
-            
+
             <PackageCard
               title="VIP Subscription"
               price="€229/maand"
@@ -156,14 +231,14 @@ const PackagesPage: React.FC = () => {
                 "25% korting op alle services",
                 "Prioriteit + spoedservice",
                 "Exclusieve VIP support lijn",
-                "Geen bindingsperiode"
+                "Geen bindingsperiode",
               ]}
               bestValue={true}
               actionLabel="Word VIP Member"
               delay={0.2}
             />
           </div>
-          
+
           {/* Subscription Benefits */}
           <div className="mt-12 bg-green-50 p-6 rounded-lg max-w-4xl mx-auto">
             <div className="text-center mb-6">
@@ -196,11 +271,11 @@ const PackagesPage: React.FC = () => {
       {/* Comparison Table */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <SectionTitle 
+          <SectionTitle
             title="Pakketvergelijking"
             subtitle="Zie precies wat je krijgt met elk pakket"
           />
-          
+
           <div className="bg-white rounded-lg shadow-md overflow-hidden max-w-6xl mx-auto">
             <div className="overflow-x-auto">
               <table className="min-w-full">
@@ -222,14 +297,16 @@ const PackagesPage: React.FC = () => {
                 </thead>
                 <tbody className="bg-white divide-y divide-charcoal-200">
                   {comparisonFeatures.map((feature, index) => (
-                    <motion.tr 
+                    <motion.tr
                       key={index}
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true, margin: "-50px" }}
                       custom={index * 0.05}
                       variants={fadeInUpVariants}
-                      className={index % 2 === 0 ? 'bg-white' : 'bg-charcoal-25'}
+                      className={
+                        index % 2 === 0 ? "bg-white" : "bg-charcoal-25"
+                      }
                     >
                       <td className="px-4 py-3 text-sm text-charcoal-800">
                         {feature.name}
@@ -265,31 +342,49 @@ const PackagesPage: React.FC = () => {
                     </td>
                     <td className="px-4 py-4 text-center text-charcoal-900 font-semibold">
                       €79
-                      <div className="text-xs text-charcoal-500 font-normal">incl. BTW</div>
+                      <div className="text-xs text-charcoal-500 font-normal">
+                        incl. BTW
+                      </div>
                     </td>
                     <td className="px-4 py-4 text-center text-charcoal-900 font-semibold bg-primary-25">
                       €149
-                      <div className="text-xs text-charcoal-500 font-normal">incl. BTW</div>
+                      <div className="text-xs text-charcoal-500 font-normal">
+                        incl. BTW
+                      </div>
                     </td>
                     <td className="px-4 py-4 text-center text-charcoal-900 font-semibold">
                       €329
-                      <div className="text-xs text-charcoal-500 font-normal">incl. BTW</div>
+                      <div className="text-xs text-charcoal-500 font-normal">
+                        incl. BTW
+                      </div>
                     </td>
                   </tr>
                   <tr>
                     <td className="px-4 py-4"></td>
                     <td className="px-4 py-4 text-center">
-                      <Button to="/booking-system" variant="outline" size="small">
+                      <Button
+                        to="/booking-system"
+                        variant="outline"
+                        size="small"
+                      >
                         Boek Basic
                       </Button>
                     </td>
                     <td className="px-4 py-4 text-center bg-primary-25">
-                      <Button to="/booking-system" variant="primary" size="small">
+                      <Button
+                        to="/booking-system"
+                        variant="primary"
+                        size="small"
+                      >
                         Kies Premium
                       </Button>
                     </td>
                     <td className="px-4 py-4 text-center">
-                      <Button to="/booking-system" variant="secondary" size="small">
+                      <Button
+                        to="/booking-system"
+                        variant="secondary"
+                        size="small"
+                      >
                         Upgrade Deluxe
                       </Button>
                     </td>
@@ -301,17 +396,16 @@ const PackagesPage: React.FC = () => {
         </div>
       </section>
 
-
       {/* FAQ Section */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <SectionTitle 
+          <SectionTitle
             title="Veelgestelde Vragen"
             subtitle="Alles wat je moet weten over onze pakketten"
           />
-          
+
           <div className="max-w-3xl mx-auto space-y-6">
-            <motion.div 
+            <motion.div
               className="bg-charcoal-50 p-6 rounded-lg"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -322,11 +416,14 @@ const PackagesPage: React.FC = () => {
                 Waarom Premium kiezen?
               </h3>
               <p className="text-charcoal-700">
-                Premium biedt een complete reiniging die je auto maandenlang fris houdt, inclusief dieptereiniging van stoelen, lederbehandeling, en geurverwijdering. Ideaal voor wie het beste resultaat wil.
+                Premium biedt een complete reiniging die je auto maandenlang
+                fris houdt, inclusief dieptereiniging van stoelen,
+                lederbehandeling, en geurverwijdering. Ideaal voor wie het beste
+                resultaat wil.
               </p>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="bg-charcoal-50 p-6 rounded-lg"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -337,11 +434,13 @@ const PackagesPage: React.FC = () => {
                 Hoe werken de abonnementen?
               </h3>
               <p className="text-charcoal-700">
-                Onze abonnementen zijn maandelijks opzegbaar zonder bindingsperiode. Je betaalt elke maand en krijgt exclusieve voordelen zoals gratis ophaal/brengservice en kortingen.
+                Onze abonnementen zijn maandelijks opzegbaar zonder
+                bindingsperiode. Je betaalt elke maand en krijgt exclusieve
+                voordelen zoals gratis ophaal/brengservice en kortingen.
               </p>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="bg-charcoal-50 p-6 rounded-lg"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -352,11 +451,13 @@ const PackagesPage: React.FC = () => {
                 Wat als ik niet tevreden ben?
               </h3>
               <p className="text-charcoal-700">
-                We bieden 100% tevredenheidsgarantie. Als je niet volledig tevreden bent, komen we terug om het gratis opnieuw te doen of geven we je geld terug. Jouw tevredenheid is onze prioriteit.
+                We bieden 100% tevredenheidsgarantie. Als je niet volledig
+                tevreden bent, komen we terug om het gratis opnieuw te doen of
+                geven we je geld terug. Jouw tevredenheid is onze prioriteit.
               </p>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="bg-charcoal-50 p-6 rounded-lg"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -367,7 +468,9 @@ const PackagesPage: React.FC = () => {
                 Kan ik een pakket aanpassen?
               </h3>
               <p className="text-charcoal-700">
-                Ja, alle pakketten kunnen aangepast worden met extra services naar wens. Neem contact met ons op om een op maat gemaakt pakket samen te stellen.
+                Ja, alle pakketten kunnen aangepast worden met extra services
+                naar wens. Neem contact met ons op om een op maat gemaakt pakket
+                samen te stellen.
               </p>
             </motion.div>
           </div>
@@ -377,7 +480,7 @@ const PackagesPage: React.FC = () => {
       {/* CTA */}
       <section className="py-16 md:py-24 bg-gradient-primary">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <motion.h2 
+          <motion.h2
             className="text-3xl md:text-4xl font-display font-bold text-white mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -386,8 +489,8 @@ const PackagesPage: React.FC = () => {
           >
             Klaar om je auto te laten stralen?
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             className="text-lg text-white/90 mb-8 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -396,7 +499,7 @@ const PackagesPage: React.FC = () => {
           >
             Boek vandaag nog en ervaar premium autopoetsservice aan huis.
           </motion.p>
-          
+
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center"
             initial={{ opacity: 0, y: 20 }}
@@ -404,17 +507,17 @@ const PackagesPage: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Button 
-              to="/booking-system" 
-              variant="secondary" 
+            <Button
+              to="/booking-system"
+              variant="secondary"
               size="large"
               className="bg-[#119EF3] text-primary-600 hover:bg-gray-100"
             >
               Boek Nu
             </Button>
-            <Button 
-              to="/booking-system" 
-              variant="outline" 
+            <Button
+              to="/booking-system"
+              variant="outline"
               size="large"
               className="text-white border-white hover:bg-white/10"
             >

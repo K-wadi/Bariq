@@ -1,15 +1,22 @@
-import { useEffect } from 'react';
-import { Calendar, MapPin, Phone, MessageCircle, Clock, Info } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useEffect } from "react";
+import {
+  Calendar,
+  MapPin,
+  Phone,
+  MessageCircle,
+  Clock,
+  Info,
+} from "lucide-react";
+import { motion } from "framer-motion";
 
-import SEO from '../components/SEO';
-import Button from '../components/Button';
+import SEO from "../components/SEO";
+import Button from "../components/Button";
 
 const BookingPage: React.FC = () => {
   // Load Calendly script
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    const script = document.createElement("script");
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
     script.async = true;
     document.body.appendChild(script);
 
@@ -41,7 +48,8 @@ const BookingPage: React.FC = () => {
               Plan je afspraak
             </h1>
             <p className="text-lg md:text-xl text-bariq-grey mb-6 md:mb-8">
-              We zijn beschikbaar di–zo, 8:00–20:00 (ma: niet beschikbaar). Kies je datum en tijd.
+              We zijn beschikbaar di–zo, 8:00–20:00 (ma: niet beschikbaar). Kies
+              je datum en tijd.
             </p>
           </motion.div>
         </div>
@@ -54,25 +62,29 @@ const BookingPage: React.FC = () => {
             {/* Calendly Widget */}
             <div className="lg:col-span-2">
               <div className="bg-white rounded-xl md:rounded-2xl shadow-lg overflow-hidden">
-                <div 
-                  className="calendly-inline-widget" 
-                  data-url="https://calendly.com/bariqautocare-info/2uur?hide_event_type_details=1&hide_gdpr_banner=1" 
-                  style={{ minWidth: '320px', height: '700px' }}
+                <div
+                  className="calendly-inline-widget"
+                  data-url="https://calendly.com/bariqautocare-info/2uur?hide_event_type_details=1&hide_gdpr_banner=1"
+                  style={{ minWidth: "320px", height: "700px" }}
                 ></div>
               </div>
-              
+
               <div className="mt-4 md:mt-6 p-4 md:p-5 bg-bariq-black rounded-xl border border-gray-800 flex items-start gap-3">
                 <Info className="w-5 h-5 text-bariq-red flex-shrink-0 mt-0.5" />
                 <p className="text-bariq-grey text-sm md:text-base">
-                  <span className="text-bariq-white font-semibold">Geen tijd vrij?</span> Stuur ons een WhatsApp bericht, we denken graag mee voor een geschikte tijd.
+                  <span className="text-bariq-white font-semibold">
+                    Geen tijd vrij?
+                  </span>{" "}
+                  Stuur ons een WhatsApp bericht, we denken graag mee voor een
+                  geschikte tijd.
                 </p>
               </div>
             </div>
-            
+
             {/* Sidebar Info */}
             <div className="space-y-4 md:space-y-6">
               {/* Availability */}
-              <motion.div 
+              <motion.div
                 className="bg-bariq-black p-5 md:p-6 rounded-xl md:rounded-2xl border border-gray-800"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -84,18 +96,26 @@ const BookingPage: React.FC = () => {
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center pb-3 border-b border-gray-800">
-                    <span className="text-bariq-grey text-sm md:text-base">Maandag:</span>
-                    <span className="font-semibold text-red-500 text-sm md:text-base">Niet beschikbaar</span>
+                    <span className="text-bariq-grey text-sm md:text-base">
+                      Maandag:
+                    </span>
+                    <span className="font-semibold text-red-500 text-sm md:text-base">
+                      Niet beschikbaar
+                    </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-bariq-grey text-sm md:text-base">Dinsdag - Zondag:</span>
-                    <span className="font-semibold text-bariq-white text-sm md:text-base">8:00 - 20:00</span>
+                    <span className="text-bariq-grey text-sm md:text-base">
+                      Dinsdag - Zondag:
+                    </span>
+                    <span className="font-semibold text-bariq-white text-sm md:text-base">
+                      8:00 - 20:00
+                    </span>
                   </div>
                 </div>
               </motion.div>
-              
+
               {/* Service Region */}
-              <motion.div 
+              <motion.div
                 className="bg-bariq-black p-5 md:p-6 rounded-xl md:rounded-2xl border border-gray-800"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -120,7 +140,7 @@ const BookingPage: React.FC = () => {
               </motion.div>
 
               {/* Service Details */}
-              <motion.div 
+              <motion.div
                 className="bg-bariq-black p-5 md:p-6 rounded-xl md:rounded-2xl border border-gray-800"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -132,22 +152,34 @@ const BookingPage: React.FC = () => {
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-bariq-grey text-sm md:text-base">Gemiddelde duur:</span>
-                    <span className="font-semibold text-bariq-white text-sm md:text-base">60-90 min</span>
+                    <span className="text-bariq-grey text-sm md:text-base">
+                      Gemiddelde duur:
+                    </span>
+                    <span className="font-semibold text-bariq-white text-sm md:text-base">
+                      60-90 min
+                    </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-bariq-grey text-sm md:text-base">Service locatie:</span>
-                    <span className="font-semibold text-bariq-white text-sm md:text-base">Op locatie</span>
+                    <span className="text-bariq-grey text-sm md:text-base">
+                      Service locatie:
+                    </span>
+                    <span className="font-semibold text-bariq-white text-sm md:text-base">
+                      Op locatie
+                    </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-bariq-grey text-sm md:text-base">Betaling:</span>
-                    <span className="font-semibold text-bariq-white text-sm md:text-base">Pin & Contant</span>
+                    <span className="text-bariq-grey text-sm md:text-base">
+                      Betaling:
+                    </span>
+                    <span className="font-semibold text-bariq-white text-sm md:text-base">
+                      Pin & Contant
+                    </span>
                   </div>
                 </div>
               </motion.div>
 
               {/* Direct Contact */}
-              <motion.div 
+              <motion.div
                 className="bg-gradient-to-br from-bariq-red to-red-700 p-5 md:p-6 rounded-xl md:rounded-2xl text-white"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -158,7 +190,8 @@ const BookingPage: React.FC = () => {
                   Direct Contact
                 </h3>
                 <p className="text-white/90 mb-4 text-sm md:text-base">
-                  Liever direct contact? Bel of WhatsApp ons voor snelle service.
+                  Liever direct contact? Bel of WhatsApp ons voor snelle
+                  service.
                 </p>
                 <div className="space-y-3">
                   <Button
