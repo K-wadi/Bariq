@@ -1,4 +1,4 @@
-import { Award, Heart, Target, Users } from 'lucide-react';
+import { Award, Heart, Target, Users, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 import Button from '../components/Button';
@@ -24,6 +24,11 @@ const OverPage: React.FC = () => {
       icon: <Users className="w-8 h-8" />,
       title: 'Service',
       description: 'Jouw tevredenheid staat voorop. We komen naar jou toe, op jouw tijdstip, zonder gedoe.'
+    },
+    {
+      icon: <Shield className="w-8 h-8" />,
+      title: 'Gecertificeerd',
+      description: 'Professionele certificeringen en trainingen. We blijven up-to-date met de nieuwste technieken en producten in de autodetailing branche.'
     }
   ];
 
@@ -98,7 +103,7 @@ const OverPage: React.FC = () => {
               Waar wij voor staan
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {values.map((value, index) => (
                 <motion.div
                   key={index}
